@@ -1,6 +1,9 @@
-// const express = require('express');
-import express from 'express';
+const express = require('express');
+// import express from 'express';
+require('dotenv').config();
 
+// for testing purposes
+// console.log(process.env.MONGO_URL);
 
 const mongoUrl = process.env.MONGO_URL;
 
