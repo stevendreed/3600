@@ -1,9 +1,11 @@
 const express = require('express');
+const mongoose = require('mongoose');
 // import express from 'express';
 require('dotenv').config();
 
 // for testing purposes
 // console.log(process.env.MONGO_URL);
+mongoose.connect(process.env.MONGO_URL);
 
 const mongoUrl = process.env.MONGO_URL;
 
