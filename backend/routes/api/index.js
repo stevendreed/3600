@@ -1,3 +1,5 @@
+// test file - remove later
+
 const express = require('express');
 const mongoose = require('mongoose');
 // import express from 'express';
@@ -19,7 +21,7 @@ app.get('/dev', (req, res) => {
 app.post('register', (req, res) =>
 {
 
-})
+});
 
 app.listen(4040, () =>
 {
