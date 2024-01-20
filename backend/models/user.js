@@ -5,5 +5,4 @@ const userSchema = new mongoose.Schema({
     password: String,
 }, {timestamps: true}); // provides us a created-at timestamp
 
-
 module.exports = mongoose.model('user', userSchema);
