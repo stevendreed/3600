@@ -4,7 +4,7 @@
 import { useQuery } from '@apollo/client';
 
 // this component will run a .map() function to render all of our rooms
-import RoomCards from '../components/RoomCards';
+import RoomCard from '../components/RoomCard';
 // placeholder data is used to simulate data we would input
 import placeholderData from '../utils/placeholderData'
 
@@ -20,7 +20,7 @@ const Home = () => {
   
     return (
       <main>
-        <RoomCards 
+        <RoomCard 
         // insert data from query into RoomCards component
         // using placeholder for developement
         data={placeholderData.chatroomData}/>
