@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const User = require("./user");
+const Message = require("./message");
 
 const chatroomSchema = new mongoose.Schema(
   {
@@ -10,13 +12,13 @@ const chatroomSchema = new mongoose.Schema(
       {
         type: String,
         ref: "user",
-      },
+      }, // maps to the username which sent the message
     ],
     messages: [
       {
         type: String,
         ref: "message",
-      },
+      }, // maps the message to the chatroom
     ],
   },
   {
