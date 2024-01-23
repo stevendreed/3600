@@ -7,10 +7,6 @@ const messageSchema = new mongoose.Schema({
         type: String, 
         ref: 'user'
     }, // maps to the username which sent the message
-    message_id: { 
-        type: UUID,
-        unique: true,
-    },
     content: {
         type: String,
         trim: true, // remove leading & trailing spaces

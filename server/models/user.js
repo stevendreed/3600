@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { ObjectId } = mongoose.Types;
 
 const { Schema } = mongoose;
 const bcrypt = require("bcrypt");
@@ -23,6 +24,14 @@ const userSchema = new Schema({
     trim: true, // remove leading and trailing spaces
     unique: true,
   },
+  activeChatrooms: [{
+    type: ObjectId,
+    ref: 'chatroom'
+  }],
+  recentChatrooms: [{
+    type: ObjectId,
+    ref: 'chatroom'
+  }],
 });
 
 // set up pre-save middleware to create password
