@@ -9,7 +9,7 @@ const messageSchema = new mongoose.Schema({
         ref: 'user'
     }, // maps to the username which sent the message
     message_id: { 
-        type: UUID,
+        type: String,
         unique: true,
     },
     content: {
