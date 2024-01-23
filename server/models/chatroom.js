@@ -5,7 +5,7 @@ const Message = require("./message");
 const chatroomSchema = new mongoose.Schema(
   {
     chatroom_id: {
-      type: String,
+      type: UUID,
       unique: true,
     },
     users: [
@@ -16,7 +16,7 @@ const chatroomSchema = new mongoose.Schema(
     ],
     messages: [
       {
-        type: String,
+        type: UUID,
         ref: "message",
       }, // maps the message to the chatroom
     ],
