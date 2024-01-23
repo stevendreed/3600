@@ -3,6 +3,8 @@ import { useQuery } from '@apollo/client';
 
 // this component will run a .map() function to render all of our rooms
 import RoomCards from '../components/RoomCards';
+// placeholder data is used to simulate data we would input
+import placeholderData from '../utils/placeholderData'
 
 // This is an example of how we import one of our queries
 // import { QUERY_THOUGHTS } from '../utils/queries';
@@ -17,19 +19,13 @@ const Home = () => {
     return (
       <main>
         <RoomCards 
+        // insert data from query into RoomCards component
+        // using placeholder for developement
         card={placeholderData}/>
       </main>
     );
   };
   
   export default Home;
-
-    // this placeholderdata is to be used for front-end developement and is used to simulate
-    // data taken from the backend
-  const placeholderData = [
-    {},
-    {},
-    {}
-  ]
 
 
