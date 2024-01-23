@@ -21,7 +21,7 @@ const Home = () => {
         <RoomCards 
         // insert data from query into RoomCards component
         // using placeholder for developement
-        card={placeholderData}/>
+        data={placeholderData.chatroomData}/>
       </main>
     );
   };

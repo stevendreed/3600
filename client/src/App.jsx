@@ -36,17 +36,23 @@ function App() {
 
   return (
     <ApolloProvider client={client}>
+
       {/* main container that holds everything */}
       <div className="flex-column justify-center align-center min-100-vh bg-primary">
+
         {/* header that appears in top right of webpage */}
         <Header />
+
         {/* UserSidebar appears on the left side of the screen */}
         <UserSidebar />
-        {/* contains the content of the outlet */}
+
+        {/* contains the content of the outlet, covers the most area.
+          Appears in the middle/slightly-lower right of the screen */}
         <div className="OutletContainer">
           {/* Renders content depending on routing */}
           <Outlet />
         </div>
+        
       </div>
     </ApolloProvider>
   )
