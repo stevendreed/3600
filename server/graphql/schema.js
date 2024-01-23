@@ -1,16 +1,43 @@
 // schema.js
-const { gql } = require('apollo-server-express');
+const { gql } = require("apollo-server-express");
+const { User, Message, Chatroom } = require("../models");
 
 const typeDefs = gql`
   type Query {
-    // Define your queries here
+    user: User
+    messages(_id: ID!): [Message]
+    chatrooms: [Chatroom]
   }
 
   type Mutation {
-    // Define your mutations here
+    addUser(username: String!, email: String!, password: String!): Auth
+    addMessage(
+      sender: String!
+      message_id: UUID!
+      content: String!
+      thread: UUID!
+      location: UUID!
+    ): Message
+    updateUser(username: String!, email: String!, password: String!): User
+    login(email: String!, password: String!): Auth
   }
 
-  // Define other types here
+  type User {
+    _id: ID
+    username: String
+    email: String
+    password: String
+  }
+
+  type Message {
+    _id: ID
+    sender: String
+    message_id: UUID
+    content: String
+    reaction: json
+    thread: UUID
+    location: UUID
+  }
 `;
 
 const resolvers = {
