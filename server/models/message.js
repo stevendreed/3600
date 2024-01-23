@@ -1,10 +1,11 @@
 const { UUID } = require('mongodb');
 const mongoose = require('mongoose');
 const { json } = require('stream/consumers');
+const { ObjectId } = mongoose.Types;
 
 const messageSchema = new mongoose.Schema({
     sender: { 
-        type: String, 
+        type: ObjectId, 
         ref: 'user'
     }, // maps to the username which sent the message
     message_id: { 
@@ -17,11 +18,11 @@ const messageSchema = new mongoose.Schema({
     },
     reaction: json, // key-val pairs of user:'some user', reaction:'👍'
     thread: { 
-        type: UUID, 
+        type: ObjectId, 
         ref: 'message' 
     },
     location: { 
-        type: UUID, 
+        type: ObjectId, 
         ref: 'chatroom' 
     }, // maps to a chatroom ID
 }, {
