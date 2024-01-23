@@ -33,7 +33,6 @@ const client = new ApolloClient({
 
 // App returns our Outlet (determined by url route) and is wrapped by our Provider/Client
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <ApolloProvider client={client}>
