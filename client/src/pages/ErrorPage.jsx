@@ -1,3 +1,4 @@
+// template error page, needs to be modified to fit site design in the future
 import { useRouteError } from "react-router-dom";
 
 export default function ErrorPage() {

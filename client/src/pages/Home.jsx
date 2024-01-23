@@ -1,3 +1,5 @@
+// home page, will render the RoomCards component for each of our active chatrooms
+
 // useQuery is used to run our queries from the backend
 import { useQuery } from '@apollo/client';
 
