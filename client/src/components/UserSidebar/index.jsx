@@ -1,4 +1,4 @@
-// Usersidebar will appear on all routes, and will be used for user logins
+// Usersidebar component will appear on all routes, and will be used for user logins
 // it will either display a login forum or user information in a ternary depending on if ->
 // <- the state is set to logged in or not
 
@@ -7,7 +7,8 @@ import { useContext, createContext, useState } from 'react';
 // useContext and createContext are used for context testing
 import { useMutation } from '@apollo/client';
 // useMutation is required on the front end to perform a mutation
-
+import { Link } from 'react-router-dom';
+// link is used for redirects in react - we use this on this component to allow users to click on their most recent rooms and quickly join back into them
 
 // mutations needed to make this component work:
 import { LOGIN_USER } from '../../utils/mutations';
@@ -17,8 +18,15 @@ import { ADD_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 // used for token authentication (what we pass the auth object to)
 
-// function to export our sidebar content to Outlet in App.jsx based on url defined in Main.jsx
+// function to export our sidebar component to Outlet in App.jsx based on url defined in Main.jsx
 const UserSidebar = () => {
+
+    // ************************************************************************************************************
+    // FAKE CONTEXT VARIABLE FOR TESTING PURPOSES - set to true to view user info, set to false to view login forms
+    // ************************************************************************************************************
+    let context = {
+        user: true
+    }
 
     // declaration for login and signup forms (when user not logged in)
     // mutations need to be finished on the backend for front end implementation
@@ -99,25 +107,39 @@ const UserSidebar = () => {
             });
     };
     // ---------
-
-    // fake context variables for testing purposes
-    let context = {
-        user: true
-    }
     
     // what we want to render
     return (
         <div className="sidebar">
             <div className='sidebarMainContainer'>
-                <h1>Sidebar Placeholder</h1>
                 
                 {/* IF THE USER CONTEXT EXISTS (meaning the user is logged in) */}
                 {/* Render the following: */}
                 {context.user ? (
-                    <div>
-                        <p>
-                            user info goes here
-                        </p>
+                    <div className='userProfile'>
+
+                        {/* img src should be dependant on context.user.profileimg or something similar */}
+                        <img src="yeah"></img>
+                        {/* username should be dependant on context.user.username */}
+                        <h2>Username</h2>
+                        {/* logout button should invoke a function to remove current user context / remove current jwt token */}
+                        <button>Logout</button>
+
+                        {/* your room would be a value assigned to a user schema, like context.user.yourRoom */}
+                        <h3>Your Room</h3>
+                        <ul>
+                            <li>your active or recently active room</li>
+                        </ul>
+
+                        {/* context.user.rooms -> sort by most recent -> list only the most recent 3 */}
+                        {/* like after sorting, do room[0].title, room[1].title, room[1].title */}
+                        {/* they also need to be clickable and take the user to the correct room id url */}
+                        <h3>Recent Rooms</h3>
+                        <ul>
+                            <li>room1</li>
+                            <li>room2</li>
+                            <li>room3</li>
+                        </ul>
                     </div>
                 ) : (
                 // OTHERWISE, render the login/signup forums
