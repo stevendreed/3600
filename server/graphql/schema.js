@@ -72,8 +72,9 @@ const resolvers = {
       if (!user || !await user.isCorrectPassword(password)) {
         throw new Error('Invalid credentials');
       }
+      // token is signed with email information & the time stamp
       const token = jwt.sign({ 
-        user: email, 
+        requester: email, 
         iat: Math.floor(Date.now() / 1000)
       });// jwt token here
       return { token, user };
@@ -82,7 +83,7 @@ const resolvers = {
       const newUser = new User({ username, email, password });
       await newUser.save();
       const token = jwt.sign({ 
-        user: email, 
+        requester: email, 
         iat: Math.floor(Date.now() / 1000)
       });// jwt token here// jwt token here
       return { token, user: newUser };
