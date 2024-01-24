@@ -2,12 +2,12 @@
 // it will either display a login forum or user information in a ternary depending on if ->
 // <- the state is set to logged in or not
 
-import { useState } from 'react';
+import { useContext, createContext, useState } from 'react';
 // useState is used to take forum information
+// useContext and createContext are used for context testing
 import { useMutation } from '@apollo/client';
 // useMutation is required on the front end to perform a mutation
-import { useContext } from 'react';
-// useContext allows us to read existing context we have assigned
+
 
 // mutations needed to make this component work:
 import { LOGIN_USER } from '../../utils/mutations';
@@ -99,44 +99,56 @@ const UserSidebar = () => {
             });
     };
     // ---------
+
+    // fake context variables for testing purposes
+    let context = {
+        user: false
+    }
+    
     // what we want to render
     return (
         <div className="sidebar">
             <div className='sidebarMainContainer'>
                 <h1>Sidebar Placeholder</h1>
                 
-                {useContext('user') ? (
-              <p>
-                user info goes here
-              </p>
-            ) : (
-              <form onSubmit={handleLoginSubmit}>
-                <input
-                  className="login-form-input"
-                  placeholder="Username"
-                  name="username"
-                  type="username"
-                  value={loginFormState.username}
-                  onChange={handleLoginChange}
-                />
-                <input
-                  className="login-form-input"
-                  placeholder="Password"
-                  name="password"
-                  type="password"
-                  value={loginFormState.password}
-                  onChange={handleLoginChange}
-                />
-                <button
-                  className="submitButton"
-                  style={{ cursor: 'pointer' }}
-                  type="submit"
-                >
-                  Submit
-                </button>
-              </form>
-            )}
+                {/* IF THE USER CONTEXT EXISTS (meaning the user is logged in) */}
+                {/* Render the following: */}
+                {context.user ? (
+                    <p>
+                        user info goes here
+                    </p>
+                ) : (
+                // OTHERWISE, render the login forums
 
+                    // Login form
+                    <form onSubmit={handleLoginSubmit}>
+                        <input
+                        className="login-form-input"
+                        placeholder="Username"
+                        name="username"
+                        type="username"
+                        value={loginFormState.username}
+                        onChange={handleLoginChange}
+                        />
+                        <input
+                        className="login-form-input"
+                        placeholder="Password"
+                        name="password"
+                        type="password"
+                        value={loginFormState.password}
+                        onChange={handleLoginChange}
+                        />
+                        <button
+                        className="submitButton"
+                        style={{ cursor: 'pointer' }}
+                        type="submit"
+                        >
+                        Submit
+                        </button>
+                    </form>   
+                )}
+
+            {/* Error messages, need to be included between forum submissions */}
             {loginError && (
               <div className="my-3 p-3 bg-danger text-white">
                 {loginError.message}
