@@ -9,22 +9,26 @@
   background-color: grey;
 }
 
+/* CSS for sidebar component - it is rendered on every page on the left on desktop */
+/* at the bottom on mobile */
+.sidebar {
+  background-color: red;
+  /* flex basis determines how much of the 100% space of mainContainer the sidebar takes */
+  flex-basis: 22%;
+}
+
 /* Contains header and routing components (varies depending on page url defined in Main.jsx) */
 .routeContainer {
   width: 100%;
   height: 100%;
+  /* routeContainer takes up 78% of mainContainer's flex space */
+  flex-basis: 78%;
   background-color: aqua;
 }
 
 /* CSS for the header component - it is rendered on every page near the top */
 .header {
   background-color: blue;
-}
-
-/* CSS for sidebar component - it is rendered on every page on the left on desktop */
-/* at the bottom on mobile */
-.sidebar {
-  background-color: red;
 }
 
 
