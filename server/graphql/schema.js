@@ -15,9 +15,11 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
     updateUser(username: String!, email: String!, password: String!): User
-    updateUser(username: String!, email: String!, password: String!): User
+    deleteUser(username: String!): Auth
     addMessage(sender: ID!, content: String!, thread: ID, location: ID!): Message
+    deleteMessage(username: String!): Auth
     addChatroom(title: String!, tagIds: [ID!], icon: String): Chatroom
+    deleteChatroom(title: String!): Auth
   }
 
   type User {
@@ -90,7 +92,7 @@ const resolvers = {
       );
       return updatedUser;
     },
-    deleteUser: async (_, { username, email }, context) => {
+    deleteUser: async (_, context) => {
       if (context.user)
       {
         return User.fineOneAndDelete({_id: context.user._id})
@@ -102,7 +104,7 @@ const resolvers = {
       await newMessage.save();
       return newMessage;
     },
-    deleteMessage: async (_, { sender, content, thread, location }, context) => {
+    deleteMessage: async (_, context) => {
       if (context.sender)
       {
         return Message.fineOneAndDelete({_id: context.message._id});
@@ -120,11 +122,11 @@ const resolvers = {
       await newChatroom.save();
       return newChatroom;
     },
-    deleteChatroom: async(chatRoomToDelete) => {
+    deleteChatroom: async(_, context) => {
       // verify the id for our discovered chatroom is not null
-      if (chatRoomToDelete._id)
+      if (context._id)
       {
-        return Chatroom.findOneAndDelete({_id: chatRoomToDelete._id});
+        return Chatroom.findOneAndDelete({_id: context._id});
       }
       throw new Error('No chatroom found');
     } // end deleteChatroom
