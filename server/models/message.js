@@ -1,4 +1,3 @@
-const { UUID } = require("mongodb");
 const mongoose = require("mongoose");
 const { json } = require("stream/consumers");
 
@@ -14,11 +13,11 @@ const messageSchema = new mongoose.Schema(
     },
     reaction: json, // key-val pairs of user:'some user', reaction:'👍'
     thread: {
-      type: UUID,
+      type: String,
       ref: "message",
     },
     location: {
-      type: UUID,
+      type: String,
       ref: "chatroom",
     }, // maps to a chatroom ID
   },
