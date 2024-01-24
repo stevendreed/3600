@@ -1,11 +1,16 @@
 const { UUID } = require('mongodb');
 const mongoose = require('mongoose');
 const { json } = require('stream/consumers');
+const { ObjectId } = require('mongodb'); // bypasses Schema.types
+const mongoose = require('mongoose');
+const { json } = require('stream/consumers');
 
 const messageSchema = new mongoose.Schema(
   {
     sender: {
       type: String,
+      ref: 'user',
+      type: ObjectId,
       ref: 'user',
     }, // maps to the username which sent the message
     content: {
