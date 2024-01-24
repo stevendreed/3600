@@ -1,6 +1,6 @@
 // schema.js
-const { gql } = require("apollo-server-express");
-const { User, Message, Chatroom } = require("../models");
+const { gql } = require('apollo-server-express');
+const { User, Message, Chatroom } = require('../models');
 
 const typeDefs = gql`
   type Query {
@@ -10,17 +10,18 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    LOGIN_USER(email: String!, password: String!): Auth
-    ADD_USER(username: String!, email: String!, password: String!): Auth
-    UPDATE_USER(username: String!, email: String!, password: String!): User
-    ADD_MESSAGE(sender: ID!, content: String!, thread: ID, location: ID!): Message
-    ADD_CHATROOM(title: String!, tagIds: [ID!], icon: String): Chatroom
+    login(email: String!, password: String!): Auth
+    login(email: String!, password: String!): Auth
+    addUser(username: String!, email: String!, password: String!): Auth
+    updateUser(username: String!, email: String!, password: String!): User
+    updateUser(username: String!, email: String!, password: String!): User
+    addMessage(sender: ID!, content: String!, thread: ID, location: ID!): Message
+    addChatroom(title: String!, tagIds: [ID!], icon: String): Chatroom
   }
 
   type User {
     _id: ID
     username: String
-    activeChatrooms: [Chatroom]
     recentChatrooms: [Chatroom]
   }
 
