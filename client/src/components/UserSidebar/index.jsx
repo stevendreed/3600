@@ -22,7 +22,26 @@ const UserSidebar = () => {
     const [signupFormState, setSignupFormState] = useState({ username: '', email: '', password: '' });
     // const [signup, { signupError, signupData }] = useMutation(ADD_USER);
 
+    // handler for login form, will update state whenever the forum changes
+    const handleLoginChange = (event) => {
+        const { name, value } = event.target;
+    
+        setLoginFormState({
+          ...loginFormState,
+          [name]: value,
+        });
+      };
 
+    // because we are using 2 different states for each form, we need 2 different handlers
+    // 1 state handler for login and 1 state handler for signup
+    const handleSignupChange = (event) => {
+        const { name, value } = event.target;
+
+        setSignupFormState({
+            ...signupFormState,
+            [name]: value,
+        });
+        };
 
     // what we want to render
     return (
