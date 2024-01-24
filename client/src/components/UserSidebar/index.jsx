@@ -102,7 +102,7 @@ const UserSidebar = () => {
 
     // fake context variables for testing purposes
     let context = {
-        user: false
+        user: true
     }
     
     // what we want to render
@@ -114,38 +114,80 @@ const UserSidebar = () => {
                 {/* IF THE USER CONTEXT EXISTS (meaning the user is logged in) */}
                 {/* Render the following: */}
                 {context.user ? (
-                    <p>
-                        user info goes here
-                    </p>
+                    <div>
+                        <p>
+                            user info goes here
+                        </p>
+                    </div>
                 ) : (
-                // OTHERWISE, render the login forums
+                // OTHERWISE, render the login/signup forums
+                    <div className='login-signup-forumsContainer'>
 
-                    // Login form
-                    <form onSubmit={handleLoginSubmit}>
-                        <input
-                        className="login-form-input"
-                        placeholder="Username"
-                        name="username"
-                        type="username"
-                        value={loginFormState.username}
-                        onChange={handleLoginChange}
-                        />
-                        <input
-                        className="login-form-input"
-                        placeholder="Password"
-                        name="password"
-                        type="password"
-                        value={loginFormState.password}
-                        onChange={handleLoginChange}
-                        />
-                        <button
-                        className="submitButton"
-                        style={{ cursor: 'pointer' }}
-                        type="submit"
-                        >
-                        Submit
-                        </button>
-                    </form>   
+                        {/* login form */}
+                        <h3>Login</h3>
+                        <form className='sidebar-form' onSubmit={handleLoginSubmit}>
+                            <input
+                            className="login-form-input"
+                            placeholder="Username"
+                            name="username"
+                            type="username"
+                            value={loginFormState.username}
+                            onChange={handleLoginChange}
+                            />
+                            <input
+                            className="login-form-input"
+                            placeholder="Password"
+                            name="password"
+                            type="password"
+                            value={loginFormState.password}
+                            onChange={handleLoginChange}
+                            />
+                            <button
+                            className="submitButton"
+                            style={{ cursor: 'pointer' }}
+                            type="submit"
+                            >
+                            Submit
+                            </button>
+                        </form>
+
+                        {/* signup form */}
+                        <h3>Sign Up</h3>
+                        <form className='sidebar-form' onSubmit={handleSignupSubmit}>
+                            <input
+                            className="signup-form-input"
+                            placeholder="Email"
+                            name="email"
+                            type="email"
+                            value={signupFormState.email}
+                            onChange={handleSignupChange}
+                            />
+                            <input
+                            className="signup-form-input"
+                            placeholder="Username"
+                            name="username"
+                            type="username"
+                            value={signupFormState.username}
+                            onChange={handleSignupChange}
+                            />
+                            <input
+                            className="signup-form-input"
+                            placeholder="Password"
+                            name="password"
+                            type="password"
+                            value={signupFormState.password}
+                            onChange={handleSignupChange}
+                            />
+                            <button
+                            className="submitButton"
+                            style={{ cursor: 'pointer' }}
+                            type="submit"
+                            >
+                            Submit
+                            </button>
+                        </form>
+
+                    </div>
                 )}
 
             {/* Error messages, need to be included between forum submissions */}

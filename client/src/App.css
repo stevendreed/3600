@@ -37,6 +37,26 @@
   flex-basis: 80%;
 }
 
+/* div that contains login/signup forums if user is not logged in */
+.login-signup-forumsContainer {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  width: auto;
+  height: 70%;
+  margin: 12% 10px 12% 10px;
+  padding: 0px;
+}
+
+.sidebar-form {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+}
+
 /* contains the bottom (smaller) portion of the sidebar */
 /* createroom and donate buttons */
 .sidebarButtonContainer {
