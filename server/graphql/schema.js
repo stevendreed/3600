@@ -1,6 +1,7 @@
 // schema.js
 const { gql } = require('apollo-server-express');
 const { User, Message, Chatroom } = require('../models');
+const chatroom = require('../models/chatroom');
 
 const typeDefs = gql`
   type Query {
@@ -89,10 +90,24 @@ const resolvers = {
       );
       return updatedUser;
     },
+    deleteUser: async (_, { username, email }, context) => {
+      if (context.user)
+      {
+        return User.fineOneAndDelete({_id: context.user._id})
+      }
+      throw new Error('Could not find a user to delete');
+    },
     addMessage: async (_, { sender, content, thread, location }, context) => {
       const newMessage = new Message({ sender, content, thread, location });
       await newMessage.save();
       return newMessage;
+    },
+    deleteMessage: async (_, { sender, content, thread, location }, context) => {
+      if (context.sender)
+      {
+        return Message.fineOneAndDelete({_id: context.message._id});
+      }
+      throw new Error('Could not find a user to delete');
     },
     addChatroom: async (_, { title, tagIds, icon }, context) => {
       for (const tagId of tagIds) {
@@ -109,7 +124,7 @@ const resolvers = {
       // verify the id for our discovered chatroom is not null
       if (chatRoomToDelete._id)
       {
-        return chatRoomToDelete.findOneAndDelete({_id: chatRoomToDelete._id});
+        return Chatroom.findOneAndDelete({_id: chatRoomToDelete._id});
       }
       throw new Error('No chatroom found');
     } // end deleteChatroom
