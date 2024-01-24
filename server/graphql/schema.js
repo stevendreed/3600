@@ -14,7 +14,6 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
     updateUser(username: String!, email: String!, password: String!): User
-    updateUser(username: String!, email: String!, password: String!): User
     addMessage(sender: ID!, content: String!, thread: ID, location: ID!): Message
     updateMessage(messageId: ID!, content: String!): Message
     addChatroom(title: String!, tagIds: [ID!], icon: String): Chatroom
@@ -56,18 +55,24 @@ const typeDefs = gql`
 `;
 
 const resolvers = {
+  // query resolvers
   Query: {
+    // fetch a user by ID
     user: async (_, args) => {
       return await User.findById(args.id);
     },
+    // fetch messages for a specific chatroom
     messages: async (_, { chatroomId }) => {
       return await Message.find({ location: chatroomId });
     },
+    // fetch all chatrooms
     chatrooms: async () => {
       return await Chatroom.find({}).populate('tags');
     },
   },
+  // mutation resolvers
   Mutation: {
+    // user login
     login: async (_, { email, password }, context) => {
       const user = await User.findOne({ email });
       if (!user || !await user.isCorrectPassword(password)) {
@@ -76,12 +81,14 @@ const resolvers = {
       const token = // jwt token here
       return { token, user };
     },
+    // add a new user
     addUser: async (_, { username, email, password }, context) => {
       const newUser = new User({ username, email, password });
       await newUser.save();
       const token = // jwt token here
       return { token, user: newUser };
     },
+    // update an existing user
     updateUser: async (_, { username, email, password }, context) => {
       const updatedUser = await User.findOneAndUpdate(
         { username },
@@ -90,11 +97,13 @@ const resolvers = {
       );
       return updatedUser;
     },
+     // add a new message
     addMessage: async (_, { sender, content, thread, location }, context) => {
       const newMessage = new Message({ sender, content, thread, location });
       await newMessage.save();
       return newMessage;
     },
+    // update an existing message
     updateMessage: async (_, { messageId, content }, context) => {
       if (!context.user) {
         throw new Error('Authentication required');
@@ -110,7 +119,7 @@ const resolvers = {
       await message.save();
       return message;
     },
-
+    // add a new chatroom
     addChatroom: async (_, { title, tagIds, icon }, context) => {
       for (const tagId of tagIds) {
         const tagExists = await Tag.exists({ _id: tagId });
