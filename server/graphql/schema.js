@@ -16,6 +16,7 @@ const typeDefs = gql`
     updateUser(username: String!, email: String!, password: String!): User
     updateUser(username: String!, email: String!, password: String!): User
     addMessage(sender: ID!, content: String!, thread: ID, location: ID!): Message
+    updateMessage(messageId: ID!, content: String!): Message
     addChatroom(title: String!, tagIds: [ID!], icon: String): Chatroom
   }
 
@@ -94,6 +95,22 @@ const resolvers = {
       await newMessage.save();
       return newMessage;
     },
+    updateMessage: async (_, { messageId, content }, context) => {
+      if (!context.user) {
+        throw new Error('Authentication required');
+      }
+      const message = await Message.findById(messageId);
+      if (!message) {
+        throw new Error('Message not found');
+      }
+      if (message.sender.toString() !== context.user._id.toString()) {
+        throw new Error('Not authorized to update this message');
+      }
+      message.content = content;
+      await message.save();
+      return message;
+    },
+
     addChatroom: async (_, { title, tagIds, icon }, context) => {
       for (const tagId of tagIds) {
         const tagExists = await Tag.exists({ _id: tagId });
