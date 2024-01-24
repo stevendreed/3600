@@ -1,1 +1,1 @@
-// list all our queries here
+import { gql } from '@apollo/client';
