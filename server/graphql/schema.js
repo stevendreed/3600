@@ -105,6 +105,14 @@ const resolvers = {
       await newChatroom.save();
       return newChatroom;
     },
+    deleteChatroom: async(chatRoomToDelete) => {
+      // verify the id for our discovered chatroom is not null
+      if (chatRoomToDelete._id)
+      {
+        return chatRoomToDelete.findOneAndDelete({_id: chatRoomToDelete._id});
+      }
+      throw new Error('No chatroom found');
+    } // end deleteChatroom
   },
 };
 
