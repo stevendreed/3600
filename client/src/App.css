@@ -9,6 +9,7 @@
   background-color: grey;
 }
 
+/* ----------------------- SIDEBAR STARTS ------------------------ */
 /* CSS for sidebar component - it is rendered on every page on the left on desktop */
 /* at the bottom on mobile */
 .sidebar {
@@ -16,6 +17,13 @@
   /* flex basis determines how much of the 100% space of mainContainer the sidebar takes */
   flex-basis: 22%;
 }
+
+.sidebarMain {
+  background-color: green;
+  width: 100%;
+}
+
+/* ----------------------- SIDEBAR ENDS ------------------------ */
 
 /* Contains header and routing components (varies depending on page url defined in Main.jsx) */
 .routeContainer {
