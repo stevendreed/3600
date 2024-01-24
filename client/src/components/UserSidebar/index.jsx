@@ -7,7 +7,7 @@ const UserSidebar = () => {
 
     // what we want to render
     return (
-        <div>
+        <div className="sidebar">
             <h1>Sidebar Placeholder</h1>
         </div>
     )

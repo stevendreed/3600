@@ -7,7 +7,7 @@ const Header = () => {
 
     // what we want to render
     return (
-        <div>
+        <div className="header">
             <h1>Header Placeholder</h1>
         </div>
     )
