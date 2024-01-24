@@ -1,9 +1,13 @@
+ #root {
+  width: 100vw;
+  height: 100vh;
+}
 
 /* ALL COMPONENTS ARE RENDERED WITHIN THE MAIN CONTAINER */
 /* this class is declared on the App.jsx file */
 .mainContainer {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-flow: row nowrap;
   background-color: grey;
@@ -12,15 +16,36 @@
 /* ----------------------- SIDEBAR STARTS ------------------------ */
 /* CSS for sidebar component - it is rendered on every page on the left on desktop */
 /* at the bottom on mobile */
+/* .sidebar is the most top-level container of the sidebar */
 .sidebar {
   background-color: red;
   /* flex basis determines how much of the 100% space of mainContainer the sidebar takes */
   flex-basis: 22%;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
 }
 
-.sidebarMain {
+/* contains the top (larger) portion of the sidebar */
+/* login forms / user information */
+.sidebarMainContainer {
   background-color: green;
   width: 100%;
+  height: 100%;
+  flex-basis: 80%;
+}
+
+/* contains the bottom (smaller) portion of the sidebar */
+/* createroom and donate buttons */
+.sidebarButtonContainer {
+  background-color: orange;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  flex-basis: 20%;
 }
 
 /* ----------------------- SIDEBAR ENDS ------------------------ */

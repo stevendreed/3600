@@ -100,10 +100,10 @@ const UserSidebar = () => {
     // what we want to render
     return (
         <div className="sidebar">
-            <div className=''>
+            <div className='sidebarMainContainer'>
                 <h1>Sidebar Placeholder</h1>
             </div>
-            <div className='sideButtonContainer'>
+            <div className='sidebarButtonContainer'>
                 <button>CREATE NEW ROOM</button>
                 <button>DONATE</button>
             </div>
