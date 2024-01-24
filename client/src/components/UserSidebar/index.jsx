@@ -2,10 +2,12 @@
 // it will either display a login forum or user information in a ternary depending on if ->
 // <- the state is set to logged in or not
 
-// useState is used to take forum information
 import { useState } from 'react';
-// useMutation is required on the front end to perform a mutation
+// useState is used to take forum information
 import { useMutation } from '@apollo/client';
+// useMutation is required on the front end to perform a mutation
+import { useContext } from 'react';
+// useContext allows us to read existing context we have assigned
 
 // mutations needed to make this component work:
 import { LOGIN_USER } from '../../utils/mutations';
@@ -102,6 +104,51 @@ const UserSidebar = () => {
         <div className="sidebar">
             <div className='sidebarMainContainer'>
                 <h1>Sidebar Placeholder</h1>
+                
+                {useContext('user') ? (
+              <p>
+                user info goes here
+              </p>
+            ) : (
+              <form onSubmit={handleLoginSubmit}>
+                <input
+                  className="login-form-input"
+                  placeholder="Username"
+                  name="username"
+                  type="username"
+                  value={loginFormState.username}
+                  onChange={handleLoginChange}
+                />
+                <input
+                  className="login-form-input"
+                  placeholder="Password"
+                  name="password"
+                  type="password"
+                  value={loginFormState.password}
+                  onChange={handleLoginChange}
+                />
+                <button
+                  className="submitButton"
+                  style={{ cursor: 'pointer' }}
+                  type="submit"
+                >
+                  Submit
+                </button>
+              </form>
+            )}
+
+            {loginError && (
+              <div className="my-3 p-3 bg-danger text-white">
+                {loginError.message}
+              </div>
+            )}
+
+            {signupError && (
+              <div className="my-3 p-3 bg-danger text-white">
+                {signupError.message}
+              </div>
+            )}  
+
             </div>
             <div className='sidebarButtonContainer'>
                 <button>CREATE NEW ROOM</button>

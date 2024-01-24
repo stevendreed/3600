@@ -3,6 +3,8 @@
   height: 100vh;
 }
 
+/* NOTE TO SELF: Add media breakpoint at 700px for mobile layout */
+
 /* ALL COMPONENTS ARE RENDERED WITHIN THE MAIN CONTAINER */
 /* this class is declared on the App.jsx file */
 .mainContainer {
@@ -20,7 +22,7 @@
 .sidebar {
   background-color: red;
   /* flex basis determines how much of the 100% space of mainContainer the sidebar takes */
-  flex-basis: 22%;
+  flex-basis: 16%;
   display: flex;
   flex-flow: column wrap;
   align-items: center;
@@ -55,7 +57,7 @@
   width: 100%;
   height: 100%;
   /* routeContainer takes up 78% of mainContainer's flex space */
-  flex-basis: 78%;
+  flex-basis: 84%;
   background-color: aqua;
 }
 
