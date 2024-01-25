@@ -9,8 +9,21 @@ const Header = () => {
     return (
         <div className="header">
             <h1>3600 Logo</h1>
-            <p>site info?</p>
-            <button className="sortDropdown">Sort Rooms By...</button>
+            <p>Rooms only last one hour! Make your own or join someone elses.</p>
+
+            {/* room sorting dropdown menu */}
+            <div className="sortDropdown">
+                <button>Sort Rooms By...</button>
+                <div className="dropdownOptions">
+                    {/* sort rooms by active users */}
+                    <button id="sortbyUsers">Most Users</button>
+                    {/* sort rooms old to new */}
+                    <button id="sortbyOld">Oldest</button>
+                    {/* sort rooms new to old */}
+                    <button id="sortbyNew">Newest</button>
+                </div>
+            </div>
+
         </div>
     )
     

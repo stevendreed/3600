@@ -110,8 +110,35 @@
   width: 100%;
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
+}
+
+.header p {
+  flex-basis: 30%;
+  margin: 0px 10px 0px 10px;
+}
+
+.header h1 {
+  font-size: 2em;
+}
+
+.sortDropdown {
+  display: inline-block;
+  position: relative;
+}
+
+.dropdownOptions {
+  display: none;
+  position: absolute;
+}
+
+.dropdownOptions button {
+  width: 100%;
+}
+
+.sortDropdown:hover .dropdownOptions {
+  display: block;
 }
 
 /* ----------------------- HEADER ENDS ------------------------ */
