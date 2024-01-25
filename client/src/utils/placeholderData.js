@@ -9,6 +9,7 @@
         {
             _id: 1,
             title: "ExampleTitle",
+            tags: "exampletag",
             messages: [messagesData],
             timer: 3600,
         },
@@ -40,5 +41,6 @@
       ]
     
   };
+  
   
   export default placeholderData;
