@@ -8,6 +8,7 @@ return (
     <div>
         <h1>RoomCard Placeholder</h1>
     </div>
+    
 )
 
 }

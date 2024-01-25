@@ -8,7 +8,9 @@ const Header = () => {
     // what we want to render
     return (
         <div className="header">
-            <h1>Header Placeholder</h1>
+            <h1>3600 Logo</h1>
+            <p>site info?</p>
+            <button className="sortDropdown">Sort Rooms By...</button>
         </div>
     )
     
