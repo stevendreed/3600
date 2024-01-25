@@ -9,7 +9,7 @@ const Header = () => {
     return (
         <div className="header">
             <h1>3600 Logo</h1>
-            <p>Rooms only last one hour! Make your own or join someone elses.</p>
+            <p>One Hour Chatrooms</p>
 
             {/* room sorting dropdown menu */}
             <div className="sortDropdown">

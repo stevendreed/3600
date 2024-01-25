@@ -118,7 +118,8 @@
 /* ----------------------- HEADER STARTS ------------------------ */
 /* CSS for the header component - it is rendered on every page near the top */
 .header {
-  background-color: blue;
+  background-color: var(--lightBackground);
+  border-radius: 20px;
   height: 100px;
   width: 100%;
   display: flex;
@@ -127,18 +128,32 @@
   align-items: center;
 }
 
-.header p {
-  flex-basis: 30%;
-  margin: 0px 10px 0px 10px;
-}
 
 .header h1 {
   font-size: 2em;
   flex-basis: 20%;
+  height: 65px;
+  text-align: center;
+  background-color: var(--medBackground);
+  padding-top: 12px;
+  border-radius: 20px;
+}
+
+.header p {
+  flex-basis: 30%;
+  margin: 0px 10px 0px 10px;
+  height: 65px;
+  text-align: center;
+  background-color: var(--medBackground);
+  padding-top: 20px;
+  border-radius: 20px;
 }
 
 .header button {
   flex-basis: 50%;
+  height: 65px;
+  background-color: var(--medBackground);
+  border-radius: 20px;
 }
 
 .sortDropdown {
@@ -157,6 +172,7 @@
 
 .sortDropdown:hover .dropdownOptions {
   display: block;
+  z-index: 1;
 }
 
 /* ----------------------- HEADER ENDS ------------------------ */
