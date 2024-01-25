@@ -1,3 +1,16 @@
+ 
+ :root {
+  --darkBackground: rgb(4,5,5) ;
+  --medBackground: rgb(17,28,23) ;
+  --lightBackground: rgb(21,46,34) ;
+  --altBackground: rgb(15,74,72) ;
+
+  --redChar: rgb(166,36,36) ;
+  --yellowChar: rgb(196,142,26) ;
+  --greenChar: rgb(126,186,58) ;
+  --lightGreenChar: rgb(179,237,116) ;
+ }
+ 
  #root {
   width: 100vw;
   height: 100vh;
