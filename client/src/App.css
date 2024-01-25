@@ -25,7 +25,7 @@
   height: 100%;
   display: flex;
   flex-flow: row nowrap;
-  background-color: grey;
+  background-color: var(--darkBackground);
   overflow: hidden;
 }
 
@@ -113,7 +113,6 @@
   padding: 0px;
   /* routeContainer takes up 78% of mainContainer's flex space */
   flex-basis: 80%;
-  background-color: aqua;
 }
 
 /* ----------------------- HEADER STARTS ------------------------ */
@@ -172,7 +171,6 @@
   flex-flow: row wrap;
   justify-content: space-evenly;
   align-items: center;
-  background-color: purple;
   overflow-y: scroll;
   padding-top: 20px;
   padding-bottom: 120px;
@@ -180,7 +178,11 @@
 
 /* every individual card that renders in the card container */
 .card {
-  background-color: green;
+  background-color: var(--lightBackground);
+  border-top: 11px solid var(--medBackground);
+  border-left: 11px solid var(--medBackground);
+  border-right: 11px solid var(--medBackground);
+  border-radius: 20px;
   margin: 15px 10px 15px 10px;
   padding: 0px;
   width: 250px;
@@ -188,19 +190,39 @@
   text-align: center;
   display: flex;
   flex-flow: column wrap;
-  justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .card img {
-  border: 1px solid red;
-  width: 150px;
-  height: 150px;
+  border: 5px solid var(--medBackground);
+  margin: 20px 0px 10px 0px;
+  width: 170px;
+  height: 170px;
   border-radius: 100%;
 }
 
 .card h1 {
   font-size: 2em;
+  color: var(--lightGreenChar);
+}
+
+.card h2 {
+  background-color: var(--medBackground);
+  color: var(--lightGreenChar);
+  font-size: 1.1em;
+  border-radius: 20px;
+  width: 200px;
+  height: auto;
+  margin: 5px 0px 0px 0px;
+  padding: 0px 0px 2px 0px;
+}
+
+.card h3 {
+  font-size: 3em;
+  position: absolute;
+  bottom: 5px;
+  color: var(--greenChar);
 }
 
 /* ----------------------- HOMEPAGE CARDS ENDS ------------------------ */

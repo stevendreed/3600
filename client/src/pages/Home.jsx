@@ -37,8 +37,8 @@ const messagesData = [
 const chatroomData = [
   {
       _id: 1,
-      title: "ExampleTitle",
-      tags: "exampletag",
+      title: "Chatroom",
+      tags: ["casual ", "Toronto "],
       image: "profileimgexample.jpg",
       messages: [messagesData],
       timer: 3600,
@@ -46,7 +46,7 @@ const chatroomData = [
   {
     _id: 2,
     title: "ExampleTitle",
-    tags: "exampletag",
+    tags: ["example ", "example2 ", "example3"],
     messages: [messagesData],
     timer: 3600,
   },
