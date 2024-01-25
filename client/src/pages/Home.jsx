@@ -39,6 +39,7 @@ const chatroomData = [
       _id: 1,
       title: "ExampleTitle",
       tags: "exampletag",
+      image: "profileimgexample.jpg",
       messages: [messagesData],
       timer: 3600,
   },

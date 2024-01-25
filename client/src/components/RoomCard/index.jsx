@@ -6,7 +6,7 @@ const RoomCard = (item) => {
 // what we want to render
 return (
     <div className="card">
-        <img src={item.img}></img>
+        <img src={`/images/${item.image}`}></img>
         <h1>{item.title}</h1>
         <h2>{item.tags}</h2>
         <h3>{item.timer}</h3>

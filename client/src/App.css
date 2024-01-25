@@ -122,6 +122,11 @@
 
 .header h1 {
   font-size: 2em;
+  flex-basis: 20%;
+}
+
+.header button {
+  flex-basis: 50%;
 }
 
 .sortDropdown {
@@ -162,7 +167,7 @@
 
 /* every individual card that renders in the card container */
 .card {
-  background-color: red;
+  background-color: green;
   margin: 15px 10px 15px 10px;
   padding: 0px;
   width: 250px;
@@ -175,9 +180,10 @@
 }
 
 .card img {
-  background-color: green;
+  border: 1px solid red;
   width: 150px;
   height: 150px;
+  border-radius: 100%;
 }
 
 .card h1 {
