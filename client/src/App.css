@@ -34,7 +34,7 @@
 /* at the bottom on mobile */
 /* .sidebar is the most top-level container of the sidebar */
 .sidebar {
-  background-color: red;
+  background-color: var(--darkBackground);
   /* flex basis determines how much of the 100% space of mainContainer the sidebar takes */
   flex-basis: 20%;
   min-width: 300px;
@@ -46,7 +46,8 @@
 /* contains the top (larger) portion of the sidebar */
 /* login forms / user information */
 .sidebarMainContainer {
-  background-color: green;
+  background-color: var(--medBackground);
+  border-top-right-radius: 20px;
   width: 100%;
   height: 100%;
   flex-basis: 80%;
@@ -74,11 +75,12 @@
   flex-flow: column wrap;
   align-items: center;
   justify-content: center;
-  background-color: black;
+  background-color: var(--lightBackground);
   width: auto;
-  height: 96%;
-  margin: 2%;
+  height: 94%;
+  margin: 20px;
   padding: 0px;
+  border-radius: 20px;
 }
 
 .sidebar-form {
@@ -91,7 +93,8 @@
 /* contains the bottom (smaller) portion of the sidebar */
 /* createroom and donate buttons */
 .sidebarButtonContainer {
-  background-color: orange;
+  background-color: var(--medBackground);
+  border-bottom-right-radius: 20px;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
@@ -99,6 +102,18 @@
   width: 100%;
   height: 100%;
   flex-basis: 20%;
+}
+
+.createRoomButton {
+  background-color: var(--altBackground);
+  width: 85%;
+  margin: 10px
+}
+
+.donateButton {
+  background-color: var(--altBackground);
+  width: 85%;
+  margin: 10px;
 }
 
 /* ----------------------- SIDEBAR ENDS ------------------------ */
@@ -109,7 +124,7 @@
 .routeContainer {
   width: 100%;
   height: 100%;
-  margin: 5px;
+  margin: 10px;
   padding: 0px;
   /* routeContainer takes up 78% of mainContainer's flex space */
   flex-basis: 80%;
@@ -119,6 +134,7 @@
 /* CSS for the header component - it is rendered on every page near the top */
 .header {
   background-color: var(--lightBackground);
+  border-bottom: 3px solid var(--medBackground);
   border-radius: 20px;
   height: 100px;
   width: 100%;
@@ -137,6 +153,7 @@
   background-color: var(--medBackground);
   padding-top: 12px;
   border-radius: 20px;
+  color: var(--yellowChar);
 }
 
 .header p {
@@ -147,12 +164,14 @@
   background-color: var(--medBackground);
   padding-top: 20px;
   border-radius: 20px;
+  color: var(--lightGreenChar);
 }
 
 .header button {
   flex-basis: 50%;
   height: 65px;
   background-color: var(--medBackground);
+  color: var(--greenChar);
   border-radius: 20px;
 }
 

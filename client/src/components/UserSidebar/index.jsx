@@ -25,7 +25,7 @@ const UserSidebar = () => {
     // FAKE CONTEXT VARIABLE FOR TESTING PURPOSES - set to true to view user info, set to false to view login forms
     // ************************************************************************************************************
     let context = {
-        user: true
+        user: false
     }
 
     // declaration for login and signup forms (when user not logged in)
@@ -34,7 +34,7 @@ const UserSidebar = () => {
     const [login, { loginError, loginData }] = useMutation(LOGIN_USER);
 
     const [signupFormState, setSignupFormState] = useState({ username: '', email: '', password: '' });
-    const [signup, { signupError, signupData }] = useMutation(ADD_USER);
+    const [addUser, { signupError, signupData }] = useMutation(ADD_USER);
     // ---------
     // change handler for login form, will update state whenever the forum changes
     // change handlers are attached to their appropriate input sections as a 'onChange' effect
@@ -90,7 +90,7 @@ const UserSidebar = () => {
         event.preventDefault();
     
         try {
-            const { signupData } = await signup({
+            const { signupData } = await addUser({
             variables: { ...signupFormState },
             });
     
@@ -227,8 +227,8 @@ const UserSidebar = () => {
 
             </div>
             <div className='sidebarButtonContainer'>
-                <button>CREATE NEW ROOM</button>
-                <button>DONATE</button>
+                <button className='createRoomButton'>CREATE NEW ROOM</button>
+                <button className='donateButton'>DONATE</button>
             </div>
         </div>
     )
