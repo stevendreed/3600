@@ -8,7 +8,7 @@ const Header = () => {
     // what we want to render
     return (
         <div className="header">
-            <h1>3600 Logo</h1>
+            <h1>3600</h1>
             <p>One Hour Chatrooms</p>
 
             {/* room sorting dropdown menu */}

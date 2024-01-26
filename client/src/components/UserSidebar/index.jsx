@@ -146,8 +146,8 @@ const UserSidebar = () => {
                     <div className='login-signup-forumsContainer'>
 
                         {/* login form */}
-                        <h3>Login</h3>
                         <form className='login-form' onSubmit={handleLoginSubmit}>
+                        <h3>Login</h3>
                             <input
                             className="login-form-input"
                             placeholder="Username"
@@ -174,8 +174,8 @@ const UserSidebar = () => {
                         </form>
 
                         {/* signup form */}
-                        <h3>Sign Up</h3>
                         <form className='signup-form' onSubmit={handleSignupSubmit}>
+                        <h3>Sign Up</h3>
                             <input
                             className="signup-form-input"
                             placeholder="Email"
