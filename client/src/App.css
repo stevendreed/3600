@@ -91,6 +91,7 @@
   font-size: 1.4em;
   color: var(--lightGreenChar);
   margin: 10px 0px 0px 0px;
+  text-align: center;
 }
 
 .userProfile li {
@@ -214,160 +215,6 @@
   padding: 2px 0px 5px 0px;
 }
 
-
-/* ------------------- SIDEBAR MOBILE BREAKPOINT: 800px ---------------------- */
-@media (max-width: 800px) {
-  .sidebar {
-    position: absolute;
-    bottom: 0px;
-    width: 100%;
-    height: 200px;
-    z-index: 1;
-    flex-flow: row nowrap;
-  }
-
-
-  /* contains the top (larger) portion of the sidebar
-  /* login forms / user information */
-  .sidebarMainContainer {
-    background-color: var(--medBackground);
-    border-top-left-radius: 20px;
-    width: 100%;
-    height: 100%;
-    padding: 0px;
-    margin: 0px;
-    flex-basis: 100%;
-  }
-
-  /* THIS ONLY RENDERS IF THE USER IS LOGGED IN (see UserSidebar component) */
-  .userProfile {
-    display: flex;
-    flex-flow: column wrap;
-    align-items: center;
-    justify-content: center;
-    background-color: black;
-    width: auto;
-    height: 96%;
-    margin: 2%;
-    padding: 0px;
-  }
-
-  /* THIS ONLY RENDERS IF THE USER IS NOT LOGGED IN (see UserSidebar component) */
-  /* div that contains login/signup forums if user is not logged in */
-  .login-signup-forumsContainer {
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--lightBackground);
-    width: auto;
-    height: 94%;
-    margin: 10px;
-    padding: 0px;
-    border-radius: 20px;
-  } 
-
-  .login-signup-forumsContainer h3 {
-    font-size: .5em;
-    color: var(--lightGreenChar);
-    margin: 0px 0px 5px 0px;
-  }
-
-  .login-form {
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: center;
-    align-items: center;
-    border-bottom: 0px;
-    margin: 0px;
-    padding: 0px;
-  }
-
-  .login-form h3 {
-    font-size: 1.5em;
-  }
-
-  .login-form input {
-    background-color:rgb(230, 230, 230);
-    border-radius: 40px;
-    height: 20px;
-    width: 80px;
-    margin: 6px 0px 6px 0px;
-    text-align: center;
-    color: black;
-  }
-
-  .login-form button {
-    background-color: var(--medBackground);
-    padding: 0px;
-    margin: 6px 0px 10px 0px;
-    width: 100px;
-    height: 30px;
-  }
-
-  .signup-form {
-    display: none;
-    flex-flow: column wrap;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .signup-form h3 {
-    font-size: 1.5em;
-  }
-
-  .signup-form input {
-    background-color:rgb(230, 230, 230);
-    border-radius: 40px;
-    height: 20px;
-    width: 80px;
-    margin: 6px 0px 6px 0px;
-    text-align: center;
-    color: black;
-  }
-
-  .signup-form button {
-    background-color: var(--medBackground);
-    padding: 0px;
-    margin: 6px 0px 0px 0px;
-    width: 100px;
-    height: 35px;
-  }
-
-  /* contains the bottom (smaller) portion of the sidebar */
-  /* createroom and donate buttons */
-  .sidebarButtonContainer {
-    background-color: var(--medBackground);
-    border-bottom-right-radius: 20px;
-    display: none;
-    flex-flow: column nowrap;
-    align-items: center;
-    justify-content: center;
-    width: 20%;
-    height: 20px;
-    flex-basis: 20%;
-  }
-
-  .createRoomButton {
-    background-color: var(--lightBackground);
-    color: var(--lightGreenChar);
-    width: 20%;
-    height: 50px;
-    margin: 10px;
-    font-size: 1.3em;
-    padding: 5px 0px 4px 0px;
-  }
-
-  .donateButton {
-    background-color: var(--altBackground);
-    width: 20%;
-    height: 50px;
-    margin: 10px;
-    font-size: 1.8em;
-    padding: 2px 0px 5px 0px
-  }
-
-}
 
 /* ----------------------- SIDEBAR ENDS ------------------------ */
 
@@ -537,6 +384,7 @@
     position: absolute;
     background-color: transparent;
     left: 0;
+    bottom: 0;
     width: 100%;
     height: 200px;
     z-index: 1;
@@ -592,7 +440,8 @@
   }
 
   .userProfile h3 {
-    font-size: 2em;
+    text-align: center;
+    font-size: 1.8em;
     color: var(--lightGreenChar);
     margin: 0px 0px 0px 0px;
   }
@@ -607,7 +456,7 @@
     border-radius: 50px;
   }
 
-  @media (max-width: 400px) {
+  @media (max-width: 500px) {
     .userProfile h3 {
       font-size: 1em;
       color: var(--lightGreenChar);

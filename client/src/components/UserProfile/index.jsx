@@ -52,21 +52,24 @@ const UserProfile = () => {
         <button>Logout</button>
 
         {/* your room would be a value assigned to a user schema, like context.user.yourRoom */}
-        <h3>Your Room</h3>
-        <ul>
-            <li>{userData.yourRoom.title}</li>
-        </ul>
+        <div className="yourRoom">
+            <h3>Your Room</h3>
+            <ul>
+                <li>{userData.yourRoom.title}</li>
+            </ul>
+        </div>
 
         {/* context.user.rooms -> sort by most recent -> list only the most recent 3 */}
         {/* like after sorting, do room[0].title, room[1].title, room[1].title */}
         {/* they also need to be clickable and take the user to the correct room id url */}
-        <div></div>
-        <h3>Recent Rooms</h3>
-        <ul>
-            <li>{userData.recentRooms[2].title}</li>
-            <li>{userData.recentRooms[1].title}</li>
-            <li>{userData.recentRooms[0].title}</li>
-        </ul>
+        <div className="recentRooms">
+            <h3>Recent Rooms</h3>
+            <ul>
+                <li>{userData.recentRooms[2].title}</li>
+                <li>{userData.recentRooms[1].title}</li>
+                <li>{userData.recentRooms[0].title}</li>
+            </ul>
+        </div>
     </div>
 
     )
