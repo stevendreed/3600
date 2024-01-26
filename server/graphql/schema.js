@@ -21,7 +21,7 @@ const typeDefs = gql`
     UPDATE_MESSAGE(messageId: ID!, content: String!): Message
     DELETE_MESSAGE(username: String!): Auth
     ADD_CHATROOM(title: String!, tagIds: [ID!], icon: String): Chatroom
-    DELETE_CHAT(title: String!): Auth
+    DELETE_CHATROOM(title: String!): Auth
   }
 
   type User {
