@@ -1,6 +1,9 @@
 // schema.js
-const { gql } = require('apollo-server-express');
-const { User, Message, Chatroom } = require('../models');
+const { gql } = require("apollo-server-express");
+const { User, Message, Chatroom } = require("../models");
+const { signToken } = require('../utils/auth');
+// moving to utils function
+// const jwt = require('jsonwebtoken');
 
 const typeDefs = gql`
   type Query {
@@ -77,14 +80,23 @@ const resolvers = {
       if (!user || !await user.isCorrectPassword(password)) {
         throw new Error('Invalid credentials');
       }
-      const token = // jwt token here
+      // token is signed with email information & the time stamp
+      const token = signToken(user);
+      // const token = jwt.sign({ 
+      //   requester: email, 
+      //   iat: Math.floor(Date.now() / 1000)
+      // });// jwt token here
       return { token, user };
     },
     // add a new user
     ADD_USER: async (_, { username, email, password }, context) => {
       const newUser = new User({ username, email, password });
       await newUser.save();
-      const token = // jwt token here
+      const token = signToken(newUser); 
+      // const token = jwt.sign({ 
+      //   requester: email, 
+      //   iat: Math.floor(Date.now() / 1000)
+      // });// jwt token here// jwt token here
       return { token, user: newUser };
     },
     // update an existing user
