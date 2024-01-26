@@ -8,6 +8,10 @@ const chatroomSchema = new Schema({
     required: true,
     trim: true,
   },
+  owner: {
+    type: ObjectId,
+    ref: 'user'
+  },
   tags: [{
     type: ObjectId,
     ref: 'tag'

@@ -1,6 +1,9 @@
 // schema.js
-const { gql } = require('apollo-server-express');
-const { User, Message, Chatroom } = require('../models');
+const { gql } = require("apollo-server-express");
+const { User, Message, Chatroom } = require("../models");
+const { signToken } = require('../utils/auth');
+// moving to utils function
+// const jwt = require('jsonwebtoken');
 
 const typeDefs = gql`
   type Query {
@@ -13,9 +16,12 @@ const typeDefs = gql`
     LOGIN_USER(email: String!, password: String!): Auth
     ADD_USER(username: String!, email: String!, password: String!): Auth
     UPDATE_USER(username: String!, email: String!, password: String!): User
+    DELETE_USER(username: String!): Auth
     ADD_MESSAGE(sender: ID!, content: String!, thread: ID, location: ID!): Message
     UPDATE_MESSAGE(messageId: ID!, content: String!): Message
+    DELETE_MESSAGE(username: String!): Auth
     ADD_CHATROOM(title: String!, tagIds: [ID!], icon: String): Chatroom
+    DELETE_CHATROOM(title: String!): Auth
   }
 
   type User {
@@ -77,14 +83,23 @@ const resolvers = {
       if (!user || !await user.isCorrectPassword(password)) {
         throw new Error('Invalid credentials');
       }
-      const token = // jwt token here
+      // token is signed with email information & the time stamp
+      const token = signToken(user);
+      // const token = jwt.sign({ 
+      //   requester: email, 
+      //   iat: Math.floor(Date.now() / 1000)
+      // });// jwt token here
       return { token, user };
     },
     // add a new user
     ADD_USER: async (_, { username, email, password }, context) => {
       const newUser = new User({ username, email, password });
       await newUser.save();
-      const token = // jwt token here
+      const token = signToken(newUser); 
+      // const token = jwt.sign({ 
+      //   requester: email, 
+      //   iat: Math.floor(Date.now() / 1000)
+      // });// jwt token here// jwt token here
       return { token, user: newUser };
     },
     // update an existing user
@@ -96,12 +111,20 @@ const resolvers = {
       );
       return updatedUser;
     },
+    DELETE_USER: async (_, context) => {
+      if (context.user)
+      {
+        return User.fineOneAndDelete({_id: context.user._id})
+      }
+      throw new Error('Could not find a user to delete');
+    },
      // add a new message
     ADD_MESSAGE: async (_, { sender, content, thread, location }, context) => {
       const newMessage = new Message({ sender, content, thread, location });
       await newMessage.save();
       return newMessage;
     },
+
     // update an existing message
     UPDATE_MESSAGE: async (_, { messageId, content }, context) => {
       if (!context.user) {
@@ -118,6 +141,13 @@ const resolvers = {
       await message.save();
       return message;
     },
+    DELETE_MESSAGE: async (_, context) => {
+      if (context.sender)
+      {
+        return Message.fineOneAndDelete({_id: context.message._id});
+      }
+      throw new Error('Could not find a user to delete');
+    },
     // add a new chatroom
     ADD_CHATROOM: async (_, { title, tagIds, icon }, context) => {
       for (const tagId of tagIds) {
@@ -130,6 +160,18 @@ const resolvers = {
       await newChatroom.save();
       return newChatroom;
     },
+    DELETE_CHATROOM: async(_, context) => {
+      if (!context._id)
+      {
+        throw new Error('No chatroom found');
+      }
+      if (!context.user)
+      {
+        throw new Error('You do not have permission to delete the chatroom');
+      }
+      // verify the id for our discovered chatroom is not null
+      return Chatroom.findOneAndDelete({_id: context._id});
+    } // end deleteChatroom
   },
 };
 
