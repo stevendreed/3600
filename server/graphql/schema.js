@@ -4,6 +4,8 @@ const { User, Message, Chatroom } = require("../models");
 const { signToken } = require('../utils/auth');
 // moving to utils function
 // const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 const typeDefs = gql`
   type Query {
@@ -15,7 +17,7 @@ const typeDefs = gql`
   type Mutation {
     LOGIN_USER(email: String!, password: String!): Auth
     ADD_USER(username: String!, email: String!, password: String!): Auth
-    UPDATE_USER(username: String!, email: String!, password: String!): User
+    CHANGE_PASSWORD(userId: ID!, oldPassword: String!, newPassword: String!): Boolean
     DELETE_USER(username: String!): Auth
     ADD_MESSAGE(sender: ID!, content: String!, thread: ID, location: ID!): Message
     UPDATE_MESSAGE(messageId: ID!, content: String!): Message
@@ -27,6 +29,8 @@ const typeDefs = gql`
   type User {
     _id: ID
     username: String
+    email: String @adminOnly
+    password: String
     recentChatrooms: [Chatroom]
   }
 
@@ -93,23 +97,39 @@ const resolvers = {
     },
     // add a new user
     ADD_USER: async (_, { username, email, password }, context) => {
-      const newUser = new User({ username, email, password });
+      // variable for hashing password
+      const hashedPassword = await bcrypt.hash(password, saltRounds);
+      // new user saved to database & hashes password
+      const newUser = new User({
+        username,
+        email,
+        password: hashedPassword
+      });
       await newUser.save();
-      const token = signToken(newUser); 
-      // const token = jwt.sign({ 
-      //   requester: email, 
-      //   iat: Math.floor(Date.now() / 1000)
-      // });// jwt token here// jwt token here
+      const token = signToken(newUser);
       return { token, user: newUser };
     },
-    // update an existing user
-    UPDATE_USER: async (_, { username, email, password }, context) => {
-      const updatedUser = await User.findOneAndUpdate(
-        { username },
-        { email, password },
-        { new: true }
-      );
-      return updatedUser;
+    CHANGE_PASSWORD: async (_, { userId, oldPassword, newPassword }, context) => {
+      // authenticate the user 
+      if (!context.user || context.user._id !== userId) {
+        throw new Error('Unauthorized');
+      }
+      // find the user by ID
+      const user = await User.findById(userId);
+      if (!user) {
+        throw new Error('User not found');
+      }
+      // check if the old password is correct
+      const isMatch = await bcrypt.compare(oldPassword, user.password);
+      if (!isMatch) {
+        throw new Error('Old password is incorrect');
+      }
+      // hash the new password
+      const hashedPassword = await bcrypt.hash(newPassword, saltRounds);
+      // update the user's password
+      user.password = hashedPassword;
+      await user.save();
+      return true; 
     },
     DELETE_USER: async (_, context) => {
       if (context.user)
