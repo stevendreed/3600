@@ -13,17 +13,17 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    login(email: String!, password: String!): Auth
-    addUser(username: String!, email: String!, password: String!): Auth
-    updateUser(username: String!, email: String!, password: String!): User
-    addMessage(sender: ID!, content: String!, thread: ID, location: ID!): Message
-    addChatroom(title: String!, tagIds: [ID!], icon: String): Chatroom
+    LOGIN_USER(email: String!, password: String!): Auth
+    ADD_USER(username: String!, email: String!, password: String!): Auth
+    UPDATE_USER(username: String!, email: String!, password: String!): User
+    ADD_MESSAGE(sender: ID!, content: String!, thread: ID, location: ID!): Message
+    UPDATE_MESSAGE(messageId: ID!, content: String!): Message
+    ADD_CHATROOM(title: String!, tagIds: [ID!], icon: String): Chatroom
   }
 
   type User {
     _id: ID
     username: String
-    activeChatrooms: [Chatroom]
     recentChatrooms: [Chatroom]
   }
 
@@ -57,19 +57,25 @@ const typeDefs = gql`
 `;
 
 const resolvers = {
+  // query resolvers
   Query: {
+    // fetch a user by ID
     user: async (_, args) => {
       return await User.findById(args.id);
     },
+    // fetch messages for a specific chatroom
     messages: async (_, { chatroomId }) => {
       return await Message.find({ location: chatroomId });
     },
+    // fetch all chatrooms
     chatrooms: async () => {
       return await Chatroom.find({}).populate('tags');
     },
   },
+  // mutation resolvers
   Mutation: {
-    login: async (_, { email, password }, context) => {
+    // user login
+    LOGIN_USER: async (_, { email, password }, context) => {
       const user = await User.findOne({ email });
       if (!user || !await user.isCorrectPassword(password)) {
         throw new Error('Invalid credentials');
@@ -82,7 +88,8 @@ const resolvers = {
       // });// jwt token here
       return { token, user };
     },
-    addUser: async (_, { username, email, password }, context) => {
+    // add a new user
+    ADD_USER: async (_, { username, email, password }, context) => {
       const newUser = new User({ username, email, password });
       await newUser.save();
       const token = signToken(newUser); 
@@ -92,7 +99,8 @@ const resolvers = {
       // });// jwt token here// jwt token here
       return { token, user: newUser };
     },
-    updateUser: async (_, { username, email, password }, context) => {
+    // update an existing user
+    UPDATE_USER: async (_, { username, email, password }, context) => {
       const updatedUser = await User.findOneAndUpdate(
         { username },
         { email, password },
@@ -100,12 +108,30 @@ const resolvers = {
       );
       return updatedUser;
     },
-    addMessage: async (_, { sender, content, thread, location }, context) => {
+     // add a new message
+    ADD_MESSAGE: async (_, { sender, content, thread, location }, context) => {
       const newMessage = new Message({ sender, content, thread, location });
       await newMessage.save();
       return newMessage;
     },
-    addChatroom: async (_, { title, tagIds, icon }, context) => {
+    // update an existing message
+    UPDATE_MESSAGE: async (_, { messageId, content }, context) => {
+      if (!context.user) {
+        throw new Error('Authentication required');
+      }
+      const message = await Message.findById(messageId);
+      if (!message) {
+        throw new Error('Message not found');
+      }
+      if (message.sender.toString() !== context.user._id.toString()) {
+        throw new Error('Not authorized to update this message');
+      }
+      message.content = content;
+      await message.save();
+      return message;
+    },
+    // add a new chatroom
+    ADD_CHATROOM: async (_, { title, tagIds, icon }, context) => {
       for (const tagId of tagIds) {
         const tagExists = await Tag.exists({ _id: tagId });
         if (!tagExists) {
