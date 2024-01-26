@@ -17,6 +17,7 @@ const typeDefs = gql`
   type Mutation {
     LOGIN_USER(email: String!, password: String!): Auth
     ADD_USER(username: String!, email: String!, password: String!): Auth
+    CHANGE_EMAIL(userId: ID!, newEmail: String!): ChangeEmailResponse
     CHANGE_PASSWORD(userId: ID!, oldPassword: String!, newPassword: String!): Boolean
     DELETE_USER(username: String!): Auth
     ADD_MESSAGE(sender: ID!, content: String!, thread: ID, location: ID!): Message
@@ -30,7 +31,6 @@ const typeDefs = gql`
     _id: ID
     username: String
     email: String @adminOnly
-    password: String
     recentChatrooms: [Chatroom]
   }
 
@@ -60,6 +60,11 @@ const typeDefs = gql`
   type Auth {
     token: String
     user: User
+  }
+
+  type ChangeEmailResponse {
+    success: Boolean!
+    message: String
   }
 `;
 
@@ -108,6 +113,25 @@ const resolvers = {
       await newUser.save();
       const token = signToken(newUser);
       return { token, user: newUser };
+    },
+    CHANGE_EMAIL: async (_, { userId, newEmail }, context) => {
+      // authenticate the user
+      if (!context.user || context.user._id !== userId) {
+        throw new Error('Unauthorized');
+      }
+      // check if the new email is already in use
+      const emailExists = await User.findOne({ email: newEmail });
+      if (emailExists) {
+        return { success: false, message: 'Email already in use' };
+      }
+      // find the user and update the email
+      const user = await User.findById(userId);
+      if (!user) {
+        throw new Error('User not found');
+      }
+      user.email = newEmail;
+      await user.save();
+      return { success: true, message: 'Email successfully changed' };
     },
     CHANGE_PASSWORD: async (_, { userId, oldPassword, newPassword }, context) => {
       // authenticate the user 
