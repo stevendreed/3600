@@ -1,6 +1,7 @@
 const { ObjectId } = require("mongodb"); // bypasses Schema.types
 const mongoose = require("mongoose");
-const { json } = require("stream/consumers");
+const { Schema } = mongoose;
+const json = require("stream/consumers");
 
 const messageSchema = new Schema({
     sender: {
@@ -11,7 +12,10 @@ const messageSchema = new Schema({
       type: String,
       trim: true, // remove leading & trailing spaces
     },
-    reaction: json, // key-val pairs of user:'some user', reaction:'👍'
+    // @TODO: implement json reactions as MVP++
+    // reaction: {
+    //   type: json
+    // }, // key-val pairs of user:'some user', reaction:'👍'
     thread: {
       type: ObjectId,
       ref: 'message',

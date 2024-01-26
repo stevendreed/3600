@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const { ObjectId } = mongoose.Types;
 
 const { Schema } = mongoose;
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 
 const userSchema = new Schema({
   username: {
@@ -49,4 +49,4 @@ userSchema.methods.isCorrectPassword = async function (password) {
 };
 module.exports = mongoose.model("user", userSchema);
 
-module.exports = User;
+// module.exports = User;
