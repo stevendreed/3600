@@ -111,6 +111,12 @@ const UserSidebar = () => {
     // what we want to render
     return (
         <div className="sidebar">
+
+            <div className='mobileButtons'>
+                <button className='donateButton'>DONATE</button>
+                <button className='createRoomButton'>CREATE ROOM</button>
+            </div>
+
             <div className='sidebarMainContainer'>
                 
                 {/* IF THE USER CONTEXT EXISTS (meaning the user is logged in) */}

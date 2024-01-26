@@ -141,6 +141,10 @@
   height: 35px;
 }
 
+.mobileButtons {
+  display: none;
+}
+
 /* contains the bottom (smaller) portion of the sidebar */
 /* createroom and donate buttons */
 .sidebarButtonContainer {
@@ -225,7 +229,6 @@
     margin: 10px;
     padding: 0px;
     border-radius: 20px;
-    background-color: orange;
   } 
 
   .login-signup-forumsContainer h3 {
@@ -242,7 +245,6 @@
     border-bottom: 0px;
     margin: 0px;
     padding: 0px;
-    background-color: red;
   }
 
   .login-form h3 {
@@ -543,7 +545,6 @@
     margin: 10px;
     padding: 0px;
     border-radius: 20px;
-    background-color: orange;
   } 
 
   .login-signup-forumsContainer h3 {
@@ -558,9 +559,8 @@
     justify-content: center;
     align-items: center;
     border-bottom: 0px;
-    margin: 0px;
+    margin: 0px 12px 0px 0px;
     padding: 0px;
-    background-color: red;
   }
 
   .login-form h3 {
@@ -571,7 +571,7 @@
     background-color:rgb(230, 230, 230);
     border-radius: 40px;
     height: 20px;
-    width: 80px;
+    width: 120px;
     margin: 6px 0px 6px 0px;
     text-align: center;
     color: black;
@@ -586,10 +586,11 @@
   }
 
   .signup-form {
-    display: none;
+    display: flex;
     flex-flow: column wrap;
     justify-content: center;
     align-items: center;
+    margin: 0px 0px 0px 12px;
   }
 
   .signup-form h3 {
@@ -600,7 +601,7 @@
     background-color:rgb(230, 230, 230);
     border-radius: 40px;
     height: 20px;
-    width: 80px;
+    width: 120px;
     margin: 6px 0px 6px 0px;
     text-align: center;
     color: black;
@@ -611,40 +612,44 @@
     padding: 0px;
     margin: 6px 0px 0px 0px;
     width: 100px;
-    height: 35px;
+    height: 30px;
   }
 
   /* contains the bottom (smaller) portion of the sidebar */
   /* createroom and donate buttons */
+
+  .mobileButtons {
+    position: absolute;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    bottom: 200px;
+    width: 100%;
+  }
+
   .sidebarButtonContainer {
-    background-color: var(--medBackground);
-    border-bottom-right-radius: 20px;
     display: none;
-    flex-flow: column nowrap;
-    align-items: center;
-    justify-content: center;
-    width: 20%;
-    height: 20px;
-    flex-basis: 20%;
   }
 
   .createRoomButton {
-    background-color: var(--lightBackground);
+    background-color: var(--medBackground);
+    border-bottom: 2px solid var(--darkBackground);
     color: var(--lightGreenChar);
-    width: 20%;
+    width: 40%;
     height: 50px;
     margin: 10px;
-    font-size: 1.3em;
+    font-size: 1em;
     padding: 5px 0px 4px 0px;
   }
 
   .donateButton {
     background-color: var(--altBackground);
-    width: 20%;
+    border-bottom: 2px solid var(--darkBackground);
+    width: 40%;
     height: 50px;
     margin: 10px;
-    font-size: 1.8em;
-    padding: 2px 0px 5px 0px
+    font-size: 1em;
+    padding: 5px 0px 5px 0px
   }
 
 /* ----------------------- MOBILE SIDEBAR ENDS ------------------------ */
@@ -681,10 +686,10 @@
 .header h1 {
   font-size: 2em;
   flex-basis: 20%;
-  height: 65px;
+  height: 50px;
   text-align: center;
   background-color: var(--medBackground);
-  padding-top: 12px;
+  padding-top: 6px;
   border-radius: 20px;
   color: var(--yellowChar);
 }
@@ -703,7 +708,7 @@
 
 .header button {
   flex-basis: 50%;
-  height: 65px;
+  height: 50px;
   background-color: var(--medBackground);
   color: var(--greenChar);
   border-radius: 20px;
