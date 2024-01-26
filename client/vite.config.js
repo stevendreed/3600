@@ -6,7 +6,8 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      '/api': VITE_BACKEND_URL
+      // added to prevent mongoose && vite from coliding on the same port
+      '/api': "http://localhost:5173" 
     }
   }
 });
