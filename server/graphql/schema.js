@@ -161,12 +161,16 @@ const resolvers = {
       return newChatroom;
     },
     DELETE_CHATROOM: async(_, context) => {
-      // verify the id for our discovered chatroom is not null
-      if (context._id)
+      if (!context._id)
       {
-        return Chatroom.findOneAndDelete({_id: context._id});
+        throw new Error('No chatroom found');
       }
-      throw new Error('No chatroom found');
+      if (!context.user)
+      {
+        throw new Error('You do not have permission to delete the chatroom');
+      }
+      // verify the id for our discovered chatroom is not null
+      return Chatroom.findOneAndDelete({_id: context._id});
     } // end deleteChatroom
   },
 };
