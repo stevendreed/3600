@@ -1,4 +1,719 @@
-#root {
+ 
+ :root {
+  --darkBackground: rgb(4,5,5) ;
+  --medBackground: rgb(17,28,23) ;
+  --lightBackground: rgb(21,46,34) ;
+  --altBackground: rgb(15,74,72) ;
+
+  --redChar: rgb(166,36,36) ;
+  --yellowChar: rgb(196,142,26) ;
+  --greenChar: rgb(126,186,58) ;
+  --lightGreenChar: rgb(179,237,116) ;
+ }
+ 
+ #root {
+  width: 100vw;
+  height: 100vh;
+}
+
+/* NOTE TO SELF: Add media breakpoint at 700px for mobile layout */
+
+/* ALL COMPONENTS ARE RENDERED WITHIN THE MAIN CONTAINER */
+/* this class is declared on the App.jsx file */
+.mainContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  background-color: var(--darkBackground);
+  overflow: hidden;
+}
+
+
+/* ----------------------- SIDEBAR STARTS ------------------------ */
+/* CSS for sidebar component - it is rendered on every page on the left on desktop */
+/* at the bottom on mobile */
+/* .sidebar is the most top-level container of the sidebar */
+.sidebar {
+  background-color: var(--darkBackground);
+  /* flex basis determines how much of the 100% space of mainContainer the sidebar takes */
+  flex-basis: 20%;
+  min-width: 300px;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+}
+
+/* contains the top (larger) portion of the sidebar */
+/* login forms / user information */
+.sidebarMainContainer {
+  background-color: var(--medBackground);
+  border-top-right-radius: 20px;
+  width: 100%;
+  height: 100%;
+  flex-basis: 80%;
+}
+
+/* THIS ONLY RENDERS IF THE USER IS LOGGED IN (see UserSidebar component) */
+.userProfile {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--lightBackground);
+  width: auto;
+  height: 94%;
+  margin: 20px;
+  padding: 0px;
+  border-radius: 20px;
+}
+
+.userProfile img {
+  border-radius: 100%;
+  border: 6px solid var(--medBackground);
+  width: 220px;
+}
+
+.userProfile h2 {
+  font-size: 2em;
+  color: var(--lightGreenChar);
+  margin: 4px 0px 0px 0px;
+}
+
+.userProfile button {
+  font-size: 1em;
+  padding: 3px 20px 5px 20px;
+  margin: 4px 0px 15px 0px;
+  color: var(--lightGreenChar);
+}
+
+.userProfile h3 {
+  font-size: 1.4em;
+  color: var(--lightGreenChar);
+  margin: 10px 0px 0px 0px;
+  text-align: center;
+}
+
+.userProfile li {
+  font-size: 1.4em;
+  color: var(--lightGreenChar);
+  margin: 10px 0px 0px 0px;
+  text-align: center;
+  background-color: var(--medBackground);
+  width: 220px;
+  border-radius: 50px;
+}
+
+
+
+/* THIS ONLY RENDERS IF THE USER IS NOT LOGGED IN (see UserSidebar component) */
+/* div that contains login/signup forums if user is not logged in */
+.login-signup-forumsContainer {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--lightBackground);
+  width: auto;
+  height: 94%;
+  margin: 20px;
+  padding: 0px;
+  border-radius: 20px;
+}
+
+.login-signup-forumsContainer h3 {
+  font-size: 1.8em;
+  color: var(--lightGreenChar);
+  margin: 0px 0px 5px 0px;
+}
+
+.login-form {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 2px solid var(--medBackground);
+  margin-bottom: 18px;
+  padding-bottom: 15px;
+}
+
+.login-form input {
+  background-color:rgb(230, 230, 230);
+  border-radius: 40px;
+  height: 30px;
+  margin: 6px 0px 6px 0px;
+  text-align: center;
+  color: black;
+}
+
+.login-form button {
+  background-color: var(--medBackground);
+  padding: 0px;
+  margin: 6px 0px 10px 0px;
+  width: 100px;
+  height: 35px;
+}
+
+.signup-form {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup-form input {
+  background-color:rgb(230, 230, 230);
+  border-radius: 40px;
+  height: 30px;
+  margin: 6px 0px 6px 0px;
+  text-align: center;
+  color: black;
+}
+
+.signup-form button {
+  background-color: var(--medBackground);
+  padding: 0px;
+  margin: 6px 0px 0px 0px;
+  width: 100px;
+  height: 35px;
+}
+
+.mobileButtons {
+  display: none;
+}
+
+/* contains the bottom (smaller) portion of the sidebar */
+/* createroom and donate buttons */
+.sidebarButtonContainer {
+  background-color: var(--medBackground);
+  border-bottom-right-radius: 20px;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  flex-basis: 20%;
+}
+
+.createRoomButton {
+  background-color: var(--lightBackground);
+  color: var(--lightGreenChar);
+  width: 85%;
+  height: 50px;
+  margin: 10px;
+  font-size: 1.3em;
+  padding: 9px 0px 4px 0px;
+  text-align: center;
+  border-radius: 20px;
+}
+
+.donateButton {
+  background-color: var(--altBackground);
+  width: 85%;
+  height: 50px;
+  margin: 10px;
+  font-size: 1.8em;
+  padding: 3px 0px 5px 0px;
+  text-align: center;
+  color: var(--lightGreenChar);
+  border-radius: 20px;
+}
+
+.createRoomButton:hover {
+  color: var(--lightGreenChar);
+  cursor: pointer;
+  border: 1px solid teal;
+  padding: 8px 0px 4px 0px;
+}
+
+.donateButton:hover {
+  cursor: pointer;
+  color: var(--lightGreenChar);
+  border: 1px solid teal;
+  padding: 2px 0px 4px 0px;
+}
+
+
+/* ----------------------- SIDEBAR ENDS ------------------------ */
+
+
+/* ***************** HEADER AND MAIN AREA CONTAINER ***************** */
+/* Contains header and routing components (varies depending on page url defined in Main.jsx) */
+.routeContainer {
+  width: 100%;
+  height: 100%;
+  margin: 10px;
+  padding: 0px;
+  /* routeContainer takes up 78% of mainContainer's flex space */
+  flex-basis: 80%;
+}
+
+/* ----------------------- HEADER STARTS ------------------------ */
+/* CSS for the header component - it is rendered on every page near the top */
+.header {
+  background-color: var(--lightBackground);
+  border-bottom: 3px solid var(--medBackground);
+  border-radius: 20px;
+  height: 100px;
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+
+.header h1 {
+  font-size: 2em;
+  flex-basis: 20%;
+  height: 65px;
+  text-align: center;
+  background-color: var(--medBackground);
+  padding-top: 12px;
+  border-radius: 20px;
+  color: var(--yellowChar);
+}
+
+.header p {
+  flex-basis: 30%;
+  margin: 0px 10px 0px 10px;
+  height: 65px;
+  text-align: center;
+  background-color: var(--medBackground);
+  padding-top: 20px;
+  border-radius: 20px;
+  color: var(--lightGreenChar);
+}
+
+.header button {
+  flex-basis: 50%;
+  height: 65px;
+  background-color: var(--medBackground);
+  color: var(--greenChar);
+  border-radius: 20px;
+}
+
+.sortDropdown {
+  display: inline-block;
+  position: relative;
+}
+
+.dropdownOptions {
+  display: none;
+  position: absolute;
+}
+
+.dropdownOptions button {
+  width: 100%;
+}
+
+.sortDropdown:hover .dropdownOptions {
+  display: block;
+  z-index: 1;
+}
+
+/* ----------------------- HEADER ENDS ------------------------ */
+
+
+/* ----------------------- HOMEPAGE CARDS START ------------------------ */
+/* contains all the chatroom cards */
+.card-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  overflow-y: scroll;
+  padding-top: 20px;
+  padding-bottom: 120px;
+}
+
+/* every individual card that renders in the card container */
+.card {
+  background-color: var(--lightBackground);
+  border-top: 11px solid var(--medBackground);
+  border-left: 11px solid var(--medBackground);
+  border-right: 11px solid var(--medBackground);
+  border-radius: 20px;
+  margin: 15px 10px 15px 10px;
+  padding: 0px;
+  width: 250px;
+  height: 380px;
+  text-align: center;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  position: relative;
+}
+
+.card img {
+  border: 5px solid var(--medBackground);
+  margin: 20px 0px 10px 0px;
+  width: 170px;
+  height: 170px;
+  border-radius: 100%;
+}
+
+.card h1 {
+  font-size: 2em;
+  color: var(--lightGreenChar);
+}
+
+.card h2 {
+  background-color: var(--medBackground);
+  color: var(--lightGreenChar);
+  font-size: 1.1em;
+  border-radius: 20px;
+  width: 200px;
+  height: auto;
+  margin: 5px 0px 0px 0px;
+  padding: 0px 0px 2px 0px;
+}
+
+.card h3 {
+  font-size: 3em;
+  position: absolute;
+  bottom: 5px;
+  color: var(--greenChar);
+}
+
+/* ----------------------- HOMEPAGE CARDS ENDS ------------------------ */
+
+/* minor breakpoint (for logged in users) */
+
+/* BREAKPOINT */
+/* MOBILE BREAKPOINT: 800px ********************************************************** */
+
+@media (max-width: 800px) {
+
+.mainContainer {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-flow: column nowrap;
+  background-color: var(--darkBackground);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ------------------- SIDEBAR MOBILE BREAKPOINT: 800px ---------------------- */
+  .sidebar {
+    position: absolute;
+    background-color: transparent;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 200px;
+    z-index: 1;
+    flex-flow: row nowrap;
+  }
+
+
+  /* contains the top (larger) portion of the sidebar
+  /* login forms / user information */
+  .sidebarMainContainer {
+    background-color: var(--medBackground);
+    border-top-left-radius: 20px;
+    width: auto;
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+    flex-basis: 100%;
+  }
+
+  /* THIS ONLY RENDERS IF THE USER IS LOGGED IN (see UserSidebar component) */
+  .userProfile {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--lightBackground);
+    width: auto;
+    height: 94%;
+    margin: 10px;
+    padding: 0px;
+    border-radius: 20px;
+  }
+  
+  .userProfile img {
+    border-radius: 100%;
+    border: 4px solid var(--medBackground);
+    width: 95px;
+    margin: 2px;
+    padding: 0px;
+  }
+  
+  .userProfile h2 {
+    font-size: 1.5em;
+    color: var(--lightGreenChar);
+    margin: 0px 0px 0px 0px;
+  }
+  
+  .userProfile button {
+    font-size: .8em;
+    padding: 3px 20px 5px 20px;
+    margin: 4px 0px 4px 0px;
+    color: var(--lightGreenChar);
+  }
+
+  .userProfile h3 {
+    text-align: center;
+    font-size: 1.8em;
+    color: var(--lightGreenChar);
+    margin: 0px 0px 0px 0px;
+  }
+  
+  .userProfile li {
+    font-size: 1.2em;
+    color: var(--lightGreenChar);
+    margin: 8px 0px 0px 0px;
+    text-align: center;
+    background-color: var(--medBackground);
+    width: 180px;
+    border-radius: 50px;
+  }
+
+  @media (max-width: 500px) {
+    .userProfile h3 {
+      font-size: 1em;
+      color: var(--lightGreenChar);
+      margin: 10px 0px 0px 0px;
+    }
+    
+    .userProfile li {
+      font-size: .9em;
+      color: var(--lightGreenChar);
+      margin: 8px 0px 0px 0px;
+      text-align: center;
+      background-color: var(--medBackground);
+      width: 100px;
+      border-radius: 50px;
+    }
+  }
+  
+
+  /* THIS ONLY RENDERS IF THE USER IS NOT LOGGED IN (see UserSidebar component) */
+  /* div that contains login/signup forums if user is not logged in */
+  .login-signup-forumsContainer {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--lightBackground);
+    width: auto;
+    height: 94%;
+    margin: 10px;
+    padding: 0px;
+    border-radius: 20px;
+  } 
+
+  .login-signup-forumsContainer h3 {
+    font-size: .5em;
+    color: var(--lightGreenChar);
+    margin: 0px 0px 5px 0px;
+  }
+
+  .login-form {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 0px;
+    margin: 0px 12px 0px 0px;
+    padding: 0px;
+  }
+
+  .login-form h3 {
+    font-size: 1.5em;
+  }
+
+  .login-form input {
+    background-color:rgb(230, 230, 230);
+    border-radius: 40px;
+    height: 20px;
+    width: 120px;
+    margin: 6px 0px 6px 0px;
+    text-align: center;
+    color: black;
+  }
+
+  .login-form button {
+    background-color: var(--medBackground);
+    padding: 0px;
+    margin: 6px 0px 10px 0px;
+    width: 100px;
+    height: 30px;
+  }
+
+  .signup-form {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 0px 0px 12px;
+  }
+
+  .signup-form h3 {
+    font-size: 1.5em;
+  }
+
+  .signup-form input {
+    background-color:rgb(230, 230, 230);
+    border-radius: 40px;
+    height: 20px;
+    width: 120px;
+    margin: 6px 0px 6px 0px;
+    text-align: center;
+    color: black;
+  }
+
+  .signup-form button {
+    background-color: var(--medBackground);
+    padding: 0px;
+    margin: 6px 0px 0px 0px;
+    width: 100px;
+    height: 30px;
+  }
+
+  /* contains the bottom (smaller) portion of the sidebar */
+  /* createroom and donate buttons */
+
+  .mobileButtons {
+    position: absolute;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    bottom: 200px;
+    width: 100%;
+  }
+
+  .sidebarButtonContainer {
+    display: none;
+  }
+
+  .createRoomButton {
+    background-color: var(--medBackground);
+    border-bottom: 2px solid var(--darkBackground);
+    color: var(--lightGreenChar);
+    width: 40%;
+    height: 50px;
+    margin: 10px;
+    font-size: 1em;
+    padding: 12px 0px 4px 0px;
+  }
+
+  .donateButton {
+    background-color: var(--altBackground);
+    border-bottom: 2px solid var(--darkBackground);
+    width: 40%;
+    height: 50px;
+    margin: 10px;
+    font-size: 1em;
+    padding: 12px 0px 5px 0px;
+  }
+
+  .createRoomButton:hover {
+    color: var(--lightGreenChar);
+    cursor: pointer;
+    border: 1px solid teal;
+    padding: 11px 0px 3px 0px;
+  }
+  
+  .donateButton:hover {
+    cursor: pointer;
+    color: var(--lightGreenChar);
+    border: 1px solid teal;
+    padding: 11px 0px 3px 0px;
+  }
+
+/* ----------------------- MOBILE SIDEBAR ENDS ------------------------ */
+
+.routeContainer {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px 0px 90px 0px;
+  /* routeContainer takes up 78% of mainContainer's flex space */
+  flex-basis: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ----------------------- MOBILE HEADER STARTS ------------------------ */
+/* CSS for the header component - it is rendered on every page near the top */
+.header {
+  background-color: var(--lightBackground);
+  border-bottom: 3px solid var(--medBackground);
+  border-radius: 20px;
+  height: 80px;
+  width: 95%;
+  margin: 5px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+
+.header h1 {
+  font-size: 2em;
+  flex-basis: 20%;
+  height: 50px;
+  text-align: center;
+  background-color: var(--medBackground);
+  padding-top: 6px;
+  border-radius: 20px;
+  color: var(--yellowChar);
+}
+
+.header p {
+  flex-basis: 30%;
+  margin: 0px 10px 0px 10px;
+  height: 65px;
+  text-align: center;
+  background-color: var(--medBackground);
+  padding-top: 20px;
+  border-radius: 20px;
+  color: var(--lightGreenChar);
+  display: none;
+}
+
+.header button {
+  flex-basis: 50%;
+  height: 50px;
+  background-color: var(--medBackground);
+  color: var(--greenChar);
+  border-radius: 20px;
+}
+
+.sortDropdown {
+  display: inline-block;
+  position: relative;
+}
+
+.dropdownOptions {
+  display: none;
+  position: absolute;
+}
+
+.dropdownOptions button {
+  width: 100%;
+}
+
+.sortDropdown:hover .dropdownOptions {
+  display: block;
+  z-index: 1;
+}
+
+/* ----------------------- MOBILE HEADER ENDS ------------------------ */
+}
+/* MOBILE BREAKPOINTS END */
+
+/* #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -39,4 +754,4 @@
 
 .read-the-docs {
   color: #888;
-}
+} */
