@@ -116,8 +116,8 @@ const UserSidebar = () => {
         <div className="sidebar">
 
             <div className='mobileButtons'>
-                <button className='donateButton'>DONATE</button>
-                <button className='createRoomButton'>CREATE ROOM</button>
+                <a className='donateButton'>DONATE</a>
+                <a className='createRoomButton' href='/CreateRoom'>CREATE ROOM</a>
             </div>
 
             <div className='sidebarMainContainer'>
@@ -212,8 +212,8 @@ const UserSidebar = () => {
 
             </div>
             <div className='sidebarButtonContainer'>
-                <button className='createRoomButton'>CREATE NEW ROOM</button>
-                <button className='donateButton'>DONATE</button>
+                <a className='createRoomButton' href='/CreateRoom'>CREATE NEW ROOM</a>
+                <a className='donateButton'>DONATE</a>
             </div>
         </div>
     )

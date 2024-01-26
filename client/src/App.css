@@ -203,7 +203,9 @@
   height: 50px;
   margin: 10px;
   font-size: 1.3em;
-  padding: 5px 0px 4px 0px;
+  padding: 9px 0px 4px 0px;
+  text-align: center;
+  border-radius: 20px;
 }
 
 .donateButton {
@@ -212,7 +214,24 @@
   height: 50px;
   margin: 10px;
   font-size: 1.8em;
-  padding: 2px 0px 5px 0px;
+  padding: 3px 0px 5px 0px;
+  text-align: center;
+  color: var(--lightGreenChar);
+  border-radius: 20px;
+}
+
+.createRoomButton:hover {
+  color: var(--lightGreenChar);
+  cursor: pointer;
+  border: 1px solid teal;
+  padding: 8px 0px 4px 0px;
+}
+
+.donateButton:hover {
+  cursor: pointer;
+  color: var(--lightGreenChar);
+  border: 1px solid teal;
+  padding: 2px 0px 4px 0px;
 }
 
 
@@ -582,7 +601,7 @@
     height: 50px;
     margin: 10px;
     font-size: 1em;
-    padding: 5px 0px 4px 0px;
+    padding: 12px 0px 4px 0px;
   }
 
   .donateButton {
@@ -592,7 +611,21 @@
     height: 50px;
     margin: 10px;
     font-size: 1em;
-    padding: 5px 0px 5px 0px
+    padding: 12px 0px 5px 0px;
+  }
+
+  .createRoomButton:hover {
+    color: var(--lightGreenChar);
+    cursor: pointer;
+    border: 1px solid teal;
+    padding: 11px 0px 3px 0px;
+  }
+  
+  .donateButton:hover {
+    cursor: pointer;
+    color: var(--lightGreenChar);
+    border: 1px solid teal;
+    padding: 11px 0px 3px 0px;
   }
 
 /* ----------------------- MOBILE SIDEBAR ENDS ------------------------ */
