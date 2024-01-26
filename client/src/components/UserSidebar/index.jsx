@@ -10,6 +10,9 @@ import { useMutation } from '@apollo/client';
 import { Link } from 'react-router-dom';
 // link is used for redirects in react - we use this on this component to allow users to click on their most recent rooms and quickly join back into them
 
+import UserProfile from '../UserProfile/index';
+// UserProfile componet is used to render user information when logged in
+
 // mutations needed to make this component work:
 import { LOGIN_USER } from '../../utils/mutations';
 // logs in a user based on existing database information and returns an auth object (used for jwt token signing)
@@ -25,7 +28,7 @@ const UserSidebar = () => {
     // FAKE CONTEXT VARIABLE FOR TESTING PURPOSES - set to true to view user info, set to false to view login forms
     // ************************************************************************************************************
     let context = {
-        user: false
+        user: true
     }
 
     // declaration for login and signup forms (when user not logged in)
@@ -122,31 +125,7 @@ const UserSidebar = () => {
                 {/* IF THE USER CONTEXT EXISTS (meaning the user is logged in) */}
                 {/* Render the following: */}
                 {context.user ? (
-                    <div className='userProfile'>
-
-                        {/* img src should be dependant on context.user.profileimg or something similar */}
-                        <img src="yeah"></img>
-                        {/* username should be dependant on context.user.username */}
-                        <h2>Username</h2>
-                        {/* logout button should invoke a function to remove current user context / remove current jwt token */}
-                        <button>Logout</button>
-
-                        {/* your room would be a value assigned to a user schema, like context.user.yourRoom */}
-                        <h3>Your Room</h3>
-                        <ul>
-                            <li>your active or recently active room</li>
-                        </ul>
-
-                        {/* context.user.rooms -> sort by most recent -> list only the most recent 3 */}
-                        {/* like after sorting, do room[0].title, room[1].title, room[1].title */}
-                        {/* they also need to be clickable and take the user to the correct room id url */}
-                        <h3>Recent Rooms</h3>
-                        <ul>
-                            <li>room1</li>
-                            <li>room2</li>
-                            <li>room3</li>
-                        </ul>
-                    </div>
+                    <UserProfile />
                 ) : (
                 // OTHERWISE, render the login/signup forums
                     <div className='login-signup-forumsContainer'>

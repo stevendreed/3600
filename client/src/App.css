@@ -60,11 +60,47 @@
   flex-flow: column wrap;
   align-items: center;
   justify-content: center;
-  background-color: black;
+  background-color: var(--lightBackground);
   width: auto;
-  height: 96%;
-  margin: 2%;
+  height: 94%;
+  margin: 20px;
   padding: 0px;
+  border-radius: 20px;
+}
+
+.userProfile img {
+  border-radius: 100%;
+  border: 6px solid var(--medBackground);
+  width: 220px;
+}
+
+.userProfile h2 {
+  font-size: 2em;
+  color: var(--lightGreenChar);
+  margin: 4px 0px 0px 0px;
+}
+
+.userProfile button {
+  font-size: 1em;
+  padding: 3px 20px 5px 20px;
+  margin: 4px 0px 15px 0px;
+  color: var(--lightGreenChar);
+}
+
+.userProfile h3 {
+  font-size: 1.4em;
+  color: var(--lightGreenChar);
+  margin: 10px 0px 0px 0px;
+}
+
+.userProfile li {
+  font-size: 1.4em;
+  color: var(--lightGreenChar);
+  margin: 10px 0px 0px 0px;
+  text-align: center;
+  background-color: var(--medBackground);
+  width: 220px;
+  border-radius: 50px;
 }
 
 
@@ -479,6 +515,7 @@
 
 /* ----------------------- HOMEPAGE CARDS ENDS ------------------------ */
 
+/* minor breakpoint (for logged in users) */
 
 /* BREAKPOINT */
 /* MOBILE BREAKPOINT: 800px ********************************************************** */
@@ -525,12 +562,69 @@
     flex-flow: column wrap;
     align-items: center;
     justify-content: center;
-    background-color: black;
+    background-color: var(--lightBackground);
     width: auto;
-    height: 96%;
-    margin: 2%;
+    height: 94%;
+    margin: 10px;
+    padding: 0px;
+    border-radius: 20px;
+  }
+  
+  .userProfile img {
+    border-radius: 100%;
+    border: 4px solid var(--medBackground);
+    width: 95px;
+    margin: 2px;
     padding: 0px;
   }
+  
+  .userProfile h2 {
+    font-size: 1.5em;
+    color: var(--lightGreenChar);
+    margin: 0px 0px 0px 0px;
+  }
+  
+  .userProfile button {
+    font-size: .8em;
+    padding: 3px 20px 5px 20px;
+    margin: 4px 0px 4px 0px;
+    color: var(--lightGreenChar);
+  }
+
+  .userProfile h3 {
+    font-size: 2em;
+    color: var(--lightGreenChar);
+    margin: 0px 0px 0px 0px;
+  }
+  
+  .userProfile li {
+    font-size: 1.2em;
+    color: var(--lightGreenChar);
+    margin: 8px 0px 0px 0px;
+    text-align: center;
+    background-color: var(--medBackground);
+    width: 180px;
+    border-radius: 50px;
+  }
+
+  @media (max-width: 400px) {
+    .userProfile h3 {
+      font-size: 1em;
+      color: var(--lightGreenChar);
+      margin: 10px 0px 0px 0px;
+    }
+    
+    .userProfile li {
+      font-size: .9em;
+      color: var(--lightGreenChar);
+      margin: 8px 0px 0px 0px;
+      text-align: center;
+      background-color: var(--medBackground);
+      width: 100px;
+      border-radius: 50px;
+    }
+  }
+  
 
   /* THIS ONLY RENDERS IF THE USER IS NOT LOGGED IN (see UserSidebar component) */
   /* div that contains login/signup forums if user is not logged in */
