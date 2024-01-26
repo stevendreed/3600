@@ -2,8 +2,7 @@ const { ObjectId } = require("mongodb"); // bypasses Schema.types
 const mongoose = require("mongoose");
 const { json } = require("stream/consumers");
 
-const messageSchema = new mongoose.Schema(
-  {
+const messageSchema = new Schema({
     sender: {
       type: ObjectId,
       ref: 'user',
@@ -24,8 +23,7 @@ const messageSchema = new mongoose.Schema(
   },
   {
     timestamps: true,
-  }
-); // provides us a created-at timestamp
+  }); // provides us a created-at timestamp
 
 // https://mongoosejs.com/docs/timestamps.html
 // use .createdAt, .updatedAt to access timestamps easily
