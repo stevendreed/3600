@@ -15,11 +15,11 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
     updateUser(username: String!, email: String!, password: String!): User
-    deleteUser(username: String!): Auth
+    DELETE_USER(username: String!): Auth
     addMessage(sender: ID!, content: String!, thread: ID, location: ID!): Message
-    deleteMessage(username: String!): Auth
+    DELETE_MESSAGE(username: String!): Auth
     addChatroom(title: String!, tagIds: [ID!], icon: String): Chatroom
-    deleteChatroom(title: String!): Auth
+    DELETE_CHAT(title: String!): Auth
   }
 
   type User {
@@ -92,7 +92,7 @@ const resolvers = {
       );
       return updatedUser;
     },
-    deleteUser: async (_, context) => {
+    DELETE_USER: async (_, context) => {
       if (context.user)
       {
         return User.fineOneAndDelete({_id: context.user._id})
@@ -104,7 +104,7 @@ const resolvers = {
       await newMessage.save();
       return newMessage;
     },
-    deleteMessage: async (_, context) => {
+    DELETE_MESSAGE: async (_, context) => {
       if (context.sender)
       {
         return Message.fineOneAndDelete({_id: context.message._id});
@@ -122,7 +122,7 @@ const resolvers = {
       await newChatroom.save();
       return newChatroom;
     },
-    deleteChatroom: async(_, context) => {
+    DELETE_CHATROOM: async(_, context) => {
       // verify the id for our discovered chatroom is not null
       if (context._id)
       {
