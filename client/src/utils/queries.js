@@ -11,9 +11,14 @@ const queries = {
     {
         createdAt
         _id
+        # ADD key-values under activeUsers object to add other data in res
+        activeUsers {
+          username
+        }
     }
   }
   `
+
 }
  
 
