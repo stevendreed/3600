@@ -262,7 +262,7 @@
   height: 100px;
   width: 100%;
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: row nowrap;
   justify-content: space-around;
   align-items: center;
 }
@@ -400,18 +400,25 @@
   width: 97%;
   height: 100%;
   display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-evenly;
+  flex-flow: column nowrap;
+  justify-content: center;
   align-items: center;
-  padding-bottom: 120px;
+  padding: 20px;
   margin: 20px 20px 25px 20px;
   background-color: var(--darkBackground);
   border: 15px solid var(--lightBackground);
   border-radius: 20px;
 }
 
-.createRoomInner-container {
-
+.createRoom-form {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--medBackground);
+  border-radius: 20px;
 }
 
 /* ----------------------- CREATE CHATROOM ENDS ------------------------ */
