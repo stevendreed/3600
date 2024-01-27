@@ -12,17 +12,17 @@ return (
     </h1> 
     <h2>{item.tags}</h2>
     <h3>{item.timer}</h3>*/}
-    <button onClick={function handleClick() {
+    <button onClick={function () {
         console.log(`RoomCard -> title was clicked`);
         // TASKS:
 
         // IF: user => redirect to chatroom
-
+        
         // IF: !user => "you must sign in" modal/alert
     }}>
         {item.title}
     </button>
-    <button onClick={function handleClick() {
+    <button onClick={function () {
         console.log(`RoomCard -> tags was clicked`);
         // TASKS
         // IF: owner of room => allow adding tags
@@ -31,7 +31,7 @@ return (
     }}>
         {item.tags}
     </button>
-    <button onClick={function handleClick() {
+    <button onClick={function () {
         console.log(`RoomCard -> timer was clicked`);
         // not sure if we want functionality here, but if
         // all of the el on each card is a button it makes
