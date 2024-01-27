@@ -1,6 +1,6 @@
 // this component renders a single chatroom message when the user is in a chatroom
 
-const Message = (item) => {
+const ChatroomMessage = (item) => {
 
 // what we want to render
 return (
@@ -10,4 +10,4 @@ return (
 )
 }
 
-export default Message;
+export default ChatroomMessage;
