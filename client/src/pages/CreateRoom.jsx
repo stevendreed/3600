@@ -8,9 +8,11 @@ const CreateRoom = () => {
     // const thoughts = data?.thoughts || [];
   
     return (
-      <main>
-        <h1>CreateRoom Placeholder</h1>
-      </main>
+      <div className="createRoom-container">
+        <div className="createRoomInner-container">
+
+        </div>
+      </div>
     );
   };
   

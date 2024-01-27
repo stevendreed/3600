@@ -5,10 +5,15 @@
 // function to export our header content to Outlet in App.jsx based on url defined in Main.jsx
 const Header = () => {
 
+    // this will check the url to see if the user is in a chatroom
+    // there will then be a useParams function to pull the chatroom's id from the url string
+    // then do a database query for the chatroom's info to render in the header instead of 'sort rooms' and 'One Hour Chatrooms'
+    // if (window.location.href.indexOf("chatRoom") > -1)
+
     // what we want to render
     return (
         <div className="header">
-            <h1>3600</h1>
+            <h1><a href="/">3600</a></h1>
             <p>One Hour Chatrooms</p>
 
             {/* room sorting dropdown menu */}

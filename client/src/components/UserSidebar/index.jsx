@@ -27,7 +27,7 @@ const UserSidebar = () => {
     // ************************************************************************************************************
     // FAKE CONTEXT VARIABLE FOR TESTING PURPOSES - set to true to view user info, set to false to view login forms
     // ************************************************************************************************************
-    let context = {
+    let contexxt = {
         user: true
     }
 
@@ -114,7 +114,8 @@ const UserSidebar = () => {
     // what we want to render
     return (
         <div className="sidebar">
-
+            {/* these buttons only appear on mobile layout to replace position of desktop layout buttons */}
+            {/* no buttons should appear on the 'createRoom' page (use a window.location query to detemine page based on url) */}
             <div className='mobileButtons'>
                 <a className='donateButton'>DONATE</a>
                 <a className='createRoomButton' href='/CreateRoom'>CREATE ROOM</a>
@@ -124,7 +125,7 @@ const UserSidebar = () => {
                 
                 {/* IF THE USER CONTEXT EXISTS (meaning the user is logged in) */}
                 {/* Render the following: */}
-                {context.user ? (
+                {contexxt.user ? (
                     <UserProfile />
                 ) : (
                 // OTHERWISE, render the login/signup forums
