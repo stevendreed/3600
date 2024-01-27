@@ -17,8 +17,17 @@ const queries = {
         }
     }
   }
+  `,
+  // WORK IN PROGRESS
+  GET_MESSAGES: gql`
+  query GET_MESSAGES {
+    messages
+    {
+      sender
+      content
+    }
+  }
   `
-
 }
  
 
