@@ -467,6 +467,26 @@
 /* ----------------------- CREATE CHATROOM ENDS ------------------------ */
 
 
+/* ----------------------- CHATROOM BEGINS ------------------------ */
+
+.chatroom-container {
+  width: 97%;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  margin: 20px 20px 25px 20px;
+  background-color: var(--darkBackground);
+  border: 15px solid var(--lightBackground);
+  border-radius: 20px;
+}
+
+/* ----------------------- CHATROOM ENDS ------------------------ */
+
+
+
 
 
 /* BREAKPOINT */

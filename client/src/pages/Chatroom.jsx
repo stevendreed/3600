@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 import { QUERY_CHATROOM } from '../utils/queries';
 
 import RoomCard from '../components/RoomCard'
+import ChatroomMessage from '../components/ChatroomMessage'
 
 // PLACEHOLDER DATA TO SIMULATE CHATROOM - replace with chatroom query using useParams to get the chatroom's id
 
@@ -14,22 +15,30 @@ const exampleChatRoom = {
     {
       _id: 1,
       username: "ted",
-      message: "Hello, my name is ted"
+      message: "Hello, my name is ted",
+      image: "/images/profileimgexample.jpg",
+      timestamp: "111111"
     },
     {
       _id: 2,
       username: "bob",
-      message: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      message: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      image: "/images/profileimgexample.jpg",
+      timestamp: "2222222"
     },
     {
       _id: 3,
       username: "ted",
-      message: "Wow, that is really uncalled for"
+      message: "Wow, that is really uncalled for",
+      image: "/images/profileimgexample.jpg",
+      timestamp: "33333333"
     },
     {
       _id: 4,
       username: "bob",
-      message: "Sorry."
+      message: "Sorry.",
+      image: "/images/profileimgexample.jpg",
+      timestamp: "444444444"
     },
   ]
 }
@@ -40,13 +49,15 @@ const ChatRoom = () => {
   const { id } = useParams();
   
     return (
-      <div className="createRoom-container">
+      <div className="chatroom-container">
         {exampleChatRoom.messages.map((item) => (
-          <RoomCard 
+          <ChatroomMessage 
             key={item._id}
             _id={item._id}
             username={item.username}
             message={item.message}
+            image={item.image}
+            timestamp ={item.timestamp}
           // insert data from query into RoomCards component
           // using placeholder for developement
           />
