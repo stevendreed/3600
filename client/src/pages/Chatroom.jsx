@@ -1,5 +1,5 @@
 // will render the chatroom component
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import { Link, useParams } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { QUERY_CHATROOM } from '../utils/queries';
@@ -65,7 +65,8 @@ const ChatRoom = () => {
     });
     };
 
-    // on submit, attempt to fire off CREATE_ROOM mutation using the data from the createRoomState
+    // on submit, attempt to fire off CREATE_MESSAGE mutation using the data from the messageState
+    // we also need to add the user's username from context (once that is working)
     const handleMessageFormSubmit = async (event) => {
       event.preventDefault();
   
@@ -100,11 +101,23 @@ const ChatRoom = () => {
           />
         ))}
         </div>
-        <div className='message-input-container'>
-          <form>
-            <input></input>
+          <form className='message-form-container' onSubmit={handleMessageFormSubmit}>
+            <input
+              className="message-form-input"
+              placeholder="Your Message"
+              name="message"
+              type="message"
+              value={messageState.message}
+              onChange={handleMessageFormChange}
+            />
+            <button
+              className="messageSubmitButton"
+              style={{ cursor: 'pointer' }}
+              type="submit"
+              >
+              Send
+            </button>
           </form>
-        </div>
         {/* use userinput component to allow users to send messages to chatroom */}
       </div>
     );

@@ -530,6 +530,32 @@
   margin: 20px;
 }
 
+.message-form-container {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--medBackground);
+  width: 100%;
+  height: 80px;
+  margin-top: 10px;
+  border-radius: 20px;
+}
+
+.message-form-input {
+  flex-basis: 90%;
+  height: 50px;
+  margin: 5px;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.messageSubmitButton {
+  background-color: var(--lightBackground);
+  border-radius: 20px;
+  margin: 5px;
+}
+
 /* ----------------------- CHATROOM ENDS ------------------------ */
 
 
