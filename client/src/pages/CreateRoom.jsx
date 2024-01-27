@@ -1,19 +1,18 @@
 // will render the CreateRoomForm component
 
-import { useContext, createContext, useState } from 'react';
+import { useContext, useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { CREATE_ROOM } from '../utils/mutations';
+// using a mutation to create our room (CREATE_ROOM is a placeholder)
 
 const CreateRoom = () => {
-    // This is an example of how we run our query through frontend
-    // const { loading, data } = useQuery(QUERY_THOUGHTS);
 
-    // if no data is returned, set thoughts to an empty array
-    // const thoughts = data?.thoughts || [];
-
+    // Create a state for room creation
     const [createRoomState, setCreateRoomFormState] = useState({ title: '', tags: [], icon: '' });
+    // assign mutation to a const variable
     const [createRoom] = useMutation(CREATE_ROOM);
 
+    // whenever a modification to the form is made, add that change to the state
     const handleCreateRoomChange = (event) => {
       const { name, value } = event.target;
 
@@ -23,6 +22,7 @@ const CreateRoom = () => {
       });
       };
 
+      // on submit, attempt to fire off CREATE_ROOM mutation using the data from the createRoomState
       const handleCreateRoomSubmit = async (event) => {
         event.preventDefault();
     
@@ -35,7 +35,7 @@ const CreateRoom = () => {
             console.error(e);
         }
 
-        // clear signup form
+        // clear form state after mutation
         setCreateRoomFormState({
             title: '',
             tags: [],
