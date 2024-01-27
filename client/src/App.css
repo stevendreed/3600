@@ -421,6 +421,49 @@
   border-radius: 20px;
 }
 
+.createRoom-form h3 {
+  font-size: 2em;
+  color: var(--lightGreenChar);
+  margin: 0px 0px 10px 0px;
+}
+
+.createRoom-form-input {
+  width: 85%;
+  height: 60px;
+  text-align: center;
+  margin: 13px 0px 10px 0px;
+  background-color: var(--darkBackground);
+  border-radius: 20px;
+}
+
+.imageChoice-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin: 10px 0px 0px 0px;
+}
+
+.imageChoice {
+  height: 70px;
+  width: 70px;
+  border-radius: 100%;
+  border: solid 3px var(--darkBackground);
+  margin: 8px;
+}
+
+.roomSubmitButton {
+  margin: 18px 0px 0px 0px;
+  background-color: var(--lightBackground);
+  color: var(--lightGreenChar);
+}
+
+.roomSubmitButton:hover {
+  background-color: var(--lightBackground);
+  color: var(--lightGreenChar);
+  cursor: pointer;
+  border: 1px solid teal;
+}
+
 /* ----------------------- CREATE CHATROOM ENDS ------------------------ */
 
 
