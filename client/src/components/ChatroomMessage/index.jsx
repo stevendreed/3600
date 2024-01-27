@@ -4,7 +4,7 @@ const ChatroomMessage = (item) => {
 
 // rendering poster's profile image, username, timestamp of message creation, and the message itself
 return (
-    <div className="message-container">
+    <div className="single-message-container">
         <div className="message-userInfo">
             <img src={item.image}></img>
             <h3>{item.username}</h3>
