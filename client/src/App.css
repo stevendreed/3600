@@ -404,7 +404,7 @@
   justify-content: center;
   align-items: center;
   padding: 20px;
-  margin: 20px 20px 25px 20px;
+  margin: 15px 20px 25px 20px;
   background-color: var(--darkBackground);
   border: 15px solid var(--lightBackground);
   border-radius: 20px;
@@ -477,7 +477,7 @@
   justify-content: center;
   align-items: center;
   padding: 20px;
-  margin: 20px 20px 25px 20px;
+  margin: 16px 20px 25px 20px;
   background-color: var(--darkBackground);
   border: 15px solid var(--lightBackground);
   border-radius: 20px;

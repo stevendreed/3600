@@ -1,7 +1,9 @@
 // will render the chatroom component
 import { useQuery } from '@apollo/client';
 import { Link, useParams } from 'react-router-dom';
+import { useContext, useState } from 'react';
 import { QUERY_CHATROOM } from '../utils/queries';
+import { CREATE_MESSAGE } from '../utils/mutations';
 
 import RoomCard from '../components/RoomCard'
 import ChatroomMessage from '../components/ChatroomMessage'
@@ -47,6 +49,40 @@ const ChatRoom = () => {
 
   // chatroom's id we are taking from the page's url parameters
   const { id } = useParams();
+
+  // Create a state for your message 
+  const [messageState, setMessageFormState] = useState({ message: '' });
+  // assign mutation to a const variable
+  const [createMessage] = useMutation(CREATE_MESSAGE);
+
+  // whenever a modification to the form is made, add that change to the state
+  const handleMessageFormChange = (event) => {
+    const { name, value } = event.target;
+
+    setMessageFormState({
+        ...messageState,
+        [name]: value,
+    });
+    };
+
+    // on submit, attempt to fire off CREATE_ROOM mutation using the data from the createRoomState
+    const handleMessageFormSubmit = async (event) => {
+      event.preventDefault();
+  
+      try {
+          const { data } = await createMessage({
+          variables: { ...messageState },
+          });
+  
+      } catch (e) {
+          console.error(e);
+      }
+
+      // clear form state after mutation
+      setMessageFormState({
+          message: ''
+          });
+  };
   
     return (
       <div className="chatroom-container">
@@ -63,6 +99,11 @@ const ChatRoom = () => {
           // using placeholder for developement
           />
         ))}
+        </div>
+        <div className='message-input-container'>
+          <form>
+            <input></input>
+          </form>
         </div>
         {/* use userinput component to allow users to send messages to chatroom */}
       </div>
