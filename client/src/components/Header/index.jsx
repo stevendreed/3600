@@ -2,7 +2,7 @@
 // will contain ternaries depending on url to render either siteinfo or room info
 // (Like room title, timer, ect...)
 
-import { chatrooms } from '../../utils/queries';
+import queries from '../../utils/queries';
 
 // function to export our header content to Outlet in App.jsx based on url defined in Main.jsx
 const Header = () => {
