@@ -30,11 +30,25 @@ const Header = () => {
     <button>Sort Rooms By...</button>
       <div className='dropdownOptions'>
       {/* sort rooms by active users */}
-      <button id='sortbyUsers'>Most Users</button>
+      <button id='sortbyUsers' onClick=
+        { function() {
+          // onClick should reorder our array of chatrooms by MOST USERS, 
+          // then display by most users
+        } 
+      }>Most Users</button>
       {/* sort rooms old to new */}
-      <button id='sortbyOld'>Oldest</button>
+      <button id='sortbyOld' onClick=
+        { function() {
+          // onClick should reorder our array of chatrooms by greatest time,
+          // then display by most users
+        }
+        }>Oldest</button>
       {/* sort rooms new to old */}
-      <button id='sortbyNew'>Newest</button>
+      <button id='sortbyNew' onClick=
+        { function() {
+          // same functionality as sortbyOld, but reverse order
+        }
+        }>Newest</button>
       </div>
     </div>
 

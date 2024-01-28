@@ -139,7 +139,7 @@ const chatroomData = [
     messages: [messagesData],
     timer: 3600,
   },
-]
+];
 
 const userData = 
   {
