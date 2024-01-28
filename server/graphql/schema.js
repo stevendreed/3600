@@ -233,7 +233,7 @@ const resolvers = {
         return tag;
       }));
   
-      // Extract tag IDs
+      // extract tag IDs
       const tagIds = tags.map(tag => tag._id);
   
       const newChatroom = new Chatroom({ title, tags: tagIds, icon });
