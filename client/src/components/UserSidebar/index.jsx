@@ -109,17 +109,34 @@ const UserSidebar = () => {
             password: '',
             });
     };
+
+    // used to disable the mobile buttons when using a chatroom or making a chatroom
+    const url = window.location.pathname
+    console.log(url);
+    let buttonSwitch
+
+    if (url.indexOf("Chatroom") == true) {
+        buttonSwitch = false
+    } else if (url.indexOf("CreateRoom") == true) {
+        buttonSwitch = false
+        console.log('working?')
+    } else {
+        buttonSwitch = true
+    }
     // ---------
     
     // what we want to render
     return (
         <div className="sidebar">
-            {/* these buttons only appear on mobile layout to replace position of desktop layout buttons */}
-            {/* no buttons should appear on the 'createRoom' page (use a window.location query to detemine page based on url) */}
+            
+            {!buttonSwitch ? (
+                <div></div>
+                ) : (
             <div className='mobileButtons'>
                 <a className='donateButton'>DONATE</a>
                 <a className='createRoomButton' href='/CreateRoom'>CREATE ROOM</a>
             </div>
+                )}
 
             <div className='sidebarMainContainer'>
                 
