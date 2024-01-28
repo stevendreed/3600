@@ -222,13 +222,20 @@ const resolvers = {
       throw new Error('Could not find a user to delete');
     },
     // add a new chatroom
-    ADD_CHATROOM: async (_, { title, tagIds, icon }, context) => {
-      for (const tagId of tagIds) {
-        const tagExists = await Tag.exists({ _id: tagId });
-        if (!tagExists) {
-          throw new Error(`Tag not found: ${tagId}`);
+    ADD_CHATROOM: async (_, { title, tagNames, icon }, context) => {
+      // find tags based on names
+      const tags = await Promise.all(tagNames.map(async (name) => {
+        let tag = await Tag.findOne({ name });
+        if (!tag) {
+          tag = new Tag({ name });
+          await tag.save();
         }
-      }
+        return tag;
+      }));
+  
+      // Extract tag IDs
+      const tagIds = tags.map(tag => tag._id);
+  
       const newChatroom = new Chatroom({ title, tags: tagIds, icon });
       await newChatroom.save();
       return newChatroom;
