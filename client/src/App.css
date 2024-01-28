@@ -915,6 +915,7 @@
   align-items: center;
   background-color: var(--medBackground);
   border-radius: 20px;
+  padding-bottom: 50px;
 }
 
 .createRoom-form h3 {
@@ -937,6 +938,8 @@
   flex-flow: row wrap;
   justify-content: center;
   margin: 10px 0px 0px 0px;
+  overflow-y: scroll;
+  height: 160px;
 }
 
 .imageChoice {
