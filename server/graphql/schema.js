@@ -189,7 +189,7 @@ const resolvers = {
     newMessage: {
       // subscribe is our function: pass functionality into this object
       // we pass pubsub.publish to trigger this event
-      subscribe: (_, _, {pubsub}) => pubsub.asyncIterator(NEW_MESSAGE),
+      subscribe: ( {pubsub}) => pubsub.asyncIterator(NEW_MESSAGE),
       resolve: (payload) => payload,
     }
   }
