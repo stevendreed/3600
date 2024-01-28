@@ -173,6 +173,12 @@ const resolvers = {
       return Chatroom.findOneAndDelete({_id: context._id});
     } // end deleteChatroom
   },
+  Subscription: {
+    NEW_MESSAGE: {
+      subscribe: () => null,
+      resolve: (payload) => payload,
+    }
+  }
 };
 
 module.exports = { typeDefs, resolvers };
