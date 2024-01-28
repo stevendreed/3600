@@ -1,9 +1,13 @@
 // schema.js
-const { gql } = require("apollo-server-express");
+const { gql, PubSub } = require("apollo-server-express");
 const { User, Message, Chatroom } = require("../models");
 const { signToken } = require('../utils/auth');
 // moving to utils function
 // const jwt = require('jsonwebtoken');
+
+// creates a public subscription to allow real-time data
+const pubsub = PubSub;
+const NEW_MESSAGE = 'NEW_MESSAGE'
 
 const typeDefs = gql`
   type Query {
@@ -56,6 +60,10 @@ const typeDefs = gql`
   type Auth {
     token: String
     user: User
+  }
+
+  type Subscription {
+    newMessage: Message
   }
 `;
 
@@ -119,7 +127,11 @@ const resolvers = {
       throw new Error('Could not find a user to delete');
     },
      // add a new message
-    ADD_MESSAGE: async (_, { sender, content, thread, location }, context) => {
+    ADD_MESSAGE: async (_, { sender, content, thread, location }, context, {pubsub}) => {
+      pubsub.publish(NEW_MESSAGE,{
+        newMessage: Message
+      });
+
       const newMessage = new Message({ sender, content, thread, location });
       await newMessage.save();
       return newMessage;
@@ -174,8 +186,10 @@ const resolvers = {
     } // end deleteChatroom
   },
   Subscription: {
-    NEW_MESSAGE: {
-      subscribe: () => null,
+    newMessage: {
+      // subscribe is our function: pass functionality into this object
+      // we pass pubsub.publish to trigger this event
+      subscribe: (_, _, {pubsub}) => pubsub.asyncIterator(NEW_MESSAGE),
       resolve: (payload) => payload,
     }
   }
