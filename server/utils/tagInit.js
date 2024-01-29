@@ -12,14 +12,23 @@ mongoose.connect(tagUri, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log("MongoDB successfully connected on port 27017"))
     .catch(err => console.error(`MongoDB connection error: ${err}`));
 
-// function to fetch subjects from Open Library
-async function fetchSubjects() {
+// function to fetch categories from dbpedia
+// querying here to fetch independently from the schema.js
+async function fetchCategories() {
   try {
-    // make a GET request to the Open Library API
-    const response = await axios.get('https://openlibrary.org/subjects.json');
+    const graphqlQuery = {
+      query: `
+        query {
+          dcterms_subject {
+            label
+          }
+        }
+      `
+    };
+    const response = await axios.post('https://dbpedia.org/sparql', graphqlQuery);
     return response.data;
   } catch (error) {
-    console.error('Error fetching subjects:', error);
+    console.error('Error fetching Categories:', error);
     return null;
   }
 }
@@ -27,21 +36,22 @@ async function fetchSubjects() {
 // main function to process and save tags
 async function processAndSaveTags() {
   // fetches the data from the api
-  const data = await fetchSubjects();
+  const data = await fetchCategories();
   console.log(data);
   // checks if the data exists and if it contains the array
-  if (data && Array.isArray(data.works)) {
+  if (data && data.data && Array.isArray(data.data.dcterms_subject)) {
     // maps the data to an array of tag names
-    const tagNames = data.works.map((work) => work.subject);
-    // loops through the extracted names
+    const tagNames = data.data.dcterms_subject.map((subject) => subject.label);
+    console.log('Extracted tag names:', tagNames); 
+     // loops through the extracted names
     for (const tagName of tagNames) {
       try {
-        // checks if it already exists
+        // checks if the tag already exists
         const existingTag = await Tag.findOne({ name: tagName });
         if (!existingTag) {
-          // if it doesn't exist, it creates a new tag
+          // if it doesn't exist, creates a new tag
           const tag = new Tag({ name: tagName });
-          // saves tag
+          // saves the tag
           await tag.save();
           console.log(`Tag saved: ${tagName}`);
         } else {
@@ -49,7 +59,7 @@ async function processAndSaveTags() {
           console.log(`Tag already exists: ${tagName}`);
         }
       } catch (error) {
-        // spits out error if there was any issue
+        // logs error if there was any issue
         console.error(`Error saving tag: ${error}`);
       }
     }
