@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const db = require('./models'); 
+const db = require('../models'); 
 const tagNames = require('./tagList'); 
 
 const tagUri = 'mongodb://localhost:27017/Cluster0';
