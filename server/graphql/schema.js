@@ -16,6 +16,10 @@ const typeDefs = gql`
     chatrooms: [Chatroom]
   }
 
+  extend type Query {
+    allTags: Tag
+  }
+
   type Mutation {
     LOGIN_USER(email: String!, password: String!): Auth
     ADD_USER(username: String!, email: String!, password: String!): Auth
@@ -29,6 +33,8 @@ const typeDefs = gql`
     ADD_CHATROOM(title: String!, tagNames: [String!], icon: String): Chatroom
     DELETE_CHATROOM(title: String!): Auth
   }
+
+  directive @adminOnly on FIELD_DEFINITION
 
   type User {
     _id: ID
@@ -95,6 +101,10 @@ const resolvers = {
     // fetch all chatrooms
     chatrooms: async () => {
       return await db.Chatroom.find({}).populate('tags');
+    },
+    // fetch all tags
+    allTags: async () => {
+      return await db.Tag.find({});
     },
   },
   // mutation resolvers
