@@ -79,7 +79,7 @@ export function ChatroomList() {
     variables: {
       options: {
         filterActive: true,
-        sortBy: "newest", // can change to newest, oldest, or usercount
+        sortBy: sortBy, 
       },
     },
   });
