@@ -100,7 +100,7 @@ const resolvers = {
       return await db.Chatroom.find({}).populate('tags');
     },
     tags: async () => {
-      return await db.Tag.find({});
+      return await db.Tags.find({});
     },
   },
   // mutation resolvers
