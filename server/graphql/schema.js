@@ -106,6 +106,21 @@ const resolvers = {
         const oneHourAgo = new Date(new Date().getTime() - (60 * 60 * 1000));
         query.createdAt = { $gte: oneHourAgo };
       }
+      // sorting
+      switch (sortBy) {
+        case 'oldest':
+          // this will grab the ascending data from oldest to newest
+          sort = { createdAt: 1 };
+          break;
+        case 'newest':
+          sort = { createdAt: -1 };
+          break;
+        case 'userCount':
+          // TODO: some logic for sorting by userCount
+          // ideas: onclick events register userid to chatrooms (i.e. enter chatroom action adds user to chatroom for user array and leave chatroom button removes them)
+          break;
+        default:
+      }
       return await db.Chatroom.find(query).sort(sort).populate('tags');
     },
     allUsers: async () => {
