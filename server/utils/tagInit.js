@@ -26,8 +26,9 @@ async function fetchSubjects() {
 async function processAndSaveTags() {
   // call fetchSubjects and process the data
   const data = await fetchSubjects();
-  if (data) {
-    const subjects = data.subjects;
+  console.log(data);
+  const subjects = data.subjects; 
+  if (Array.isArray(subjects)) {
     for (const subject of subjects) {
       try {
         // check if the tag already exists
