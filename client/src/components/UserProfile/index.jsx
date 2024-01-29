@@ -1,4 +1,6 @@
 // componenet which renders user profile information once logged in
+// importing Auth functions from utils
+import AuthService from '../../utils/auth';
 
 // dummy user data for user UserProfile componenet to render
 const userData = {
@@ -44,12 +46,27 @@ const UserProfile = () => {
 
     <div className='userProfile'>
 
-        {/* img src should be dependant on context.user.profileimg or something similar */}
+        {/* img src should be dependant on context.user.profileimg or something
+         similar */}
         <img src={`/images/${userData.image}`}></img>
         {/* username should be dependant on context.user.username */}
         <h2>{userData.username}</h2>
-        {/* logout button should invoke a function to remove current user context / remove current jwt token */}
-        <button>Logout</button>
+        {/* logout button should invoke a function to remove current user 
+        context / remove current jwt token */}
+        <button onClick={
+          function() {
+            if (AuthService.loggedIn())
+            {
+              AuthService.logout();
+            }
+            else
+            {
+              throw new Error('User is already logged out');
+            }
+          }
+        }>
+          Logout
+        </button>
 
         {/* your room would be a value assigned to a user schema, like context.user.yourRoom */}
         <div className="yourRoom">
@@ -72,7 +89,7 @@ const UserProfile = () => {
         </div>
     </div>
 
-    )
+    );
     
 }
 
