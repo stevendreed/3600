@@ -97,8 +97,16 @@ const resolvers = {
       return await db.Message.find({ location: chatroomId });
     },
     // fetch all chatrooms
-    chatrooms: async () => {
-      return await db.Chatroom.find({}).populate('tags');
+    chatrooms: async (_, { sortBy, filterActive }) => {
+      let query = {};
+      let sort = {};
+      // filter active chatrooms
+      // will always filter out chatrooms older than one hour
+      if (filterActive) {
+        const oneHourAgo = new Date(new Date().getTime() - (60 * 60 * 1000));
+        query.createdAt = { $gte: oneHourAgo };
+      }
+      return await db.Chatroom.find(query).sort(sort).populate('tags');
     },
     allUsers: async () => {
       return await db.User.find({});
