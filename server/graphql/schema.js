@@ -6,8 +6,9 @@ const { signToken } = require('../utils/auth');
 // const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
-const db = require('../models');
+const db = require('../models'); // import all models
 
+// define graphql type definitions
 const typeDefs = gql`
   type Query {
     user: User
@@ -126,6 +127,7 @@ const resolvers = {
       const token = signToken(newUser);
       return { token, user: newUser };
     },
+    // change email of authenticated user
     CHANGE_EMAIL: async (_, { userId, newEmail }, context) => {
       if (!context.user || context.user._id !== userId) {
         throw new Error('Unauthorized');
@@ -142,6 +144,7 @@ const resolvers = {
       await user.save();
       return { success: true, message: 'Email successfully changed' };
     },
+    // change username of authenticated user
     CHANGE_USERNAME: async (_, { userId, newUsername }, context) => {
       if (!context.user || context.user._id !== userId) {
         throw new Error('Unauthorized');
@@ -158,6 +161,7 @@ const resolvers = {
       await user.save();
       return { success: true, message: 'Username successfully changed' };
     },
+    // change password of authenticated user 
     CHANGE_PASSWORD: async (_, { userId, oldPassword, newPassword }, context) => {
       if (!context.user || context.user._id !== userId) {
         return { success: false, message: 'Unauthorized' };
@@ -175,8 +179,9 @@ const resolvers = {
       await user.save();
       return { success: true, message: 'Password successfully changed' };
     },
+    // delete user 
     DELETE_USER: async (_, context) => {
-      if (context.user) {
+      if (!context.user || context.user._id !== userId) {
         await db.User.findOneAndDelete({ _id: context.user._id });
         return { success: true, message: 'User deleted' };
       }
@@ -188,9 +193,9 @@ const resolvers = {
       await newMessage.save();
       return newMessage;
     },
-    // update an existing message
+    // checks if user owns message and updates it
     UPDATE_MESSAGE: async (_, { messageId, content }, context) => {
-      if (!context.user) {
+      if (!context.user || context.user._id !== userId) {
         throw new Error('Authentication required');
       }
       const message = await db.Message.findById(messageId);
@@ -204,8 +209,9 @@ const resolvers = {
       await message.save();
       return message;
     },
+    // checks if user owns message and deletes it
     DELETE_MESSAGE: async (_, { messageId }, context) => {
-      if (context.user) {
+      if (!context.user || context.user._id !== userId) {
         await db.Message.findOneAndDelete({ _id: messageId });
         return { success: true, message: 'Message deleted' };
       }
@@ -221,19 +227,24 @@ const resolvers = {
         }
         return tag;
       }));
-
       const tagIds = tags.map(tag => tag._id);
       const newChatroom = new db.Chatroom({ title, tags: tagIds, icon });
       await newChatroom.save();
       return newChatroom;
     },
+    // deletes chatroom
     DELETE_CHATROOM: async (_, { chatroomId }, context) => {
-      if (!context.user) {
+      if (context._id)
+      {
+        throw new Error('No chatroom found');
+      }
+      if (!context.user || context.user._id !== userId) {
         throw new Error('You do not have permission to delete the chatroom');
       }
+      // verify the id for our discovered chatroom is not null
       await db.Chatroom.findOneAndDelete({ _id: chatroomId });
       return { success: true, message: 'Chatroom deleted' };
-    },
+    }, // end deleteChatroom
   },
 };
 
