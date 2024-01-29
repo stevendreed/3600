@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 require('dotenv').config();
-const { Tag } = require('../models/Tag');
+const { Tag } = require('../models/tags');
 const axios = require('axios');
 require('dotenv').config();
 
@@ -50,7 +50,7 @@ async function processAndSaveTags() {
   }
 }
 
-// Run the main function
+// run the main function
 processAndSaveTags().then(() => {
   mongoose.disconnect()
     .then(() => console.log("MongoDB disconnected"))
