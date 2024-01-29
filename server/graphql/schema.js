@@ -14,6 +14,7 @@ const typeDefs = gql`
     user: User
     messages(chatroomId: ID!): [Message]
     chatrooms: [Chatroom]
+    tags: [Tag]
   }
 
   type Mutation {
@@ -98,6 +99,9 @@ const resolvers = {
     chatrooms: async () => {
       return await db.Chatroom.find({}).populate('tags');
     },
+    tags: async () => {
+      return await db.Tag.find({});
+    };
   },
   // mutation resolvers
   Mutation: {
