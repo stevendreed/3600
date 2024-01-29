@@ -1,6 +1,5 @@
 // schema.js
 const { gql } = require("apollo-server-express");
-const { User, Message, Chatroom } = require("../models");
 const { signToken } = require('../utils/auth');
 // moving to utils function
 // const jwt = require('jsonwebtoken');
@@ -226,9 +225,9 @@ const resolvers = {
     // add a new chatroom
     ADD_CHATROOM: async (_, { title, tagNames, icon }, context) => {
       const tags = await Promise.all(tagNames.map(async (name) => {
-        let tag = await db.Tag.findOne({ name });
+        let tag = await db.Tags.findOne({ name });
         if (!tag) {
-          tag = new db.Tag({ name });
+          tag = new db.Tags({ name });
           await tag.save();
         }
         return tag;
