@@ -133,7 +133,15 @@ const resolvers = {
         default:
           // default sorting or no sorting
       }
-      return await db.Chatroom.find(query).sort(sort).populate('tags');
+      const chatrooms = await db.Chatroom.find(query)
+      .sort(sort)
+      .populate('icon')
+      .populate('title')
+      .populate('tags')
+      .populate('activeUsers');
+  
+    return chatrooms;
+  },
     },
     allUsers: async () => {
       return await db.User.find({});
