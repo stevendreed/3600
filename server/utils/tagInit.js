@@ -9,3 +9,11 @@ async function fetchSubjects() {
       return null;
   }
 }
+
+fetchSubjects().then(data => {
+  if (data) {
+      const subjects = data.subjects; 
+      const tags = subjects.map(subject => subject.name);
+      console.log(tags); 
+  }
+});
