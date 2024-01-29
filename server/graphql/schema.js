@@ -8,11 +8,12 @@ const saltRounds = 10;
 const db = require('../models'); // import all models
 
 // define graphql type definitions
+// set string & boolean to query so it can set values for oldest newest & usercount
 const typeDefs = gql`
   type Query {
     user: User
     messages(chatroomId: ID!): [Message]
-    chatrooms: [Chatroom]
+    chatrooms(sortBy: String, filterActive: Boolean): [Chatroom] 
     allUsers: [User]
     allTags: [Tag]
   }
