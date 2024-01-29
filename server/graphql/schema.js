@@ -114,7 +114,7 @@ const resolvers = {
       // filter active chatrooms
       // will always filter out chatrooms older than one hour
       if (filterActive) {
-        const oneHourAgo = new Date().getTime() - (60 * 60 * 1000));
+        const oneHourAgo = new Date().getTime() - (60 * 60 * 1000);
         query.createdAt = { $gte: oneHourAgo };
       }
       // sorting
@@ -134,14 +134,12 @@ const resolvers = {
           // default sorting or no sorting
       }
       const chatrooms = await db.Chatroom.find(query)
-      .sort(sort)
-      .populate('icon')
-      .populate('title')
-      .populate('tags')
-      .populate('activeUsers');
-  
-    return chatrooms;
-  },
+        .sort(sort)
+        .populate('icon')
+        .populate('title')
+        .populate('tags')
+        .populate('activeUsers');
+      return chatrooms;
     },
     allUsers: async () => {
       return await db.User.find({});
