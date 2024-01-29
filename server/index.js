@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 const { ApolloServer } = require('apollo-server-express');
 const { typeDefs, resolvers } = require('./graphql/schema');
+const redditApi = require('./utils/redditApi');
 
 const app = express();
 const port = process.env.PORT || 5000;
