@@ -14,20 +14,22 @@ async function fetchSubjects() {
 }
 
 // call fetchSubjects and process the data
-fetchSubjects().then(async data => {
-  if (data) {
-    // extract subjects from the data
-    const subjects = data.subjects; 
-    // iterate over each subject and save to db
-    for (const subject of subjects) {
-      try {
-        // create a new tag for each subject
-        const tag = new Tag({ name: subject.name });
-        await tag.save();
-        console.log(`Tag saved: ${subject.name}`);
-      } catch (error) {
-        console.error(`Error saving tag: ${error}`);
-      }
+for (const subject of subjects) {
+  try {
+    // Check if the tag already exists
+    const existingTag = await Tag.findOne({ name: subject.name });
+    if (!existingTag) {
+      // create new tag
+      const tag = new Tag({ name: subject.name });
+      // save tag
+      await tag.save();
+      console.log(`Tag saved: ${subject.name}`); 
+    } else {
+      // error if tag already exists
+      console.log(`Tag already exists: ${subject.name}`);
     }
+  } catch (error) {
+    // issue with saving tag
+    console.error(`Error saving tag: ${error}`);
   }
-});
+}
