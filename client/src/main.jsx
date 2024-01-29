@@ -8,23 +8,24 @@ import App from './App.jsx'
 // these pages need to be created and exported to properly render below
 import Home from './pages/Home';
 import Chatroom from './pages/Chatroom';
-import CreateRoomForm from './pages/CreateRoomForm';
-import NotFound from './pages/NotFound';
+import CreateRoom from './pages/CreateRoom';
+import ErrorPage from './pages/ErrorPage';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
-    errorElement: <NotFound />,
+    errorElement: <ErrorPage />,
     children: [
       {
         // homepage functions also as the login page
         index: true,
         element: <Home />
-      }, {
+      }, 
+      {
         // page where logged in users can create a room
         path: '/CreateRoom',
-        element: <CreateRoomForm />
+        element: <CreateRoom />
       }, {
         // specific chatroom a user has joined
         // chatroom uses a wildcard in its parameters to match the user with the correct database information
