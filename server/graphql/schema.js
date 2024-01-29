@@ -102,9 +102,15 @@ const resolvers = {
       return await db.Message.find({ location: chatroomId });
     },
     // fetch all chatrooms
-    chatrooms: async (_, { sortBy, filterActive }) => {
+    chatrooms: async () => {
+      return await db.Chatroom.find({}).populate('tags');
+    },
+    // sort chatrooms
+    getChatrooms: async (_, { options }) => {
       let query = {};
       let sort = {};
+      // destructure sortBy and filterActive from options
+      const { sortBy, filterActive } = options;
       // filter active chatrooms
       // will always filter out chatrooms older than one hour
       if (filterActive) {
@@ -121,10 +127,11 @@ const resolvers = {
           sort = { createdAt: -1 };
           break;
         case 'userCount':
-          // TODO: some logic for sorting by userCount
-          // ideas: onclick events register userid to chatrooms (i.e. enter chatroom action adds user to chatroom for user array and leave chatroom button removes them)
+          // TODO: implement logic for sorting by userCount
+          // ideas: onclick events register userid to chatrooms (i.e., enter chatroom action adds user to chatroom for user array and leave chatroom button removes them)
           break;
         default:
+          // default sorting or no sorting
       }
       return await db.Chatroom.find(query).sort(sort).populate('tags');
     },
