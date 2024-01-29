@@ -114,7 +114,7 @@ const resolvers = {
       // filter active chatrooms
       // will always filter out chatrooms older than one hour
       if (filterActive) {
-        const oneHourAgo = new Date(new Date().getTime() - (60 * 60 * 1000));
+        const oneHourAgo = new Date().getTime() - (60 * 60 * 1000));
         query.createdAt = { $gte: oneHourAgo };
       }
       // sorting
