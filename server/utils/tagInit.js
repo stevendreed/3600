@@ -1,12 +1,5 @@
-const mongoose = require('mongoose');
 const db = require('../models'); 
 const tagNames = require('./tagList'); 
-
-const tagUri = 'mongodb://localhost:27017/Cluster0';
-
-mongoose.connect(tagUri, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log("MongoDB successfully connected on port 27017"))
-    .catch(err => console.error(`MongoDB connection error: ${err}`));
 
 const initializeTags = async () => {
   try {
@@ -24,4 +17,4 @@ const initializeTags = async () => {
   }
 };
 
-initializeTags().then(() => mongoose.disconnect());
+module.exports = initializeTags;
