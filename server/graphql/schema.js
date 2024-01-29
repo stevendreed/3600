@@ -101,7 +101,7 @@ const resolvers = {
     },
     tags: async () => {
       return await db.Tag.find({});
-    };
+    },
   },
   // mutation resolvers
   Mutation: {
