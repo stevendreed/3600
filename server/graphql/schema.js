@@ -144,6 +144,12 @@ const resolvers = {
         .populate('activeUsers');
       return chatrooms;
     },
+    subscription: {
+      messageAdded: {
+        subscribe: (_, { chatroomId }, { pubsub }) => 
+          pubsub.asyncIterator(`MESSAGE_ADDED_${chatroomId}`)
+      },
+    },
   },
   // mutation resolvers
   Mutation: {
