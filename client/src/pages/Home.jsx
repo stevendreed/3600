@@ -21,7 +21,7 @@ const Home = () => {
 
   return (
     <div className='card-container'>
-      {data.chatrooms.map((chatroom) => (
+      {data.getChatrooms.map((chatroom) => (
         <RoomCard 
           key={chatroom._id}
           _id={chatroom._id}

@@ -62,13 +62,13 @@ const typeDefs = gql`
   type Chatroom {
     _id: ID
     title: String
-    tags: [Tag]
+    tags: [Tags]
     icon: String
     activeUsers: [User]
     createdAt: String
   }
 
-  type Tag {
+  type Tags {
     _id: ID
     name: String
   }

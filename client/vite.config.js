@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import { createProxyMiddleware } from 'http-proxy-middleware';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -12,7 +13,12 @@ export default defineConfig({
   server: {
     proxy: {
       // added to prevent mongoose && vite from coliding on the same port
-      '/api': "http://localhost:5173" 
-    }
-  }
+      '/api': "http://localhost:5173",
+      '/graphql': {
+        target: 'http://localhost:5000/graphql', // Your GraphQL server address
+        changeOrigin: true,
+        ws: true, // Enable WebSocket proxy
+      },
+    },
+  },
 });
