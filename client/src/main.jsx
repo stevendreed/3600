@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/client';
-import { client } from './utils/apolloClient';
+import { client } from './utils/apolloClient.js';
 import { router } from './utils/routerConfig';
 import App from './App.jsx';
 
