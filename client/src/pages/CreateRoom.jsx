@@ -95,7 +95,6 @@ const CreateRoom = () => {
                               <img className='imageChoice' src='/images/cat.svg' name='cat.svg' onClick={() => imageclick()}></img>
                               <img className='imageChoice' src='/images/gator.svg' name='gator.svg' onClick={() => imageclick()}></img>
                               <img className='imageChoice' src='/images/robot.svg' name='robot.svg' onClick={() => imageclick()}></img>
-                              <img className='imageChoice' src='/images/book.svg' name='book.svg' onClick={() => imageclick()}></img>
                               <img className='imageChoice' src='/images/painting.svg' name='painting.svg' onClick={() => imageclick()}></img>
                               <img className='imageChoice' src='/images/guitar.svg' name='guitar.svg' onClick={() => imageclick()}></img>
                               <img className='imageChoice' src='/images/gaming.svg' name='gaming.svg' onClick={() => imageclick()}></img>

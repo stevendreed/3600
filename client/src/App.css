@@ -267,6 +267,18 @@
   align-items: center;
 }
 
+.headerLogo {
+  width: auto;
+  height: 65px;
+  opacity: .8;
+  background-color: var(--medBackground);
+  border-radius: 20px;
+}
+
+.headerLogo:hover {
+  opacity: 1;
+}
+
 
 .header h1 {
   font-size: 2em;
@@ -277,14 +289,6 @@
   padding-top: 12px;
   border-radius: 20px;
   color: var(--yellowChar);
-}
-
-.header a {
-  color: var(--yellowChar);
-}
-
-.header a:hover {
-  color: var(--lightGreenChar);
 }
 
 .header p {
