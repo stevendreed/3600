@@ -40,7 +40,7 @@
   flex-basis: 20%;
   min-width: 300px;
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: column nowrap;
   align-items: center;
 }
 
@@ -57,7 +57,7 @@
 /* THIS ONLY RENDERS IF THE USER IS LOGGED IN (see UserSidebar component) */
 .userProfile {
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: column nowrap;
   align-items: center;
   justify-content: center;
   background-color: var(--lightBackground);
@@ -243,6 +243,10 @@
 .routeContainer {
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
   margin: 10px;
   padding: 0px;
   /* routeContainer takes up 78% of mainContainer's flex space */
@@ -258,7 +262,7 @@
   height: 100px;
   width: 100%;
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: row nowrap;
   justify-content: space-around;
   align-items: center;
 }
@@ -273,6 +277,14 @@
   padding-top: 12px;
   border-radius: 20px;
   color: var(--yellowChar);
+}
+
+.header a {
+  color: var(--yellowChar);
+}
+
+.header a:hover {
+  color: var(--lightGreenChar);
 }
 
 .header p {
@@ -381,11 +393,178 @@
 
 /* ----------------------- HOMEPAGE CARDS ENDS ------------------------ */
 
-/* minor breakpoint (for logged in users) */
+
+/* ----------------------- CREATE CHATROOM BEGINS ------------------------ */
+
+.createRoom-container {
+  width: 97%;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  margin: 15px 20px 25px 20px;
+  background-color: var(--darkBackground);
+  border: 15px solid var(--lightBackground);
+  border-radius: 20px;
+}
+
+.createRoom-form {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--medBackground);
+  border-radius: 20px;
+}
+
+.createRoom-form h3 {
+  font-size: 2em;
+  color: var(--lightGreenChar);
+  margin: 0px 0px 10px 0px;
+}
+
+.createRoom-form-input {
+  width: 85%;
+  height: 60px;
+  text-align: center;
+  margin: 13px 0px 10px 0px;
+  background-color: var(--darkBackground);
+  border-radius: 20px;
+}
+
+.imageChoice-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin: 10px 0px 0px 0px;
+}
+
+.imageChoice {
+  height: 70px;
+  width: 70px;
+  border-radius: 100%;
+  border: solid 3px var(--darkBackground);
+  margin: 8px;
+}
+
+.roomSubmitButton {
+  margin: 18px 0px 0px 0px;
+  background-color: var(--lightBackground);
+  color: var(--lightGreenChar);
+}
+
+.roomSubmitButton:hover {
+  background-color: var(--lightBackground);
+  color: var(--lightGreenChar);
+  cursor: pointer;
+  border: 1px solid teal;
+}
+
+/* ----------------------- CREATE CHATROOM ENDS ------------------------ */
+
+
+/* ----------------------- CHATROOM BEGINS ------------------------ */
+
+.chatroom-container {
+  width: 97%;
+  height: 85%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  margin: 16px 20px 25px 20px;
+  background-color: var(--darkBackground);
+  border: 15px solid var(--lightBackground);
+  border-radius: 20px;
+}
+
+.messages-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  overflow-y: scroll;
+}
+
+.single-message-container {
+  display: flex;
+  flex-flow: row nowrap;
+  border: 4px solid var(--lightBackground);
+  border-radius: 20px;
+  margin: 10px 0px 10px 0px;
+}
+
+.message-userInfo {
+  background-color: var(--medBackground);
+  border: 5px solid var();
+  border-radius: 15px;
+  padding: 10px;
+}
+
+.message-userInfo img {
+  border-radius: 100%;
+  width: 120px;
+}
+
+.message-userInfo h3 {
+  font-size: 1.3em;
+  color: var(--lightGreenChar);
+  width: 120px;
+  text-align: center;
+}
+
+.message-userInfo p {
+  font-size: .9em;
+  color: var(--lightGreenChar);
+  width: 120px;
+  text-align: center;
+}
+
+.message {
+  font-size: 1.1em;
+  margin: 20px;
+}
+
+.message-form-container {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--medBackground);
+  width: 100%;
+  height: 80px;
+  margin-top: 10px;
+  border-radius: 20px;
+}
+
+.message-form-input {
+  flex-basis: 90%;
+  height: 50px;
+  margin: 5px;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.messageSubmitButton {
+  background-color: var(--lightBackground);
+  border-radius: 20px;
+  margin: 5px;
+}
+
+/* ----------------------- CHATROOM ENDS ------------------------ */
+
+
+
+
 
 /* BREAKPOINT */
-/* MOBILE BREAKPOINT: 800px ********************************************************** */
-
+/* MOBILE BREAKPOINT: 800px *************************************************************************************************** */
+/* **************************************************************************************************************************** */
 @media (max-width: 800px) {
 
 .mainContainer {
@@ -710,6 +889,82 @@
 }
 
 /* ----------------------- MOBILE HEADER ENDS ------------------------ */
+
+/* ----------------------- MOBILE CREATE CHATROOM BEGINS ------------------------ */
+
+.createRoom-container {
+  width: 97%;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  margin: 15px 20px 25px 20px;
+  background-color: var(--darkBackground);
+  border: 15px solid var(--lightBackground);
+  border-radius: 20px;
+}
+
+.createRoom-form {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--medBackground);
+  border-radius: 20px;
+  padding-bottom: 50px;
+}
+
+.createRoom-form h3 {
+  font-size: 1.5em;
+  color: var(--lightGreenChar);
+  margin: 0px 0px 10px 0px;
+}
+
+.createRoom-form-input {
+  width: 85%;
+  height: 40px;
+  text-align: center;
+  margin: 5px 0px 10px 0px;
+  background-color: var(--darkBackground);
+  border-radius: 20px;
+}
+
+.imageChoice-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin: 10px 0px 0px 0px;
+  overflow-y: scroll;
+  height: 160px;
+}
+
+.imageChoice {
+  height: 70px;
+  width: 70px;
+  border-radius: 100%;
+  border: solid 3px var(--darkBackground);
+  margin: 8px;
+}
+
+.roomSubmitButton {
+  margin: 18px 0px 0px 0px;
+  background-color: var(--lightBackground);
+  color: var(--lightGreenChar);
+}
+
+.roomSubmitButton:hover {
+  background-color: var(--lightBackground);
+  color: var(--lightGreenChar);
+  cursor: pointer;
+  border: 1px solid teal;
+}
+
+/* ----------------------- CREATE CHATROOM ENDS ------------------------ */
+
 }
 /* MOBILE BREAKPOINTS END */
 
