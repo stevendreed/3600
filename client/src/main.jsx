@@ -1,5 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { ApolloProvider } from '@apollo/client';
+import client from './apolloClient';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import './index.css'
@@ -37,5 +39,7 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <RouterProvider router={router} />
+  <ApolloProvider client={client}>
+    <App />
+  </ApolloProvider>
 );
