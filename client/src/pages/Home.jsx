@@ -4,7 +4,36 @@
 // import { useQuery } from '@apollo/client';
 
 // this component will run a .map() function to render all of our rooms
+import React from 'react';
+import { useQuery } from '@apollo/client';
 import RoomCard from '../components/RoomCard';
+
+const Home = () => {
+  const { loading, error, data } = useQuery(GET_CHATROOMS);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error loading chatrooms.</p>;
+
+  if (data.chatrooms.length === 0) {
+    return <p>No chatrooms available.</p>;
+  }
+
+  return (
+    <div className='card-container'>
+      {data.chatrooms.map((chatroom) => (
+        <RoomCard 
+          key={chatroom._id}
+          _id={chatroom._id}
+          image={chatroom.icon} 
+          title={chatroom.title}
+          tags={chatroom.tags.map(tag => tag.name).join(', ')}
+        />
+      ))}
+    </div>
+  );
+};
+
+export default Home;
 
 // This is an example of how we import one of our queries
 // import { QUERY_THOUGHTS } from '../utils/queries';
@@ -120,29 +149,3 @@ import RoomCard from '../components/RoomCard';
 //   },
 // ]
 
-const Home = () => {
-    // This is an example of how we run our query through frontend
-    // const { loading, data } = useQuery(QUERY_THOUGHTS);
-
-    // if no data is returned, set thoughts to an empty array
-    // const thoughts = data?.thoughts || [];
-  
-    return (
-      <div className='card-container'>
-        {chatroomData.map((item) => (
-          <RoomCard 
-            key={item._id}
-            _id={item._id}
-            image={item.image}
-            title={item.title}
-            tags={item.tags}
-            timer={item.timer}
-          // insert data from query into RoomCards component
-          // using placeholder for developement
-          />
-        ))}
-      </div>
-    );
-  };
-  
-  export default Home;
