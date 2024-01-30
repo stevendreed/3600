@@ -4,43 +4,43 @@
 import { Link } from 'react-router-dom'
 
 
-// dummy user data for user UserProfile componenet to render
-const userData = {
-    _id: 1,
-    username: "David27",
-    image: "dog.svg",
-    recentRooms: [
-      {
-        _id: 2,
-        title: "ExampleTitle",
-        tags: ["example ", "example2 ", "example3"],
-        messages: 6,
-        timer: 3600,
-      },
-      {
-        _id: 3,
-        title: "Another Title",
-        tags: "exampletag",
-        messages: 7,
-        timer: 3600,
-      },
-      {
-        _id: 4,
-        title: "Title 3",
-        tags: "exampletag",
-        messages: 8,
-        timer: 3600,
-      },
-  ],
-  yourRoom: {
-      _id: 1,
-      title: "Chatroom",
-      tags: ["casual ", "Toronto "],
-      image: "profileimgexample.jpg",
-      messages: 5,
-      timer: 3600,
-    },
-}
+// // dummy user data for user UserProfile componenet to render
+// const userData = {
+//     _id: 1,
+//     username: "David27",
+//     image: "dog.svg",
+//     recentRooms: [
+//       {
+//         _id: 2,
+//         title: "ExampleTitle",
+//         tags: ["example ", "example2 ", "example3"],
+//         messages: 6,
+//         timer: 3600,
+//       },
+//       {
+//         _id: 3,
+//         title: "Another Title",
+//         tags: "exampletag",
+//         messages: 7,
+//         timer: 3600,
+//       },
+//       {
+//         _id: 4,
+//         title: "Title 3",
+//         tags: "exampletag",
+//         messages: 8,
+//         timer: 3600,
+//       },
+//   ],
+//   yourRoom: {
+//       _id: 1,
+//       title: "Chatroom",
+//       tags: ["casual ", "Toronto "],
+//       image: "profileimgexample.jpg",
+//       messages: 5,
+//       timer: 3600,
+//     },
+// }
 
 const UserProfile = () => {
 

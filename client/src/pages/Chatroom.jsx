@@ -10,47 +10,47 @@ import ChatroomMessage from '../components/ChatroomMessage'
 
 // PLACEHOLDER DATA TO SIMULATE CHATROOM - replace with chatroom query using useParams to get the chatroom's id
 
-const exampleChatRoom = {
-  title: "Exampleroom",
-  tags: ["tag1", "tag2"],
-  messages: [
-    {
-      _id: 1,
-      username: "Monica",
-      message: "Hello, my name is Monica",
-      image: "/images/person2.svg",
-      timestamp: "111111"
-    },
-    {
-      _id: 2,
-      username: "bob",
-      message: "AAAAAAAAAA AAAAAAAAAAAAAAAAAAAAAAAAAAA AAAAAAAAAAAAAAA AAAAAAAAAAAAAAAAAAAAA AAAAAAAAAA AAAAAAAAAAAAAAAAAAAAAAAAAAA AAAAAAAAAAAAAAA AAAAAAAAAAAAAAAAAAAAA AAAAAAAAAA AAAAAAAAAAAAAAAAAAAAAAAAAAA AAAAAAAAAAAAAAA AAAAAAAAAAAAAAAAAAAAA AAAAAAAAAA AAAAAAAAAAAAAAAAAAAAAAAAAAA AAAAAAAAAAAAAAA AAAAAAAAAAAAAAAAAAAAA AAAAAAAAAA AAAAAAAAAAAAAAAAAAAAAAAAAAA AAAAAAAAAAAAAAA AAAAAAAAAAAAAAAAAAAAA AAAAAAAAAA AAAAAAAAAAAAAAAAAAAAAAAAAAA AAAAAAAAAAAAAAA AAAAAAAAAAAAAAAAAAAAA AAAAAAAAAA AAAAAAAAAAAAAAAAAAAAAAAAAAA AAAAAAAAAAAAAAA AAAAAAAAAAAAAAAAAAAAA AAAAAAAAAA AAAAAAAAAAAAAAAAAAAAAAAAAAA AAAAAAAAAAAAAAA AAAAAAAAAAAAAAAAAAAAA",
-      image: "/images/profileimgexample.jpg",
-      timestamp: "2222222"
-    },
-    {
-      _id: 3,
-      username: "Monica",
-      message: "Wow, that is really uncalled for",
-      image: "/images/person2.svg",
-      timestamp: "33333333"
-    },
-    {
-      _id: 4,
-      username: "bob",
-      message: "Sorry.",
-      image: "/images/profileimgexample.jpg",
-      timestamp: "444444444"
-    },
-    {
-      _id: 5,
-      username: "Dean",
-      message: "I think screaming is perfectly healthy and fun.",
-      image: "/images/person6.svg",
-      timestamp: "444444444"
-    },
-  ]
-}
+// const exampleChatRoom = {
+//   title: "Exampleroom",
+//   tags: ["tag1", "tag2"],
+//   messages: [
+//     {
+//       _id: 1,
+//       username: "Monica",
+//       message: "Hello, my name is Monica",
+//       image: "/images/person2.svg",
+//       timestamp: "111111"
+//     },
+//     {
+//       _id: 2,
+//       username: "bob",
+//       message: "AAAAAAAAAA AAAAAAAAAAAAAAAAAAAAAAAAAAA AAAAAAAAAAAAAAA AAAAAAAAAAAAAAAAAAAAA AAAAAAAAAA AAAAAAAAAAAAAAAAAAAAAAAAAAA AAAAAAAAAAAAAAA AAAAAAAAAAAAAAAAAAAAA AAAAAAAAAA AAAAAAAAAAAAAAAAAAAAAAAAAAA AAAAAAAAAAAAAAA AAAAAAAAAAAAAAAAAAAAA AAAAAAAAAA AAAAAAAAAAAAAAAAAAAAAAAAAAA AAAAAAAAAAAAAAA AAAAAAAAAAAAAAAAAAAAA AAAAAAAAAA AAAAAAAAAAAAAAAAAAAAAAAAAAA AAAAAAAAAAAAAAA AAAAAAAAAAAAAAAAAAAAA AAAAAAAAAA AAAAAAAAAAAAAAAAAAAAAAAAAAA AAAAAAAAAAAAAAA AAAAAAAAAAAAAAAAAAAAA AAAAAAAAAA AAAAAAAAAAAAAAAAAAAAAAAAAAA AAAAAAAAAAAAAAA AAAAAAAAAAAAAAAAAAAAA AAAAAAAAAA AAAAAAAAAAAAAAAAAAAAAAAAAAA AAAAAAAAAAAAAAA AAAAAAAAAAAAAAAAAAAAA",
+//       image: "/images/profileimgexample.jpg",
+//       timestamp: "2222222"
+//     },
+//     {
+//       _id: 3,
+//       username: "Monica",
+//       message: "Wow, that is really uncalled for",
+//       image: "/images/person2.svg",
+//       timestamp: "33333333"
+//     },
+//     {
+//       _id: 4,
+//       username: "bob",
+//       message: "Sorry.",
+//       image: "/images/profileimgexample.jpg",
+//       timestamp: "444444444"
+//     },
+//     {
+//       _id: 5,
+//       username: "Dean",
+//       message: "I think screaming is perfectly healthy and fun.",
+//       image: "/images/person6.svg",
+//       timestamp: "444444444"
+//     },
+//   ]
+// }
 
 const ChatRoom = () => {
 
