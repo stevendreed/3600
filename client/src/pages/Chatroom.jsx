@@ -2,7 +2,7 @@
 import { useQuery, useMutation } from '@apollo/client';
 import { Link, useParams } from 'react-router-dom';
 import { useContext, useState } from 'react';
-import { QUERY_CHATROOM } from '../utils/queries';
+// import { QUERY_CHATROOM } from '../utils/queries';
 import { CREATE_MESSAGE } from '../utils/mutations';
 
 import RoomCard from '../components/RoomCard'
