@@ -326,6 +326,7 @@ Link {
   opacity: .8;
   background-color: var(--medBackground);
   border-radius: 20px;
+  margin-top: 5px;
 }
 
 .headerLogo:hover {
@@ -355,7 +356,7 @@ Link {
 .header p {
   flex-basis: 30%;
   margin: 0px 10px 0px 10px;
-  height: 65px;
+  height: 45px;
   text-align: center;
   background-color: var(--medBackground);
   padding-top: 20px;
