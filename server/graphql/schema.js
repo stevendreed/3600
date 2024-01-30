@@ -13,6 +13,7 @@ const typeDefs = gql`
     messages(chatroomId: ID!): [Message]
     chatrooms: [Chatroom] 
     getChatrooms(options: ChatroomQueryOptions): [Chatroom]
+    getMessages(chatroomId: ID!): [Message]
   }
 
   type Mutation {
@@ -143,6 +144,10 @@ const resolvers = {
         .populate('tags')
         .populate('activeUsers');
       return chatrooms;
+    },
+    getMessages: async (_, { chatroomId }) => {
+      let query = { location: chatroomId };
+      return await db.Message.find(query).sort({ createdAt: 1 }).populate('sender');
     },
   },
   // mutation resolvers
