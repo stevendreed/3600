@@ -27,7 +27,7 @@ const UserSidebar = () => {
     // ************************************************************************************************************
     // FAKE CONTEXT VARIABLE FOR TESTING PURPOSES - set to true to view user info, set to false to view login forms
     // ************************************************************************************************************
-    let context = {
+    let contexxt = {
         user: true
     }
 
@@ -109,22 +109,40 @@ const UserSidebar = () => {
             password: '',
             });
     };
+
+    // used to disable the mobile buttons when using a chatroom or making a chatroom
+    const url = window.location.pathname
+    console.log(url);
+    let buttonSwitch
+
+    if (url.indexOf("Chatroom") == true) {
+        buttonSwitch = false
+    } else if (url.indexOf("CreateRoom") == true) {
+        buttonSwitch = false
+        console.log('working?')
+    } else {
+        buttonSwitch = true
+    }
     // ---------
     
     // what we want to render
     return (
         <div className="sidebar">
-
+            
+            {!buttonSwitch ? (
+                <div></div>
+                ) : (
             <div className='mobileButtons'>
                 <a className='donateButton'>DONATE</a>
                 <a className='createRoomButton' href='/CreateRoom'>CREATE ROOM</a>
             </div>
+                )}
 
             <div className='sidebarMainContainer'>
                 
                 {/* IF THE USER CONTEXT EXISTS (meaning the user is logged in) */}
                 {/* Render the following: */}
-                {context.user ? (
+                {contexxt.user ? (
                     <UserProfile />
                 ) : (
                 // OTHERWISE, render the login/signup forums

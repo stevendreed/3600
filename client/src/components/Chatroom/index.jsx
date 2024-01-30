@@ -1,1 +1,0 @@
-// this component renders a specific chatroom when a user selects one on the home screen
