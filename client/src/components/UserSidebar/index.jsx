@@ -110,24 +110,13 @@ const UserSidebar = () => {
             });
     };
 
-    // used to disable the mobile buttons when using a chatroom or making a chatroom
-    const url = window.location.pathname
-    let buttonSwitch
-
-    if (url.indexOf("Chatroom") == true) {
-        buttonSwitch = false
-    } else if (url.indexOf("CreateRoom") == true) {
-        buttonSwitch = false
-    } else {
-        buttonSwitch = true
-    }
-    // ---------
     
     // what we want to render
     return (
         <div className="sidebar">
             
-            {!buttonSwitch ? (
+            {/* if we are in a Chatroom or in the CreateRoom menu, the donate and createroom buttons will not load on mobile */}
+            {window.location.pathname.indexOf("Chatroom") == true || window.location.pathname.indexOf("CreateRoom") == true ? (
                 <div></div>
                 ) : (
             <div className='mobileButtons'>

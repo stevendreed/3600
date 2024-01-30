@@ -988,7 +988,102 @@
   border: 1px solid teal;
 }
 
-/* ----------------------- CREATE CHATROOM ENDS ------------------------ */
+/* ----------------------- MOBILE CREATE CHATROOM ENDS ------------------------ */
+
+/* ----------------------- MOBILE CHATROOM BEGINS ------------------------ */
+
+.chatroom-container {
+  width: 97%;
+  height: 85%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 20px;
+  margin: 5px 5 25px 100px;
+  background-color: var(--darkBackground);
+  border: 15px solid var(--lightBackground);
+  border-radius: 20px;
+}
+
+.messages-container {
+  width: 100%;
+  height: 72%;
+  display: flex;
+  flex-flow: column nowrap;
+  overflow-y: scroll;
+}
+
+.single-message-container {
+  display: flex;
+  flex-flow: row nowrap;
+  border: 4px solid var(--lightBackground);
+  border-radius: 20px;
+  margin: 5px 0px 5px 0px;
+}
+
+.message-userInfo {
+  background-color: var(--medBackground);
+  border: 5px solid var();
+  border-radius: 15px;
+  padding: 10px;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  width: 100px;
+}
+
+.message-userInfo img {
+  border-radius: 100%;
+  width: 80px;
+}
+
+.message-userInfo h3 {
+  font-size: 1em;
+  color: var(--lightGreenChar);
+  width: 120px;
+  text-align: center;
+}
+
+.message-userInfo p {
+  font-size: .7em;
+  color: var(--lightGreenChar);
+  width: 120px;
+  text-align: center;
+}
+
+.message {
+  font-size: .95em;
+  margin: 10px;
+}
+
+.message-form-container {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--medBackground);
+  width: 100%;
+  height: 80px;
+  margin-top: 10px;
+  border-radius: 20px;
+}
+
+.message-form-input {
+  flex-basis: 90%;
+  height: 50px;
+  margin: 5px;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.messageSubmitButton {
+  background-color: var(--lightBackground);
+  border-radius: 20px;
+  margin: 5px;
+}
+
+/* ----------------------- CHATROOM ENDS ------------------------ */
 
 }
 /* MOBILE BREAKPOINTS END */
