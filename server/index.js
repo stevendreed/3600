@@ -2,7 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 require('dotenv').config();
-const { ApolloServer } = require('apollo-server-express');
+const { ApolloServer, PubSub } = require('apollo-server-express');
+const pubsub = new PubSub();
 const { typeDefs, resolvers } = require('./graphql/schema');
 const initializeTags = require('./utils/tagInit');
 
@@ -19,7 +20,11 @@ mongoose.connect(process.env.DB_URI, { useNewUrlParser: true, useUnifiedTopology
     })
     .catch(err => console.log(err));
 
-const apolloServer = new ApolloServer({ typeDefs, resolvers });
+const apolloServer = new ApolloServer({ 
+  typeDefs, 
+  resolvers,
+  context: ({ req }) => ({ req, pubsub })
+});
 
 async function startServer() {
     await apolloServer.start();
