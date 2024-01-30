@@ -245,9 +245,10 @@ const resolvers = {
       throw new Error('Could not find a user to delete');
     },
      // add a new message
-    ADD_MESSAGE: async (_, { sender, content, thread, location }, context) => {
+    ADD_MESSAGE: async (_, { sender, content, thread, location }, { pubsub }) => {
       const newMessage = new db.Message({ sender, content, thread, location });
       await newMessage.save();
+      pubsub.publish(`MESSAGE_ADDED_${location}`, { messageAdded: newMessage });
       return newMessage;
     },
     // checks if user owns message and updates it
