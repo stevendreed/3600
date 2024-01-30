@@ -104,6 +104,15 @@
   border-radius: 50px;
 }
 
+.pRoomLink {
+  border:0px
+}
+
+.pRoomLink:hover {
+  background-color: var(--greenChar);
+  color: var(--medBackground);
+}
+
 
 
 /* THIS ONLY RENDERS IF THE USER IS NOT LOGGED IN (see UserSidebar component) */
@@ -362,6 +371,12 @@
   flex-flow: column wrap;
   align-items: center;
   position: relative;
+}
+
+.card:hover {
+  border-top: 11px solid var(--greenChar);
+  border-left: 11px solid var(--greenChar);
+  border-right: 11px solid var(--greenChar);
 }
 
 .card img {

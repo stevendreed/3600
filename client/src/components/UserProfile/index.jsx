@@ -1,5 +1,9 @@
 // componenet which renders user profile information once logged in
 
+// link is used so we can click on recent rooms / our room and go to that chatroom
+import { Link } from 'react-router-dom'
+
+
 // dummy user data for user UserProfile componenet to render
 const userData = {
     _id: 1,
@@ -49,13 +53,13 @@ const UserProfile = () => {
         {/* username should be dependant on context.user.username */}
         <h2>{userData.username}</h2>
         {/* logout button should invoke a function to remove current user context / remove current jwt token */}
-        <button>Logout</button>
+        <button className='pRoomLink'>Logout</button>
 
         {/* your room would be a value assigned to a user schema, like context.user.yourRoom */}
         <div className="yourRoom">
             <h3>Your Room</h3>
             <ul>
-                <li>{userData.yourRoom.title}</li>
+            <Link to={`/Chatroom/${userData.yourRoom._id}`}><li className='pRoomLink'>{userData.yourRoom.title}</li></Link>
             </ul>
         </div>
 
@@ -65,9 +69,9 @@ const UserProfile = () => {
         <div className="recentRooms">
             <h3>Recent Rooms</h3>
             <ul>
-                <li>{userData.recentRooms[2].title}</li>
-                <li>{userData.recentRooms[1].title}</li>
-                <li>{userData.recentRooms[0].title}</li>
+            <Link to={`/Chatroom/${userData.recentRooms[2]._id}`}><li className='pRoomLink'>{userData.recentRooms[2].title}</li></Link>
+            <Link to={`/Chatroom/${userData.recentRooms[1]._id}`}><li className='pRoomLink'>{userData.recentRooms[1].title}</li></Link>
+            <Link to={`/Chatroom/${userData.recentRooms[0]._id}`}><li className='pRoomLink'>{userData.recentRooms[0].title}</li></Link>
             </ul>
         </div>
     </div>
