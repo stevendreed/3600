@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 const { ApolloServer } = require('apollo-server-express');
 const { typeDefs, resolvers } = require('./graphql/schema');
+const initializeTags = require('./utils/tagInit');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -12,7 +13,10 @@ app.use(cors());
 app.use(express.json());
 
 mongoose.connect(process.env.DB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log("MongoDB successfully connected"))
+    .then(() => {
+      console.log("MongoDB successfully connected");
+      initializeTags();
+    })
     .catch(err => console.log(err));
 
 const apolloServer = new ApolloServer({ typeDefs, resolvers });
