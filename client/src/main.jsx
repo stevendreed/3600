@@ -1,12 +1,11 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 import { ApolloProvider } from '@apollo/client';
-import { client } from './utils/apolloClient.js';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'; 
+import { client } from './utils/apolloClient';
+import App from './App.jsx';
 
 import './index.css'
-
-import App from './App.jsx'
 // these pages need to be created and exported to properly render below
 import Home from './pages/Home';
 import Chatroom from './pages/Chatroom';
@@ -40,6 +39,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <ApolloProvider client={client}>
-    <App />
+    <RouterProvider router={router}> {router}
+      <App />
+    </RouterProvider>
   </ApolloProvider>
 );
