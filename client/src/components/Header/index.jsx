@@ -13,7 +13,7 @@ const Header = () => {
     // what we want to render
     return (
         <div className="header">
-            <a href="/"><img className="headerLogo" src="images/logo-clock.svg"></img></a>
+            <a href="/"><img className="headerLogo" src="../images/logo-clock.svg"></img></a>
             <p>One Hour Chatrooms</p>
 
             {/* room sorting dropdown menu */}
