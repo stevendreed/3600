@@ -129,9 +129,9 @@ const resolvers = {
           sort = { createdAt: -1 };
           break;
         case 'userCount':
-          // TODO: implement logic for sorting by userCount
-          // ideas: onclick events register userid to chatrooms (i.e., enter chatroom action adds user to chatroom for user array and leave chatroom button removes them)
-          break;
+          // sort by the length of the activeUsers array
+          sort = { 'activeUsers.length': -1 }; // -1 for descending order (more active users first)
+        break;
         default:
           // default sorting or no sorting
       }
@@ -300,7 +300,7 @@ const resolvers = {
     }, // end deleteChatroom
     // action to register user as active user
     ENTER_CHATROOM: async (_, { chatroomId, userId }) => {
-      // Logic to add userId to the activeUsers array of the chatroom
+      // logic to add userId to the activeUsers array of the chatroom
       return await db.Chatroom.findByIdAndUpdate(
         chatroomId,
         { $addToSet: { activeUsers: userId } }, // Use $addToSet to avoid duplicates
@@ -309,10 +309,10 @@ const resolvers = {
     },
     // action to deregister user as active user
     LEAVE_CHATROOM: async (_, { chatroomId, userId }) => {
-      // Logic to remove userId from the activeUsers array of the chatroom
+      // logic to remove userId from the activeUsers array of the chatroom
       return await db.Chatroom.findByIdAndUpdate(
         chatroomId,
-        { $pull: { activeUsers: userId } }, // Use $pull to remove the user
+        { $pull: { activeUsers: userId } }, // use $pull to remove the user
         { new: true }
       ).populate('activeUsers');
     },
