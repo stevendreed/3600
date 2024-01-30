@@ -39,7 +39,7 @@ const CreateRoom = () => {
         setCreateRoomFormState({
             title: '',
             tags: [],
-            image: '',
+            icon: '',
             });
     };
 
@@ -80,7 +80,7 @@ const CreateRoom = () => {
                             placeholder="Pick an Icon"
                             name="image"
                             type="icon"
-                            value={createRoomState.image}
+                            value={createRoomState.icon}
                             onChange={handleCreateRoomChange}
                             />
                             <div className='imageChoice-container'>
