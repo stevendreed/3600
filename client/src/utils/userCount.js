@@ -1,5 +1,5 @@
 import { useQuery, useMutation } from '@apollo/client';
-import { chatrooms, ENTER_CHATROOM, LEAVE_CHATROOM } from '../../../server/graphql/schema';
+import { chatrooms, ENTER_CHATROOM, LEAVE_CHATROOM } from './apolloQL';
 
 // This component allows users to enter and leave chatrooms
 export function enterLeaveChat() {

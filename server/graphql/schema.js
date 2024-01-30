@@ -150,7 +150,7 @@ const resolvers = {
       return await db.Message.find(query)
         .sort({ createdAt: 1 })
         .populate('sender', '_id username image');
-    };
+    },
     
   },
   // mutation resolvers

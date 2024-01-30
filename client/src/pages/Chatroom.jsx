@@ -1,6 +1,6 @@
 import React from 'react';
 import { useQuery, useMutation } from '@apollo/client';
-import { chatrooms, getMessages, ADD_MESSAGE } from '../../../server/graphql/schema';
+import { chatrooms, getMessages, ADD_MESSAGE } from '../utils/apolloQL';
 import ChatroomMessage from '../components/ChatroomMessage';
 
 

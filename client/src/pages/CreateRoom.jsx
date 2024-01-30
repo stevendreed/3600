@@ -2,15 +2,15 @@
 
 import { useContext, useState } from 'react';
 import { useMutation } from '@apollo/client';
-import { CREATE_ROOM } from '../utils/mutations';
-// using a mutation to create our room (CREATE_ROOM is a placeholder)
+import { ADD_CHATROOM } from '../utils/apolloQL';
+// using a mutation to create our room (ADD_CHATROOM is a placeholder)
 
 const CreateRoom = () => {
 
     // Create a state for room creation
     const [createRoomState, setCreateRoomFormState] = useState({ title: '', tags: [], icon: '' });
     // assign mutation to a const variable
-    const [createRoom] = useMutation(CREATE_ROOM);
+    const [createRoom] = useMutation(ADD_CHATROOM);
 
     // whenever a modification to the form is made, add that change to the state
     const handleCreateRoomChange = (event) => {
@@ -22,7 +22,7 @@ const CreateRoom = () => {
       });
       };
 
-      // on submit, attempt to fire off CREATE_ROOM mutation using the data from the createRoomState
+      // on submit, attempt to fire off ADD_CHATROOM mutation using the data from the createRoomState
       const handleCreateRoomSubmit = async (event) => {
         event.preventDefault();
     

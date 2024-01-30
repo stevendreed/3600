@@ -72,7 +72,7 @@
 
 
 import { useQuery } from '@apollo/client';
-import { getChatrooms } from '../../../server/graphql/schema';
+import { getChatrooms } from '../utils/apolloQL';
 
 export function ChatroomList() {
   const { loading, error, data } = useQuery(getChatrooms, {

@@ -1,7 +1,4 @@
 // this component renders a single chatroom message when the user is in a chatroom
-
-import message from '../../../../server/models/message';
-
 const ChatroomMessage = ({ username, message, image, timestamp }) => {
   return (
     <div className="single-message-container">

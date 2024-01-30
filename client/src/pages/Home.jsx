@@ -7,6 +7,7 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 import RoomCard from '../components/RoomCard';
+import { GET_CHATROOMS } from '../utils/apolloQL';
 
 const Home = () => {
   const { loading, error, data } = useQuery(GET_CHATROOMS);
