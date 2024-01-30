@@ -1,4 +1,3 @@
-// schema.js
 const { gql } = require("apollo-server-express");
 const { signToken } = require('../utils/auth');
 // moving to utils function
