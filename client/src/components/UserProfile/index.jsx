@@ -69,9 +69,9 @@ const UserProfile = () => {
         <div className="recentRooms">
             <h3>Recent Rooms</h3>
             <ul>
-            <Link to={`/Chatroom/${userData.recentRooms[2]._id}`}><li className='pRoomLink'>{userData.recentRooms[2].title}</li></Link>
-            <Link to={`/Chatroom/${userData.recentRooms[1]._id}`}><li className='pRoomLink'>{userData.recentRooms[1].title}</li></Link>
-            <Link to={`/Chatroom/${userData.recentRooms[0]._id}`}><li className='pRoomLink'>{userData.recentRooms[0].title}</li></Link>
+            <Link  to={`/Chatroom/${userData.recentRooms[2]._id}`}><li className='pRoomLink'>{userData.recentRooms[2].title}</li></Link>
+            <Link  to={`/Chatroom/${userData.recentRooms[1]._id}`}><li className='pRoomLink'>{userData.recentRooms[1].title}</li></Link>
+            <Link  to={`/Chatroom/${userData.recentRooms[0]._id}`}><li className='pRoomLink'>{userData.recentRooms[0].title}</li></Link>
             </ul>
         </div>
     </div>
