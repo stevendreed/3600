@@ -1,7 +1,7 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-require('dotenv').config();
 const { ApolloServer } = require('apollo-server-express');
 const { PubSub } = require('graphql-subscriptions');
 const { typeDefs, resolvers } = require('./graphql/schema');
@@ -16,7 +16,14 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 // apply middleware for cors and json parsing
-app.use(cors());
+const corsOptions = {
+  origin: 'http://localhost:5173', 
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+  optionsSuccessStatus: 204
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // connect to mongodb using Mongoose
@@ -58,7 +65,8 @@ async function startServer() {
 
     // start listening on the specified port
     httpServer.listen(port, () => {
-        console.log(`Server is running on port: ${port}`);
+      console.log(`WebSocket is running on ws://localhost:${port}/graphql`);
+      console.log(`Server is running on port: ${port}`);
     });
 }
 
