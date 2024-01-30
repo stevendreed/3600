@@ -13,8 +13,6 @@ const typeDefs = gql`
     messages(chatroomId: ID!): [Message]
     chatrooms: [Chatroom] 
     getChatrooms(options: ChatroomQueryOptions): [Chatroom]
-    allUsers: [User]
-    allTags: [Tag]
   }
 
   type Mutation {
@@ -145,12 +143,6 @@ const resolvers = {
         .populate('tags')
         .populate('activeUsers');
       return chatrooms;
-    },
-    allUsers: async () => {
-      return await db.User.find({});
-    },
-    allTags: async () => {
-      return await db.Tags.find({});
     },
   },
   // mutation resolvers
