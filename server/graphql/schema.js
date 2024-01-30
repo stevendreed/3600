@@ -9,7 +9,7 @@ const db = require('../models'); // import all models
 // define graphql type definitions
 const typeDefs = gql`
   type Query {
-    user: User
+    user(id: ID!): User
     messages(chatroomId: ID!): [Message]
     chatrooms: [Chatroom] 
     getChatrooms(options: ChatroomQueryOptions): [Chatroom]
