@@ -30,6 +30,8 @@ const typeDefs = gql`
     DELETE_MESSAGE(username: String!): Auth
     ADD_CHATROOM(title: String!, tagNames: [String!], icon: String): Chatroom
     DELETE_CHATROOM(title: String!): Auth
+    ENTER_CHATROOM(chatroomId: ID!, userId: ID!): Chatroom
+    LEAVE_CHATROOM(chatroomId: ID!, userId: ID!): Chatroom
   }
 
   directive @adminOnly on FIELD_DEFINITION
@@ -296,6 +298,24 @@ const resolvers = {
       await db.Chatroom.findOneAndDelete({ _id: chatroomId });
       return { success: true, message: 'Chatroom deleted' };
     }, // end deleteChatroom
+    // action to register user as active user
+    ENTER_CHATROOM: async (_, { chatroomId, userId }) => {
+      // Logic to add userId to the activeUsers array of the chatroom
+      return await db.Chatroom.findByIdAndUpdate(
+        chatroomId,
+        { $addToSet: { activeUsers: userId } }, // Use $addToSet to avoid duplicates
+        { new: true }
+      ).populate('activeUsers');
+    },
+    // action to deregister user as active user
+    LEAVE_CHATROOM: async (_, { chatroomId, userId }) => {
+      // Logic to remove userId from the activeUsers array of the chatroom
+      return await db.Chatroom.findByIdAndUpdate(
+        chatroomId,
+        { $pull: { activeUsers: userId } }, // Use $pull to remove the user
+        { new: true }
+      ).populate('activeUsers');
+    },
   },
 };
 
