@@ -714,7 +714,7 @@ Link {
 
   .userProfile h3 {
     text-align: center;
-    font-size: 1.8em;
+    font-size: 1.5em;
     color: var(--lightGreenChar);
     margin: 0px 0px 0px 0px;
   }
@@ -723,23 +723,60 @@ Link {
     font-size: 1.2em;
     color: var(--lightGreenChar);
     margin: 8px 0px 0px 0px;
+    padding: 0px;
     text-align: center;
     background-color: var(--medBackground);
     width: 180px;
     border-radius: 50px;
   }
 
+  .yourRoom {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    }
+  
+  .yourRoom ul {
+    width: 80px;
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .recentRooms {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+  }
+  
+  .recentRooms ul {
+    width: 230px;
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+
   @media (max-width: 500px) {
     .userProfile h3 {
       font-size: 1em;
       color: var(--lightGreenChar);
-      margin: 10px 0px 0px 0px;
+      margin: 5px 0px 0px 0px;
     }
     
     .userProfile li {
       font-size: .9em;
       color: var(--lightGreenChar);
-      margin: 8px 0px 0px 0px;
+      margin: 5px 0px 0px 0px;
       text-align: center;
       background-color: var(--medBackground);
       width: 100px;
@@ -852,20 +889,21 @@ Link {
     border-bottom: 2px solid var(--darkBackground);
     color: var(--lightGreenChar);
     width: 40%;
-    height: 50px;
+    height: 40px;
     margin: 10px;
-    font-size: 1em;
-    padding: 12px 0px 4px 0px;
+    font-size: 1.2em;
+    padding: 12px 1px 5px 1px;
+    text-align: center;
   }
 
   .donateButton {
     background-color: var(--altBackground);
     border-bottom: 2px solid var(--darkBackground);
     width: 40%;
-    height: 50px;
+    height: 40px;
     margin: 10px;
-    font-size: 1em;
-    padding: 12px 0px 5px 0px;
+    font-size: 1.3em;
+    padding: 12px 1px 5px 1px;
   }
 
   .createRoomButton:hover {
