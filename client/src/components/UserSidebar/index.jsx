@@ -28,7 +28,7 @@ const UserSidebar = () => {
     // FAKE CONTEXT VARIABLE FOR TESTING PURPOSES - set to true to view user info, set to false to view login forms
     // ************************************************************************************************************
     let contexxt = {
-        user: true
+        user: false
     }
 
     // declaration for login and signup forms (when user not logged in)

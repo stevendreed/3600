@@ -1,18 +1,19 @@
 // this component renders a single chatroom message when the user is in a chatroom
 
-const ChatroomMessage = (item) => {
+import message from '../../../../server/models/message';
 
-// rendering poster's profile image, username, timestamp of message creation, and the message itself
-return (
+const ChatroomMessage = ({ username, message, image, timestamp }) => {
+  return (
     <div className="single-message-container">
         <div className="message-userInfo">
-            <img src={item.image}></img>
-            <h3>{item.username}</h3>
-            <p>Posted at: {item.timestamp}</p>
+            <img src={image} alt={`${username}`} />
+            <h3>{username}</h3>
+            <p>Posted at: {new Date(timestamp).toLocaleString()}</p>
         </div>
-        <p className="message">{item.message}</p>
+        <p className="message">{message}</p>
     </div>
-)
+  );
 }
+
 
 export default ChatroomMessage;

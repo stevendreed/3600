@@ -25,6 +25,11 @@ const userSchema = new Schema({
     trim: true, // remove leading and trailing spaces
     unique: true,
   },
+  image: {
+    type: String,
+    trim: true,
+    default: 'defaultImage.jpg' //placeholder
+  },
   activeChatrooms: [{
     type: ObjectId,
     ref: 'chatroom'

@@ -147,8 +147,11 @@ const resolvers = {
     },
     getMessages: async (_, { chatroomId }) => {
       let query = { location: chatroomId };
-      return await db.Message.find(query).sort({ createdAt: 1 }).populate('sender');
-    },
+      return await db.Message.find(query)
+        .sort({ createdAt: 1 })
+        .populate('sender', '_id username image');
+    };
+    
   },
   // mutation resolvers
   Mutation: {
