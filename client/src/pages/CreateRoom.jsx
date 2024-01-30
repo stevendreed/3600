@@ -47,7 +47,7 @@ const CreateRoom = () => {
     const imageclick = () => {
       setCreateRoomFormState({
         ...createRoomState,
-        image: event.target.name,
+        icon: event.target.name,
     });
     };
 
