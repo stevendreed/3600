@@ -52,6 +52,10 @@ const typeDefs = gql`
     location: Chatroom
   }
 
+  type Subscription {
+    messageAdded(chatroomId: ID!): Message
+  }
+
   input ChatroomQueryOptions {
     sortBy: String
     filterActive: Boolean
