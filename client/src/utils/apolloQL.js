@@ -13,6 +13,7 @@ export const LOGIN_USER = gql`
   }
 `;
 
+
 export const ADD_USER = gql`
   mutation {
     addUser(username: $username, email: $email, password: $password) {
@@ -50,17 +51,13 @@ query {
       name
     }
     icon
-    activeUsers {
-      _id
-      username
-    }
     createdAt
   }
 }
 `;
 
 export const getMessages = gql`
-  query {
+query {
     getMessages(chatroomId: $chatroomId) {
       _id
       sender {
@@ -71,18 +68,8 @@ export const getMessages = gql`
       content
       location {
         _id
-        title
-        tags {
-          _id
-          name
-        }
-        icon
-        activeUsers {
-          _id
-          username
-        }
-        createdAt
       }
+      createdAt
     }
   }
 `;
@@ -97,22 +84,11 @@ export const ADD_MESSAGE = gql`
         image
       }
       content
-      reaction
-      thread
       location {
         _id
-        title
-        tags {
-          _id
-          name
-        }
-        icon
-        activeUsers {
-          _id
-          username
-        }
-        createdAt
       }
+      icon
+      createdAt
     }
   }
 `;
@@ -127,10 +103,6 @@ export const ADD_CHATROOM = gql`
         name
       }
       icon
-      activeUsers {
-        _id
-        username
-      }
       createdAt
     }
   }
@@ -140,17 +112,10 @@ export const ENTER_CHATROOM = gql`
   mutation {
     ENTER_CHATROOM(chatroomId: $chatroomId, userId: $userId) {
       _id
-      title
-      tags {
-        _id
-        name
-      }
       icon
       activeUsers {
         _id
-        username
       }
-      createdAt
     }
   }
 `;
@@ -159,17 +124,10 @@ export const LEAVE_CHATROOM = gql`
   mutation {
     LEAVE_CHATROOM(chatroomId: $chatroomId, userId: $userId) {
       _id
-      title
-      tags {
-        _id
-        name
-      }
       icon
       activeUsers {
         _id
-        username
       }
-      createdAt
     }
   }
 `;

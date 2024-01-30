@@ -15,9 +15,9 @@ export default defineConfig({
       // added to prevent mongoose && vite from coliding on the same port
       '/api': "http://localhost:5173",
       '/graphql': {
-        target: 'http://localhost:5000/graphql', // Your GraphQL server address
+        target: 'http://localhost:5000/graphql', 
         changeOrigin: true,
-        ws: true, // Enable WebSocket proxy
+        ws: true, 
       },
     },
   },
