@@ -14,6 +14,8 @@ const typeDefs = gql`
     chatrooms: [Chatroom] 
     getChatrooms(options: ChatroomQueryOptions): [Chatroom]
     getMessages(chatroomId: ID!): [Message]
+    allUsers: [User]
+    allTags: [Tags]
   }
 
   type Mutation {
@@ -151,7 +153,12 @@ const resolvers = {
         .sort({ createdAt: 1 })
         .populate('sender', '_id username image');
     },
-    
+    allUsers: async () => {
+      return await db.User.find({});
+    },
+    allTags: async () => {
+      return await db.Tags.find({});
+    },
   },
   // mutation resolvers
   Mutation: {
