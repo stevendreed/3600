@@ -9,21 +9,19 @@ import { useNavigate } from 'react-router-dom'
 // function to export our header content to Outlet in App.jsx based on url
 // defined in Main.jsx
 const Header = () => {
-  // sets a reroute hook in this component. Pass in PATH argument to reroute
-  // the user to the desired URL (based on deployment link/port)
-  let navi = useNavigate();
-  const reroute = (PATH) => {
-    navi(PATH);
-  } 
-  // what we want to render
-  return (
-  <div className='header'>
-    <button onClick={function() {
-    reroute('/');
-    }
-    }>3600
-    </button>
-    <p>One Hour Chatrooms</p>
+
+    // this will check the url to see if the user is in a chatroom
+    // there will then be a useParams function to pull the chatroom's id from the url string
+    // then do a database query for the chatroom's info to render in the header instead of 'sort rooms' and 'One Hour Chatrooms'
+    // if (window.location.href.indexOf("chatRoom") > -1)
+
+    // what we want to render
+    return (
+        <div className="header">
+
+            <a href="/"><img className="headerLogo" src="../images/logo-clock.svg"></img></a>
+
+            <p>One Hour Chatrooms</p>
 
     {/* room sorting dropdown menu */}
     <div className='sortDropdown'>
