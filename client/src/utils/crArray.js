@@ -72,10 +72,10 @@
 
 
 import { useQuery } from '@apollo/client';
-import { GET_CHATROOMS } from '../../../server/graphql/schema';
+import { getChatrooms } from '../../../server/graphql/schema';
 
 export function ChatroomList() {
-  const { loading, error, data } = useQuery(GET_CHATROOMS, {
+  const { loading, error, data } = useQuery(getChatrooms, {
     variables: {
       options: {
         filterActive: true,
