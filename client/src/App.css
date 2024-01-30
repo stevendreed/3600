@@ -434,7 +434,7 @@ Link {
 
 .card img {
   border: 5px solid var(--medBackground);
-  margin: 20px 0px 10px 0px;
+  margin: 20px 0px 5px 0px;
   width: 170px;
   height: 170px;
   border-radius: 100%;
@@ -443,6 +443,8 @@ Link {
 .card h1 {
   font-size: 2em;
   color: var(--lightGreenChar);
+  padding: 0px;
+  margin: 0px 0px 0px 0px;
 }
 
 .card h2 {
@@ -452,14 +454,14 @@ Link {
   border-radius: 20px;
   width: 200px;
   height: auto;
-  margin: 5px 0px 0px 0px;
+  margin: 12px 0px 0px 0px;
   padding: 0px 0px 2px 0px;
 }
 
 .card h3 {
   font-size: 3em;
   position: absolute;
-  bottom: 5px;
+  top: 255px;
   color: var(--greenChar);
 }
 
