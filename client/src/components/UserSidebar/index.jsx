@@ -122,7 +122,7 @@ const UserSidebar = () => {
                 ) : (
             <div className='mobileButtons'>
                 <a className='donateButton'>DONATE</a>
-                <a className='createRoomButton' href='/CreateRoom'>CREATE ROOM</a>
+                <Link className='createRoomButton' to='/CreateRoom'>CREATE ROOM</Link>
             </div>
                 )}
 
@@ -218,7 +218,7 @@ const UserSidebar = () => {
 
             </div>
             <div className='sidebarButtonContainer'>
-                <a className='createRoomButton' href='/CreateRoom'>CREATE NEW ROOM</a>
+                <Link className='createRoomButton' to='/CreateRoom'>CREATE NEW ROOM</Link>
                 <a className='donateButton'>DONATE</a>
             </div>
         </div>
