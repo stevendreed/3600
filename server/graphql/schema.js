@@ -144,12 +144,6 @@ const resolvers = {
         .populate('activeUsers');
       return chatrooms;
     },
-    subscription: {
-      messageAdded: {
-        subscribe: (_, { chatroomId }, { pubsub }) => 
-          pubsub.asyncIterator(`MESSAGE_ADDED_${chatroomId}`)
-      },
-    },
   },
   // mutation resolvers
   Mutation: {
@@ -320,6 +314,12 @@ const resolvers = {
         { $pull: { activeUsers: userId } }, // use $pull to remove the user
         { new: true }
       ).populate('activeUsers');
+    },
+  },
+  Subscription: {
+    messageAdded: {
+      subscribe: (_, { chatroomId }, { pubsub }) => 
+        pubsub.asyncIterator(`MESSAGE_ADDED_${chatroomId}`)
     },
   },
 };
