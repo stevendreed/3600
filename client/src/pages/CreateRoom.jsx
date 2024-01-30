@@ -39,8 +39,16 @@ const CreateRoom = () => {
         setCreateRoomFormState({
             title: '',
             tags: [],
-            image: '',
+            icon: '',
             });
+    };
+
+    // allows users to select images for room creation
+    const imageclick = () => {
+      setCreateRoomFormState({
+        ...createRoomState,
+        icon: event.target.name,
+    });
     };
   
     return (
@@ -65,24 +73,38 @@ const CreateRoom = () => {
                             onChange={handleCreateRoomChange}
                             />
                             <input
+                            disabled
                             className="createRoom-form-input"
                             placeholder="Pick an Icon"
                             name="image"
                             type="icon"
-                            value={createRoomState.image}
+                            value={createRoomState.icon}
                             onChange={handleCreateRoomChange}
                             />
                             <div className='imageChoice-container'>
                               {/* images user can select, attach function onclick set createRoomState.image to the url */}
-                              <img className='imageChoice' src='/images/profileimgexample.jpg'></img>
-                              <img className='imageChoice' src='/images/profileimgexample.jpg'></img>
-                              <img className='imageChoice' src='/images/profileimgexample.jpg'></img>
-                              <img className='imageChoice' src='/images/profileimgexample.jpg'></img>
-                              <img className='imageChoice' src='/images/profileimgexample.jpg'></img>
-                              <img className='imageChoice' src='/images/profileimgexample.jpg'></img>
-                              <img className='imageChoice' src='/images/profileimgexample.jpg'></img>
-                              <img className='imageChoice' src='/images/profileimgexample.jpg'></img>
-                              <img className='imageChoice' src='/images/profileimgexample.jpg'></img>
+                              <img className='imageChoice' src='/images/person1.svg' name='person1.svg' onClick={() => imageclick()}></img>
+                              <img className='imageChoice' src='/images/person2.svg' name='person2.svg' onClick={() => imageclick()}></img>
+                              <img className='imageChoice' src='/images/person3.svg' name='person3.svg' onClick={() => imageclick()}></img>
+                              <img className='imageChoice' src='/images/person4.svg' name='person4.svg' onClick={() => imageclick()}></img>
+                              <img className='imageChoice' src='/images/person5.svg' name='person5.svg' onClick={() => imageclick()}></img>
+                              <img className='imageChoice' src='/images/person6.svg' name='person6.svg' onClick={() => imageclick()}></img>
+                              <img className='imageChoice' src='/images/dog.svg' name='dog.svg' onClick={() => imageclick()}></img>
+                              <img className='imageChoice' src='/images/cat.svg' name='cat.svg' onClick={() => imageclick()}></img>
+                              <img className='imageChoice' src='/images/gator.svg' name='gator.svg' onClick={() => imageclick()}></img>
+                              <img className='imageChoice' src='/images/robot.svg' name='robot.svg' onClick={() => imageclick()}></img>
+                              <img className='imageChoice' src='/images/painting.svg' name='painting.svg' onClick={() => imageclick()}></img>
+                              <img className='imageChoice' src='/images/guitar.svg' name='guitar.svg' onClick={() => imageclick()}></img>
+                              <img className='imageChoice' src='/images/gaming.svg' name='gaming.svg' onClick={() => imageclick()}></img>
+                              <img className='imageChoice' src='/images/sports.svg' name='sports.svg' onClick={() => imageclick()}></img>
+                              <img className='imageChoice' src='/images/book.svg' name='book.svg' onClick={() => imageclick()}></img>
+                              <img className='imageChoice' src='/images/buildings.svg' name='buildings.svg' onClick={() => imageclick()}></img>
+                              <img className='imageChoice' src='/images/clock.svg' name='clock.svg' onClick={() => imageclick()}></img>
+                              <img className='imageChoice' src='/images/foodcombo.svg' name='foodcombo.svg' onClick={() => imageclick()}></img>
+                              <img className='imageChoice' src='/images/pizza.svg' name='pizza.svg' onClick={() => imageclick()}></img>
+                              <img className='imageChoice' src='/images/burger.svg' name='burger.svg' onClick={() => imageclick()}></img>
+                              <img className='imageChoice' src='/images/flowers.svg' name='flowers.svg' onClick={() => imageclick()}></img>
+                              <img className='imageChoice' src='/images/diamonds.svg' name='diamonds.svg' onClick={() => imageclick()}></img>
                             </div>
                             <button
                             className="roomSubmitButton"
