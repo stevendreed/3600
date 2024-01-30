@@ -3,9 +3,12 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 require('dotenv').config();
 const { ApolloServer, PubSub } = require('apollo-server-express');
-const pubsub = new PubSub();
 const { typeDefs, resolvers } = require('./graphql/schema');
 const initializeTags = require('./utils/tagInit');
+const { createServer } = require('http');
+const { useServer } = require('graphql-ws/lib/use/ws');
+const { WebSocketServer } = require('ws');
+const { makeExecutableSchema } = require('@graphql-tools/schema');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -20,9 +23,11 @@ mongoose.connect(process.env.DB_URI, { useNewUrlParser: true, useUnifiedTopology
     })
     .catch(err => console.log(err));
 
+const pubsub = new PubSub();
+const schema = makeExecutableSchema({ typeDefs, resolvers });
+
 const apolloServer = new ApolloServer({ 
-  typeDefs, 
-  resolvers,
+  schema, 
   context: ({ req }) => ({ req, pubsub })
 });
 
@@ -30,7 +35,16 @@ async function startServer() {
     await apolloServer.start();
     apolloServer.applyMiddleware({ app });
 
-    app.listen(port, () => {
+    const httpServer = createServer(app);
+
+    const wsServer = new WebSocketServer({
+      server: httpServer,
+      path: '/graphql',
+    });
+
+    useServer({ schema }, wsServer);
+
+    httpServer.listen(port, () => {
         console.log(`Server is running on port: ${port}`);
     });
 }
