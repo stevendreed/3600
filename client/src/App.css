@@ -472,7 +472,7 @@ Link {
 
 
 .createRoom-container {
-  width: 97%;
+  width: 90%;
   height: 100%;
   display: flex;
   flex-flow: column nowrap;
@@ -545,8 +545,8 @@ Link {
 /* ----------------------- CHATROOM BEGINS ------------------------ */
 
 .chatroom-container {
-  width: 97%;
-  height: 85%;
+  width: 90%;
+  height: 78%;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
@@ -1006,7 +1006,7 @@ Link {
 /* ----------------------- MOBILE CREATE CHATROOM BEGINS ------------------------ */
 
 .createRoom-container {
-  width: 97%;
+  width: 82%;
   height: 100%;
   display: flex;
   flex-flow: column nowrap;
@@ -1082,8 +1082,8 @@ Link {
 /* ----------------------- MOBILE CHATROOM BEGINS ------------------------ */
 
 .chatroom-container {
-  width: 97%;
-  height: 85%;
+  width: 80%;
+  height: 76%;
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;
@@ -1097,7 +1097,7 @@ Link {
 
 .messages-container {
   width: 100%;
-  height: 72%;
+  height: 67%;
   display: flex;
   flex-flow: column nowrap;
   overflow-y: scroll;
