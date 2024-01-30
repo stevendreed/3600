@@ -429,7 +429,7 @@
 
 .createRoom-form-input {
   width: 85%;
-  height: 60px;
+  height: 50px;
   text-align: center;
   margin: 13px 0px 10px 0px;
   background-color: var(--darkBackground);
@@ -440,7 +440,9 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  margin: 10px 0px 0px 0px;
+  margin: 10px 25px 0px 25px;
+  overflow-y: scroll;
+  height: 150px;
 }
 
 .imageChoice {
@@ -449,6 +451,10 @@
   border-radius: 100%;
   border: solid 3px var(--darkBackground);
   margin: 8px;
+}
+
+.imageChoice:hover {
+  border: solid 3px var(--lightGreenChar);
 }
 
 .roomSubmitButton {

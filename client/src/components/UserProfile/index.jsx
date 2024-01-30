@@ -4,7 +4,7 @@
 const userData = {
     _id: 1,
     username: "David27",
-    image: "profileimgexample.jpg",
+    image: "dog.svg",
     recentRooms: [
       {
         _id: 2,
