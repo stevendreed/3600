@@ -110,8 +110,11 @@ const resolvers = {
   Mutation: {
     // user login
     LOGIN_USER: async (_, { email, password }, context) => {
+      // const hashedPW = await bcrypt.hash(password, saltRounds);
       const user = await db.User.findOne({ email });
-      if (!user || !await user.isCorrectPassword(password)) {
+      const goodPW = bcrypt.compare(password, user.password);
+    
+      if (!user || !goodPW) {
         throw new Error('Invalid credentials');
       }
       // token is signed with email information & the time stamp

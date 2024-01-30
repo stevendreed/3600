@@ -50,10 +50,8 @@ const CreateRoom = () => {
         icon: event.target.name,
     });
     };
-
   
     return (
-
       <div className="createRoom-container">
 
           <form className='createRoom-form' onSubmit={handleCreateRoomSubmit}>

@@ -117,6 +117,7 @@ const UserSidebar = () => {
             
             {/* if we are in a Chatroom or in the CreateRoom menu, the donate and createroom buttons will not load on mobile */}
             {window.location.pathname.indexOf("Chatroom") == true || window.location.pathname.indexOf("CreateRoom") == true ? (
+              
                 <div></div>
                 ) : (
             <div className='mobileButtons'>
