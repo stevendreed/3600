@@ -25,6 +25,7 @@ const messageSchema = new Schema({
     location: {
       type: ObjectId,
       ref: 'chatroom',
+      required: true,
     }, // maps to a chatroom ID
   },
   {
