@@ -16,9 +16,9 @@ const exampleChatRoom = {
   messages: [
     {
       _id: 1,
-      username: "ted",
-      message: "Hello, my name is ted",
-      image: "/images/profileimgexample.jpg",
+      username: "Monica",
+      message: "Hello, my name is Monica",
+      image: "/images/person2.svg",
       timestamp: "111111"
     },
     {
@@ -30,9 +30,9 @@ const exampleChatRoom = {
     },
     {
       _id: 3,
-      username: "ted",
+      username: "Monica",
       message: "Wow, that is really uncalled for",
-      image: "/images/profileimgexample.jpg",
+      image: "/images/person2.svg",
       timestamp: "33333333"
     },
     {
@@ -40,6 +40,13 @@ const exampleChatRoom = {
       username: "bob",
       message: "Sorry.",
       image: "/images/profileimgexample.jpg",
+      timestamp: "444444444"
+    },
+    {
+      _id: 5,
+      username: "Dean",
+      message: "I think screaming is perfectly healthy and fun.",
+      image: "/images/person6.svg",
       timestamp: "444444444"
     },
   ]
