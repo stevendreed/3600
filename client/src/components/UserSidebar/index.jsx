@@ -14,7 +14,7 @@ import UserProfile from '../UserProfile/index';
 // UserProfile componet is used to render user information when logged in
 
 // mutations needed to make this component work:
-import { LOGIN_USER, ADD_USER } from '../../utils/mutations';
+import { LOGIN_USER, ADD_USER } from '../../utils/apolloQL';
 // logs in a user based on existing database information and returns an auth object (used for jwt token signing)
 import AuthService from '../../utils/auth';
 // used for token authentication (what we pass the auth object to)
@@ -25,7 +25,7 @@ const UserSidebar = () => {
     // ************************************************************************************************************
     // FAKE CONTEXT VARIABLE FOR TESTING PURPOSES - set to true to view user info, set to false to view login forms
     // ************************************************************************************************************
-    let test_context = user;
+    // let test_context = ;
 
     // store current state of user 
     let userState = AuthService.loggedIn();
@@ -75,7 +75,7 @@ const UserSidebar = () => {
             variables: { ...loginFormState },
         });
 
-        Auth.login(loginData.login.token);
+        AuthService.login(loginData.login.token);
         } catch (e) {
         console.error(e);
         }
@@ -96,7 +96,7 @@ const UserSidebar = () => {
             variables: { ...signupFormState },
             });
     
-            Auth.login(signupData.addUser.token);
+            AuthService.login(signupData.addUser.token);
         } catch (e) {
             console.error(e);
         }
