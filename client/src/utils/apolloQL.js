@@ -28,17 +28,21 @@ export const ADD_USER = gql`
 `;
 
 export const GET_CHATROOMS = gql`
-  query {
-    getChatrooms(options: { sortBy: $sortBy, filterActive: $filterActive }) {
+query Query($options: ChatroomQueryOptions) {
+  getChatrooms(options: $options) {
+    _id
+    title
+    createdAt
+    activeUsers {
       _id
-      title
-      createdAt
-      icon
-      tags {
-        name
-      }
+      username
+    }
+    tags {
+      _id
+      name
     }
   }
+}
 `;
 
 
