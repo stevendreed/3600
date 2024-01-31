@@ -8,7 +8,7 @@ import { ADD_CHATROOM } from '../utils/apolloQL';
 const CreateRoom = () => {
 
     // Create a state for room creation
-    const [createRoomState, setCreateRoomFormState] = useState({ title: '', tags: [], icon: '' });
+    const [createRoomState, setCreateRoomFormState] = useState({ title: '', tagNames: [], icon: '' });
     // assign mutation to a const variable
     const [createRoom] = useMutation(ADD_CHATROOM);
 
@@ -38,7 +38,7 @@ const CreateRoom = () => {
         // clear form state after mutation
         setCreateRoomFormState({
             title: '',
-            tags: [],
+            tagNames: [],
             icon: '',
             });
     };
@@ -69,7 +69,7 @@ const CreateRoom = () => {
                             placeholder="Room Tags"
                             name="tags"
                             type="tags"
-                            value={createRoomState.tags}
+                            value={createRoomState.tagNames}
                             onChange={handleCreateRoomChange}
                             />
                             <input

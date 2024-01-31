@@ -9,7 +9,7 @@ const db = require('../models'); // import all models
 // define graphql type definitions
 const typeDefs = gql`
   type Query {
-    user: User
+    user(id: ID!): User
     messages(chatroomId: ID!): [Message]
     chatrooms: [Chatroom] 
     getChatrooms(options: ChatroomQueryOptions): [Chatroom]
@@ -39,6 +39,7 @@ const typeDefs = gql`
     username: String
     email: String @adminOnly
     recentChatrooms: [Chatroom]
+    image: String
   }
 
   type Message {
@@ -48,6 +49,7 @@ const typeDefs = gql`
     reaction: String
     thread: ID
     location: Chatroom
+    createdAt: String
   }
 
   type Subscription {
