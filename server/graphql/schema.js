@@ -41,6 +41,7 @@ const typeDefs = gql`
     username: String
     email: String @adminOnly
     recentChatrooms: [Chatroom]
+    image: String
   }
 
   type Message {
@@ -50,6 +51,7 @@ const typeDefs = gql`
     reaction: String
     thread: ID
     location: Chatroom
+    createdAt: String
   }
 
   type Subscription {
@@ -57,7 +59,7 @@ const typeDefs = gql`
   }
 
   input ChatroomQueryOptions {
-    sortBy: String = "newest"
+    sortBy: String
     filterActive: Boolean
   }
 
@@ -109,7 +111,7 @@ const resolvers = {
     },
     // fetch all chatrooms
     chatrooms: async () => {
-      return await db.Chatroom.find({}).populate('Tags');
+      return await db.Chatroom.find({}).populate('tags');
     },
     // sort chatrooms
     getChatrooms: async (_, { options }) => {
