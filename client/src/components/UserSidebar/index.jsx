@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
+import { Link } from 'react-router-dom';
 import { LOGIN_USER, ADD_USER } from '../../utils/apolloQL';
 import Auth from '../../utils/auth';
 
@@ -80,46 +81,62 @@ const UserSidebar = () => {
     });
   };
 
-  const handleLogout = () => {
-    Auth.logout();
-  };
+    
+    // what we want to render
+    return (
+      <div className="sidebar">
+            
+      {/* if we are in a Chatroom or in the CreateRoom menu, the donate and createroom buttons will not load on mobile */}
+      {window.location.pathname.indexOf("Chatroom") == true || window.location.pathname.indexOf("CreateRoom") == true ? (
+        
+          <div></div>
+          ) : (
+      <div className='mobileButtons'>
+          <a className='donateButton'>DONATE</a>
+          <Link className='createRoomButton' to='/CreateRoom'>CREATE ROOM</Link>
+      </div>
+          )}
 
-return (
-  <div className="sidebar">
+      <div className='sidebarMainContainer'>
+      {isLoggedIn ? (
+        <div className='user-profile'>
+          <UserProfile />
+            <button onClick={() => Auth.logout()}>Logout</button>
+        </div>
+        ) : (
+        <div className='login-signup-forumsContainer'>
 
-  {isLoggedIn ? (
-    <div className='user-profile'>
-      <button onClick={handleLogout}>Logout</button>
-    </div>
-  ) : (
-    <div className='login-signup-forms'>
-      <form className='login-form' onSubmit={handleLoginSubmit}>
+        {/* login form */}
+        <form className='login-form' onSubmit={handleLoginSubmit}>
         <h3>Login</h3>
-          <input
-          className="login-form-input"
-          placeholder="Username"
-          name="username"
-          type="username"
-          value={loginFormState.username}
-          onChange={handleLoginChange}
-          />
-          <input
-          className="login-form-input"
-          placeholder="Password"
-          name="password"
-          type="password"
-          value={loginFormState.password}
-          onChange={handleLoginChange}
-          />
-          <button
-          className="submitButton"
-          style={{ cursor: 'pointer' }}
-          type="submit">
+            <input
+            className="login-form-input"
+            placeholder="Username"
+            name="username"
+            type="username"
+            value={loginFormState.username}
+            onChange={handleLoginChange}
+            />
+            <input
+            className="login-form-input"
+            placeholder="Password"
+            name="password"
+            type="password"
+            value={loginFormState.password}
+            onChange={handleLoginChange}
+            />
+            <button
+            className="submitButton"
+            style={{ cursor: 'pointer' }}
+            type="submit"
+            >
             Submit
-          </button>
+            </button>
         </form>
+
+        {/* signup form */}
         <form className='signup-form' onSubmit={handleSignupSubmit}>
-          <h3>Sign Up</h3>
+        <h3>Sign Up</h3>
             <input
             className="signup-form-input"
             placeholder="Email"
@@ -147,43 +164,36 @@ return (
             <button
             className="submitButton"
             style={{ cursor: 'pointer' }}
-            type="submit">
+            type="submit"
+            >
             Submit
             </button>
-          </form>
-    </div>
-  )}
+        </form>
 
-  {/* if we are in a Chatroom or in the CreateRoom menu, the donate and createroom buttons will not load on mobile */}
-  {window.location.pathname.indexOf("Chatroom") == true || window.location.pathname.indexOf("CreateRoom") == true ? (
-    <div></div>
-  ) : (
-    <div className='mobileButtons'>
-      <a className='donateButton'>DONATE</a>
-      <a className='createRoomButton' href='/CreateRoom'>CREATE ROOM</a>
-    </div>
-  )}
-
-  <div className='sidebarMainContainer'>
-    {/* Error messages, need to be included between forum submissions */}
-    {loginError && (
-    <div className="my-3 p-3 bg-danger text-white">
-      {loginError.message}
-    </div>
-    )}
-
-    {signupError && (
-      <div className="my-3 p-3 bg-danger text-white">
-        {signupError.message}
       </div>
-    )}  
+      )}
+
+      {/* Error messages, need to be included between forum submissions */}
+      {loginError && (
+        <div className="my-3 p-3 bg-danger text-white">
+          {loginError.message}
+        </div>
+      )}
+
+      {signupError && (
+        <div className="my-3 p-3 bg-danger text-white">
+          {signupError.message}
+        </div>
+      )}  
+
+      </div>
+      <div className='sidebarButtonContainer'>
+          <Link className='createRoomButton' to='/CreateRoom'>CREATE NEW ROOM</Link>
+          <a className='donateButton'>DONATE</a>
+      </div>
   </div>
-  <div className='sidebarButtonContainer'>
-    <a className='createRoomButton' href='/CreateRoom'>CREATE NEW ROOM</a>
-    <a className='donateButton'>DONATE</a>
-    </div>
-</div>
-  )
+)
+
 }
 
-export default UserSidebar;
+export default UserSidebar
