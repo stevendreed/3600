@@ -41,6 +41,7 @@ export const GET_CHATROOMS = gql`
   }
 `;
 
+
 export const chatrooms = gql`
 query {
   chatrooms {

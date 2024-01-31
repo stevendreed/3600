@@ -57,7 +57,7 @@ const typeDefs = gql`
   }
 
   input ChatroomQueryOptions {
-    sortBy: String
+    sortBy: String = "newest"
     filterActive: Boolean
   }
 
@@ -109,7 +109,7 @@ const resolvers = {
     },
     // fetch all chatrooms
     chatrooms: async () => {
-      return await db.Chatroom.find({}).populate('tags');
+      return await db.Chatroom.find({}).populate('Tags');
     },
     // sort chatrooms
     getChatrooms: async (_, { options }) => {
@@ -143,7 +143,7 @@ const resolvers = {
         .sort(sort)
         .populate('icon')
         .populate('title')
-        .populate('tags')
+        .populate('Tags')
         .populate('activeUsers');
       return chatrooms;
     },

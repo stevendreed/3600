@@ -14,7 +14,7 @@ const chatroomSchema = new Schema({
   },
   tags: [{
     type: ObjectId,
-    ref: 'tag'
+    ref: 'tags'
   }],
   icon: String,
   activeUsers: [{
