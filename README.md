@@ -68,25 +68,84 @@ Introducing 3600, the revolutionary anti-social media platform that redefines on
 ![Example 2](./client/public/images/sc3.png)
 
 
-## Feedback and Support
+<!-- ## Feedback and Support
 
-We welcome your feedback and suggestions. If you encounter any issues or have ideas to improve 3600, please reach out to our support team at [support@3600app.com](mailto:support@3600app.com).
+We welcome your feedback and suggestions. If you encounter any issues or have ideas to improve 3600, please reach out to our support team at [support@3600app.com](mailto:support@3600app.com). -->
 
 ## Contributors
 
-- **Randy:** Add your roles here.
+- **Randy:** [GitHub](https://github.com/PaBoba)
   
-- **Angelica:** Add your roles here.
+- **Angelica:** [GitHub](https://github.com/astro0725)
 
-- **Steven:** Add your roles here.
+- **Steven:** [GitHub](https://github.com/stevendreed) 
 
-- **Matthew:** Add your roles here.
+- **Matthew:** [GitHub](https://github.com/Mattmrob)
 
 ## License
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 This project is licensed under the [GNU General Public License v3.0](https://opensource.org/licenses/GPL-3.0).
+
+## Deployment Link
+
+[https://thirty600.onrender.com/](https://thirty600.onrender.com/)
+
+## Future Roadmap
+
+Future features and improvements planned for 3600.
+
+### Stripe Payment
+
+#### Premium Features
+- "Premium" Subscription: Introduce a premium subscription plan that offers cosmetic enhancements for users, allowing them to personalize their chatroom experience.
+
+#### Server Support
+
+- Donate to the Server: Implement a feature that allows users to contribute financially to support the server's maintenance and continuous improvement.
+
+#### Chatroom Management
+
+- Download Chat Log: Provide premium users with the ability to download chat logs after a chatroom closes. This feature ensures that valuable conversations can be saved for personal reference.
+
+### General Features
+
+Our team is excited about the future of 3600 and has planned several features and improvements to enhance the user experience:
+
+#### Animations
+- Implement engaging and subtle animations to make the user interface more visually appealing and provide a smoother interaction experience.
+
+#### Thread Feature
+- Introduce a threaded conversation feature that allows users to organize discussions into threads, making it easier to follow and participate in multiple topics within a single chatroom.
+
+#### Dark Mode/Light Mode
+- Provide users with the option to switch between dark and light modes to accommodate different preferences and reduce eye strain during low-light conditions.
+
+#### Sort by Location
+- Enable users to sort and discover chatrooms based on their geographical location, fostering local discussions and connections.
+
+#### Longer Timed Chat Rooms for Premium Users
+- Introduce premium user features, such as the ability to host longer-timed chat rooms. For example, offering live chat rooms for premium users during events like sports games or concerts.
+
+#### Following by Topics/Locations
+- Allow users to follow specific topics or locations of interest, receiving notifications or recommendations for relevant chatrooms.
+
+#### Private Direct Messages
+- Enable private direct messaging between users, creating a space for one-on-one conversations separate from the main chatrooms.
+
+#### Friend Feature
+- Introduce a friend feature that allows users to connect with each other, making it easier to find and join chatrooms hosted by friends.
+
+#### Reporting
+- Implement a reporting system that enables users to report inappropriate behavior or content within chatrooms, fostering a safer and more respectful community.
+
+#### User Timeout Feature
+- Implement a user timeout system where users who receive a certain number of reports face temporary bans. This helps maintain a positive and respectful environment within the platform.
+
+
+
+We look forward to enhancing the 3600 experience with these exciting features and improvements in our future releases.
 
 
 **Experience the magic of fleeting conversations with 3600 - Where Words Last for a Moment, Not a Lifetime.**
