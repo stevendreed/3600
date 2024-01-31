@@ -2,13 +2,12 @@
 
 ![3600 Logo](./client/public/images/logo2x2-02.png)
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![React](https://img.shields.io/badge/React-17.0.2-blue.svg)](https://reactjs.org/)
 [![Vite](https://img.shields.io/badge/Vite-2.7.0-brightgreen.svg)](https://vitejs.dev/)
 [![MongoDB](https://img.shields.io/badge/MongoDB-4.4-green.svg)](https://www.mongodb.com/)
 [![Apollo Server](https://img.shields.io/badge/Apollo%20Server-3.6.0-blueviolet.svg)](https://www.apollographql.com/docs/apollo-server/)
 [![GraphQL](https://img.shields.io/badge/GraphQL-15.4.0-pink.svg)](https://graphql.org/)
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 ## Table of Contents
 - [Description](#description)
