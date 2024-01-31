@@ -143,7 +143,7 @@ const resolvers = {
         .sort(sort)
         .populate('icon')
         .populate('title')
-        .populate('Tags')
+        .populate('tags')
         .populate('activeUsers');
       return chatrooms;
     },

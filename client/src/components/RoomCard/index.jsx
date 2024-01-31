@@ -4,13 +4,12 @@
 import { Link } from 'react-router-dom'
 
 // function to export our homepage content to Outlet in App.jsx based on url defined in Main.jsx
-const RoomCard = ({ _id, image, title, tags, timer }) => {
+const RoomCard = ({ _id, icon, title, tags }) => {
   return (
     <Link className='card' to={`/Chatroom/${_id}`}>
-      <img src={`/images/${image}`} alt={title}></img>
+      <img src={`/images/${icon}`} alt={title}></img>
       <h1>{title}</h1>
       <h2>{tags}</h2>
-      <h3>{timer}</h3>
     </Link>
   );
 };

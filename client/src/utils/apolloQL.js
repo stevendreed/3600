@@ -33,9 +33,9 @@ export const GET_CHATROOMS = gql`
       _id
       title
       createdAt
-      activeUsers {
-        _id
-        username
+      icon
+      tags {
+        name
       }
     }
   }
