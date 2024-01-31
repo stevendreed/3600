@@ -1,13 +1,23 @@
 import React, { useState } from 'react';
-import { useMutation } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import { Link } from 'react-router-dom';
-import { LOGIN_USER, ADD_USER } from '../../utils/apolloQL';
-import Auth from '../../utils/auth';
+import { LOGIN_USER, ADD_USER, GET_USER } from '../../utils/apolloQL';
+import AuthService from '../../utils/auth';
+
+import UserProfile from '../UserProfile/index.jsx';
 
 const UserSidebar = () => {
-    const isLoggedIn = Auth.loggedIn();
-  
-    const [loginFormState, setLoginFormState] = useState({ username: '', password: '' });
+    const isLoggedIn = AuthService.loggedIn();
+    const [userData, setUserData] = useState(null);
+
+    useQuery(GET_USER, {
+      variables: { id: isLoggedIn ? AuthService.getProfile()._id : null },
+      onCompleted: (data) => {
+          setUserData(data.user); 
+      },
+      skip: !isLoggedIn, 
+      });
+    const [loginFormState, setLoginFormState] = useState({ email: '', password: '' });
     const [signupFormState, setSignupFormState] = useState({ username: '', email: '', password: '' });
   
     const [login, { error: loginError }] = useMutation(LOGIN_USER);
@@ -39,41 +49,50 @@ const UserSidebar = () => {
 
   // call our LOGIN_USER mutation (assigned as 'login' on line 22) passing the contents of the ->
   // <- loginFormState as variables (username, password)
-  // once that mutation is complete, it should validate through resolvers.js and return an auth item ->
+  // once that mutation is complete, it should validate through resolvers.js and return an AuthService item ->
   // <- which is then passed through the front end authenticator's Auth.login (not to be confused with login) function ->
   // <- WHICH should sign the token data and set the user's current state to logged in, adding 'user' to context for resolvers
   const handleLoginSubmit = async (event) => {
     event.preventDefault();
     try {
       const { data } = await login({
-        variables: { ...loginFormState },
+        variables: {
+          email: loginFormState.email,
+          password: loginFormState.password
+        }
       });
-
-      Auth.login(data.login.token);
+  
+      console.log("Login Token:", data.LOGIN_USER.token);
+      AuthService.login(data.LOGIN_USER.token);
     } catch (e) {
-      console.error(e);
+      console.error("Login Error:", e);
     }
-
+  
     setLoginFormState({
-      username: '',
+      email: '',
       password: '',
-    });
+    })
   };
 
   // same deal here, but we are passing ADD_USER instead of LOGIN_USER, as ADD_USER is assigned to the signup function
   const handleSignupSubmit = async (event) => {
     event.preventDefault();
-
+  
     try {
       const { data } = await addUser({
-        variables: { ...signupFormState },
+        variables: {
+          username: signupFormState.username,
+          email: signupFormState.email,
+          password: signupFormState.password
+        },
       });
-
-      Auth.login(data.addUser.token);
+  
+      console.log("Signup Token:", data.addUser.token);
+      AuthService.login(data.addUser.token);
     } catch (e) {
-      console.error(e);
+      console.error("Signup Error:", e);
     }
-
+  
     setSignupFormState({
       email: '',
       username: '',
@@ -100,8 +119,8 @@ const UserSidebar = () => {
       <div className='sidebarMainContainer'>
       {isLoggedIn ? (
         <div className='user-profile'>
-          <UserProfile />
-            <button onClick={() => Auth.logout()}>Logout</button>
+          <UserProfile userData={userData} />
+            <button onClick={() => AuthService.logout()}>Logout</button>
         </div>
         ) : (
         <div className='login-signup-forumsContainer'>
@@ -111,10 +130,10 @@ const UserSidebar = () => {
         <h3>Login</h3>
             <input
             className="login-form-input"
-            placeholder="Username"
-            name="username"
-            type="username"
-            value={loginFormState.username}
+            placeholder="Email"
+            name="email"
+            type="email"
+            value={loginFormState.email}
             onChange={handleLoginChange}
             />
             <input
